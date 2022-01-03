@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // 必須 ESLintプラグイン
+    "esbenp.prettier-vscode", // 必須 Prettierプラグイン
+    "msjsdiag.debugger-for-chrome", // GoogleChromeでデバッグする人向け
+    "eamodio.gitlens", // 高機能のGitプラグイン
+    "gruntfuggly.todo-tree", // TODOコメントを強調
+    "diegolincoln.vscode-styled-components", // Styled-Componentsを見やすく
+    "mosapride.zenkaku", // 全角スペースの視覚化
+    "streetsidesoftware.code-spell-checker", // 英単語のスペルミス確認
+    "pkief.material-icon-theme", // vscodeのアイコンをかっこよく
+    "coenraads.bracket-pair-colorizer-2", // 括弧の色分け
+    "dsznajder.es7-react-js-snippets", // rafceなどとタイプすると便利なスニペットが展開
+    "ms-vsliveshare.vsliveshare", // 同一ファイルの共同編集が可能
+    "ms-ceintl.vscode-language-pack-ja" // VS Codeを日本語化
+  ]
+}
