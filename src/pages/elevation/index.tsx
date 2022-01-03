@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
   return (
     <Wrapper>
-      <Title>Top</Title>
+      <Title>標高順</Title>
       {get100FamousMountainsInJapan().map((e) => (
         <div key={e.no}>
           <Card data={e}></Card>
