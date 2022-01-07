@@ -12,7 +12,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.3",
-    "famous-mountains-in-japan": "git+ssh://git@github.com:ryunosuke0922/famous-mountains-in-japan.git"
+    "famous-mountains-in-japan": "git+https://github.com/ryunosuke0922/famous-mountains-in-japan.git"
   },
   "devDependencies": {
     "@types/node": "17.0.7",
