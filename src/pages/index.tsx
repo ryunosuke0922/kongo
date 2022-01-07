@@ -2,9 +2,7 @@ import Card from '@/components/card'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
 import styled from 'styled-components'
-
 const Home: NextPage = () => {
-
   // no: 1,
   // name: "利尻岳",
   // kanaName: "りしりだけ",
@@ -19,7 +17,7 @@ const Home: NextPage = () => {
     color: palevioletred;
   `
 
-  const Wrapper= styled.section`
+  const Wrapper = styled.section`
     padding: 4em;
     background: papayawhip;
   `
@@ -32,7 +30,6 @@ const Home: NextPage = () => {
           <Card data={e}></Card>
         </div>
       ))}
-
     </Wrapper>
   )
 }
