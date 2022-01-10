@@ -24,7 +24,18 @@ const Home: NextPage = () => {
 
   return (
     <Wrapper>
-      <Title>Top</Title>
+      <div className="main">
+        <Title>日本の百名山</Title>
+        <div className="main__description">
+          <p>
+            『日本の百名山』<br></br>
+            (初刊一九六四年七月 新潮社)は、<br></br>
+            深田久弥が執筆した山岳随筆集です。<br></br>
+            こちらの著書を参考に日本の百名山を<br></br>
+            一覧にまとめました。
+          </p>
+        </div>
+      </div>
       {get100FamousMountainsInJapan().map((e) => (
         <div key={e.no}>
           <Card data={e}></Card>

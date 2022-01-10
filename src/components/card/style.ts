@@ -20,4 +20,3 @@ export const TextBox = styled.div`
 export const Text = styled.p`
   color: #333;
 `
-
