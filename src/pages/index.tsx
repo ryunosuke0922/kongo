@@ -36,6 +36,8 @@ const Home: NextPage = () => {
             一覧にまとめました。
           </p>
         </div>
+        <img src="images/img01.jpg" alt="" />
+        <img src="images/img01.jpg" alt="" />
       </div>
       {get100FamousMountainsInJapan().map((e) => (
         <div key={e.no}>
