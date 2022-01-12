@@ -12,14 +12,15 @@ const Home: NextPage = () => {
   // remarks: "",
 
   const Title = styled.h1`
-    font-size: 1.5em;
+    font-size: 4.8rem;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
     text-align: center;
-    color: palevioletred;
   `
 
   const Wrapper = styled.section`
-    padding: 4em;
-    background: papayawhip;
+    padding: 1.6rem;
+    background: #e5e5e5;
   `
 
   return (
@@ -35,6 +36,8 @@ const Home: NextPage = () => {
             一覧にまとめました。
           </p>
         </div>
+        <img src="images/img01.jpg" alt="" />
+        <img src="images/img01.jpg" alt="" />
       </div>
       {get100FamousMountainsInJapan().map((e) => (
         <div key={e.no}>
