@@ -19,21 +19,16 @@ const Home: NextPage = () => {
     color: palevioletred;
   `
 
-  const Wrapper= styled.section`
-    padding: 4em;
-    background: papayawhip;
-  `
-
   return (
-    <Wrapper>
+    <>
       <Title>標高順</Title>
       {get100FamousMountainsInJapan().map((e) => (
         <div key={e.no}>
           <Card data={e}></Card>
         </div>
       ))}
-
-    </Wrapper>
+    </>
   )
 }
+
 export default Home
