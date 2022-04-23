@@ -9,7 +9,7 @@ const LayoutFull: FC = ({ children }) => {
     background: #e5e5e5;
   `
 
-  return(
+  return (
     <Wrapper>
       <Header />
       <main className="main container">{children}</main>
