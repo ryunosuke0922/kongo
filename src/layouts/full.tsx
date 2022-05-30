@@ -4,8 +4,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 const LayoutFull: FC = ({ children }) => {
-  const Wrapper = styled.section`
-    padding: 1.6rem;
+  const Wrapper = styled.div`
     background: #e5e5e5;
   `
 
