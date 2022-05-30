@@ -19,6 +19,11 @@ const Home: NextPage = () => {
     writing-mode: vertical-rl;
     text-align: center;
   `
+  const Wrapper = styled.div`
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+  `
   const Description = styled.p`
     font-size: 2rem;
     -ms-writing-mode: tb-rl;
@@ -34,27 +39,33 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <Title>日本の百名山</Title>
-      {hoge(2)}
-      <div>
-        <Description>
-          『日本の百名山』<br></br>
-          (初刊一九六四年七月 新潮社)は、<br></br>
-          深田久弥が執筆した山岳随筆集です。<br></br>
-          こちらの著書を参考に日本の百名山を<br></br>
-          一覧にまとめました。
-        </Description>
-      </div>
-
-      <div className="main__images">
-        <img src="images/img01.jpg" alt="" />
-        <img src="images/img01.jpg" alt="" />
-      </div>
-      {get100FamousMountainsInJapan().map((e) => (
-        <div key={e.no}>
-          <Card data={e}></Card>
+      <Wrapper>
+        <div className="main__head">
+          <div className="main__head-title">
+            <Title>日本の百名山</Title>
+          </div>
+          <div className="main__head-description">
+            <Description>
+              『日本の百名山』<br></br>
+              (初刊一九六四年七月 新潮社)は、<br></br>
+              深田久弥が執筆した山岳随筆集です。<br></br>
+              こちらの著書を参考に日本の百名山を<br></br>
+              一覧にまとめました。
+            </Description>
+          </div>
         </div>
-      ))}
+
+        <div className="main__images">
+          <img src="images/img01.jpg" alt="" />
+          <img src="images/img02.jpg" alt="" />
+        </div>
+
+        {get100FamousMountainsInJapan().map((e) => (
+          <div key={e.no}>
+            <Card data={e}></Card>
+          </div>
+        ))}
+      </Wrapper>
     </Layout>
   )
 }
