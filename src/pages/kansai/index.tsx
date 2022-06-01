@@ -1,4 +1,4 @@
-import Card from '@/components/atoms/card'
+import Card from '@/components/molecules/card'
 import Layout from '@/layouts/full'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
