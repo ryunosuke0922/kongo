@@ -10,6 +10,3 @@ export declare type MountainsData = {
     remarks: string;
 };
 export declare const get100FamousMountainsInJapan: () => MountainsData[];
-export declare const get100FamousMountainsInJapan_hokkaido: () => MountainsData[];
-export declare const get100FamousMountainsInJapan_kansai: () => MountainsData[];
-export declare const get100FamousMountainsInJapan_elevation: () => MountainsData[];
