@@ -19,6 +19,9 @@ a {
 }
 
 /* main */
+.main__mv {
+  margin: 0 0 15rem;
+}
 .main__images {
   width: 100%;
   display: flex;
