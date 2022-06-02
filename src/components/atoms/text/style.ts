@@ -16,3 +16,39 @@ export const VerticalDescription = styled.p`
   @media screen and (min-width: 768px) {
   }
 `
+export const Heading2 = styled.h2`
+  font-size: 3.2rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
+export const Heading3 = styled.h3`
+  font-size: 2.8rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
+export const Heading4 = styled.h4`
+  font-size: 2.6rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
+export const TextLarge = styled.p`
+  font-size: 2.6rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
+export const TextMiddle = styled.p`
+  font-size: 2.2rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
+export const TextSmall = styled.p`
+  font-size: 1.6rem;
+  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+  }
+`
