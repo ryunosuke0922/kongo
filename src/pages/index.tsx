@@ -14,12 +14,6 @@ const Home: NextPage = () => {
   // prefectures: "北海道",
   // remarks: "",
 
-  const hoge = (no: number) => (
-    <div>
-      <p>{no}</p>
-    </div>
-  )
-
   return (
     <Layout>
       <Wrapper>
@@ -38,13 +32,11 @@ const Home: NextPage = () => {
               </VerticalDescription>
             </div>
           </div>
-
           <div className="main__images">
             <img src="images/img01.jpg" alt="" />
             <img src="images/img02.jpg" alt="" />
           </div>
         </div>
-
         <WrapperContent>
           <MainContent>
             {get100FamousMountainsInJapan().map((e) => (
