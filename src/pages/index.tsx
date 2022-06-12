@@ -1,6 +1,7 @@
-import { AsideContent, MainContent, Wrapper, WrapperContent } from '@/components/atoms/layout/style'
+import { MainContent, Wrapper, WrapperContent } from '@/components/atoms/layout/style'
 import { VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
 import Card from '@/components/molecules/card'
+import Sidebar from '@/components/organisms/sidebar'
 import Layout from '@/layouts/full'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
@@ -53,7 +54,7 @@ const Home: NextPage = () => {
               </div>
             ))}
           </MainContent>
-          <AsideContent></AsideContent>
+          <Sidebar></Sidebar>
         </WrapperContent>
       </Wrapper>
     </Layout>

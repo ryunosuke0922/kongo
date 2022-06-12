@@ -1,11 +1,11 @@
 import Footer from '@/layouts/footer'
 import Header from '@/layouts/header'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 
 const LayoutFull: FC = ({ children }) => {
   const Wrapper = styled.div`
-    background: #e5e5e5;
+    background: #fafafa;
   `
 
   return (

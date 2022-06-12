@@ -1,25 +1,17 @@
-import { MountainsData } from 'famous-mountains-in-japan'
-import { Card, Text, TextBox } from './style'
+import { AsideContent } from '@/components/atoms/layout/style'
+import { Heading3, TextLarge } from '@/components/atoms/text/style'
 
-type Props = {
-  data: MountainsData
-}
-
-const EnhancedCard = ({ data }: Props): JSX.Element => {
+const Sidebar = (): JSX.Element => {
   return (
-    <Card>
-      <TextBox>
-        <Text>{data.no}</Text>
-        <Text>{data.name}</Text>
-        <Text>{data.kanaName}</Text>
-        <Text>{data.elevation} m</Text>
-        <Text>{data.mountainSystem}</Text>
-        <Text>{data.prefectures}</Text>
-        <Text>{data.remarks}</Text>
-      </TextBox>
-    </Card>
+    <AsideContent>
+      <Heading3>日本の百名山</Heading3>
+      <TextLarge>北海道地方</TextLarge>
+      <TextLarge>東北地方</TextLarge>
+      <TextLarge>関東地方</TextLarge>
+      <TextLarge>中部地方</TextLarge>
+      <TextLarge>関西地方</TextLarge>
+    </AsideContent>
   )
 }
 
-export default EnhancedCard
-
+export default Sidebar
