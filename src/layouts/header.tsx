@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Header = (): JSX.Element => {
   return (
     <header>
-      <p>ヘッダー</p>
+      <div>ロゴ</div>
     </header>
   )
 }
