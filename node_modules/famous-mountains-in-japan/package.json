@@ -1,6 +1,6 @@
 {
   "name": "famous-mountains-in-japan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "publishConfig": {

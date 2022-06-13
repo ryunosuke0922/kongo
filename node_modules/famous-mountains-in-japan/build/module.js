@@ -671,17 +671,6 @@ const data_100FamousMountainsInJapan = [
         remarks: "",
     },
     {
-        no: 61,
-        name: "美ヶ原",
-        kanaName: "うつくしがはら",
-        elevation: 2034,
-        mountainSystem: "中信高原",
-        prefectures: "長野県",
-        longitude: 0,
-        latitude: 0,
-        remarks: "",
-    },
-    {
         no: 62,
         name: "霧ヶ峰",
         kanaName: "きりがみね",
