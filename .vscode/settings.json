@@ -11,9 +11,7 @@
   },
   "editor.formatOnSave": true,
   "editor.lineNumbers": "on",
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "javascript.suggest.paths": true,
   "editor.wordWrap": "on",
   "eslint.packageManager": "yarn",
@@ -21,21 +19,12 @@
   "files.trimTrailingWhitespace": true,
   "npm.packageManager": "yarn",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": [
-    ""
-  ],
+  "cSpell.words": [""],
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#f14040",
+    "titleBar.activeBackground": "#160e23",
     "titleBar.activeForeground": "#000000",
-    "activityBar.background": "#f14040",
+    "activityBar.background": "#160e23",
     "activityBar.foreground": "#000000"
   },
   "files.eol": "\n"
 }
-
-
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
