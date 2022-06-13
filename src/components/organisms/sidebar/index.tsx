@@ -10,6 +10,9 @@ const Sidebar = (): JSX.Element => {
       <TextLarge>関東地方</TextLarge>
       <TextLarge>中部地方</TextLarge>
       <TextLarge>関西地方</TextLarge>
+      <TextLarge>中国地方</TextLarge>
+      <TextLarge>四国地方</TextLarge>
+      <TextLarge>九州・沖縄地方</TextLarge>
     </AsideContent>
   )
 }

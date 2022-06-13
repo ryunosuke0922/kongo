@@ -33,5 +33,15 @@ a {
   height: auto;
 }
 
+/* footer */
+.footer__copyright {
+  margin: 7.6rem 0 0;
+}
+.footer__copyright p{
+  font-size: 2rem;
+  line-height: 1;
+  color: rgba(250, 250, 250, 0.6);
+}
+
 
 
