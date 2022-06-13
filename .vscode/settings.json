@@ -3,31 +3,13 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true,
     "source.organizeImports": true
   },
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": false,
-  "[graphql]": {
-    "editor.formatOnSave": true
-  },
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": true
-  },
-  "[json]": {
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true
-  },
+  "editor.formatOnSave": true,
   "editor.lineNumbers": "on",
   "editor.rulers": [
     80
@@ -41,5 +23,19 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
     ""
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#f14040",
+    "titleBar.activeForeground": "#000000",
+    "activityBar.background": "#f14040",
+    "activityBar.foreground": "#000000"
+  },
+  "files.eol": "\n"
 }
+
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
