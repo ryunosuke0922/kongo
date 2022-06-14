@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   `
   return (
     <Layout>
-      <Title>関西地方</Title>
+      <Title>中国地方</Title>
     </Layout>
   )
 }

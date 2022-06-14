@@ -15,8 +15,6 @@ const Home: NextPage = () => {
   // prefectures: "北海道",
   // remarks: "",
 
-  console.log(get100FamousMountainsInJapan())
-
   return (
     <Layout>
       <Wrapper>
