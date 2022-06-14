@@ -1,4 +1,6 @@
+import Card from '@/components/molecules/card'
 import Layout from '@/layouts/full'
+import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
 import styled from 'styled-components'
 
@@ -11,6 +13,13 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <Title>中国地方</Title>
+      {get100FamousMountainsInJapan()
+        .filter((e) => e.no === 92)
+        .map((e) => (
+          <div key={e.no}>
+            <Card data={e}></Card>
+          </div>
+        ))}
     </Layout>
   )
 }
