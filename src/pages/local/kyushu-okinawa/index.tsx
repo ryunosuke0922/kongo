@@ -1,5 +1,5 @@
 import Card from '@/components/molecules/card'
-import Layout from '@/layouts/full'
+import Layout from '@/layouts/local'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
 import styled from 'styled-components'
@@ -12,19 +12,11 @@ const Home: NextPage = () => {
   `
   return (
     <Layout>
-      <Title>中部地方</Title>
+      <Title>九州・沖縄地方</Title>
       {get100FamousMountainsInJapan()
         .filter(
           (e) =>
-            e.no === 1 ||
-            e.no === 2 ||
-            e.no === 3 ||
-            e.no === 4 ||
-            e.no === 5 ||
-            e.no === 6 ||
-            e.no === 7 ||
-            e.no === 8 ||
-            e.no === 9
+            e.no === 95 || e.no === 96 || e.no === 97 || e.no === 98 || e.no === 99 || e.no === 100
         )
         .map((e) => (
           <div key={e.no}>
