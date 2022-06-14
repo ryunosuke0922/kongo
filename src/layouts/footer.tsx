@@ -1,5 +1,6 @@
 import { FooterContent, FooterInner, FooterWrapper } from '@/components/atoms/layout_footer/style'
 import { VerticalTextBoldLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
+import NLink from 'next/link'
 
 const Footer = (): JSX.Element => {
   return (
@@ -8,31 +9,49 @@ const Footer = (): JSX.Element => {
         <FooterInner>
           <FooterContent>
             <VerticalTextBoldLink>
-              <a href="#">日本の百名山</a>
+              <NLink href={'/'} passHref>
+                <a>日本の百名山</a>
+              </NLink>
             </VerticalTextBoldLink>
             <VerticalTextNormalLink>
-              <a href="#">北海道地方</a>
+              <NLink href={'/hokkaido'} passHref>
+                <a>北海道地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">東北地方</a>
+              <NLink href={'/tohoku'} passHref>
+                <a>東北地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">関東地方</a>
+              <NLink href={'/kanto'} passHref>
+                <a>関東地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">中部地方</a>
+              <NLink href={'/chubu'} passHref>
+                <a>中部地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">関西地方</a>
+              <NLink href={'/kansai'} passHref>
+                <a>関西地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">中国地方</a>
+              <NLink href={'/chugoku'} passHref>
+                <a>関西地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">四国地方</a>
+              <NLink href={'/shikoku'} passHref>
+                <a>四国地方</a>
+              </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
-              <a href="#">九州・沖縄地方</a>
+              <NLink href={'/kyushu-okinawa'} passHref>
+                <a>九州・沖縄地方</a>
+              </NLink>
             </VerticalTextNormalLink>
           </FooterContent>
           <div className="footer__copyright">
