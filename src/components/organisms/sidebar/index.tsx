@@ -1,5 +1,5 @@
-import { AsideContent } from '@/components/atoms/layout/style'
 import { Heading3, TextLarge } from '@/components/atoms/text/style'
+import { AsideContent } from '@/layouts/top/style'
 import NLink from 'next/link'
 
 const Sidebar = (): JSX.Element => {
@@ -11,42 +11,42 @@ const Sidebar = (): JSX.Element => {
         </NLink>
       </Heading3>
       <TextLarge>
-        <NLink href={'/hokkaido'} passHref>
+        <NLink href={'/local/hokkaido'} passHref>
           <a>北海道地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/tohoku'} passHref>
+        <NLink href={'/local/tohoku'} passHref>
           <a>東北地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/kanto'} passHref>
+        <NLink href={'/local/kanto'} passHref>
           <a>関東地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/chubu'} passHref>
+        <NLink href={'/local/chubu'} passHref>
           <a>中部地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/kansai'} passHref>
+        <NLink href={'/local/kansai'} passHref>
           <a>関西地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/chugoku'} passHref>
+        <NLink href={'/local/chugoku'} passHref>
           <a>関西地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/shikoku'} passHref>
+        <NLink href={'/local/shikoku'} passHref>
           <a>四国地方</a>
         </NLink>
       </TextLarge>
       <TextLarge>
-        <NLink href={'/kyushu-okinawa'} passHref>
+        <NLink href={'/local/kyushu-okinawa'} passHref>
           <a>九州・沖縄地方</a>
         </NLink>
       </TextLarge>

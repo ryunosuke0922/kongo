@@ -1,5 +1,5 @@
 import Card from '@/components/molecules/card'
-import Layout from '@/layouts/full'
+import Layout from '@/layouts/local'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
 import styled from 'styled-components'
