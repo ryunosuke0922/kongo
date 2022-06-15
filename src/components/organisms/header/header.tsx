@@ -1,8 +1,13 @@
+import { HeaderInner, HeaderWrapper } from '@/components/organisms/header/style'
+
 const Header = (): JSX.Element => {
   return (
     <header>
-      <div>ロゴ</div>
-      <img src="/images/logo_hyaku.svg"></img>
+      <HeaderWrapper>
+        <HeaderInner>
+          <img src="/images/logo_hyaku.svg"></img>
+        </HeaderInner>
+      </HeaderWrapper>
     </header>
   )
 }
