@@ -20,7 +20,7 @@ export const WrapperContent = styled.section`
   }
 `
 
-export const MainContent = styled.main`
+export const MainContent = styled.div`
   width: 118rem;
   max-width: 1180px;
   margin: 0 auto;

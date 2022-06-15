@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-size: calc( 1000vw / 1920 );
+  font-size: calc(1000vw / 1920);
   font-family: Hiragino Mincho Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: #333;
@@ -19,8 +19,30 @@ a {
 }
 
 /* main */
+.container {
+  padding: 10rem 0 12rem;
+}
 .main__mv {
+  width: 100%;
+  height: 108rem;
+  max-height: calc(100vh - 10rem);
   margin: 0 0 15rem;
+  padding: 0 10rem 0;
+}
+.main__head {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.main__head-title {
+}
+.main__head-description {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10rem;
 }
 .main__images {
   width: 100%;
@@ -37,11 +59,8 @@ a {
 .footer__copyright {
   margin: 7.6rem 0 0;
 }
-.footer__copyright p{
+.footer__copyright p {
   font-size: 2rem;
   line-height: 1;
   color: rgba(250, 250, 250, 0.6);
 }
-
-
-
