@@ -33,8 +33,8 @@ const LayoutTop: FC = ({ children }) => {
                 </div>
               </div>
               <div className="main__images">
-                <img src="images/img01.jpg" alt="" />
                 <img src="images/img02.jpg" alt="" />
+                <img src="images/img01.jpg" alt="" />
               </div>
             </div>
           </>
