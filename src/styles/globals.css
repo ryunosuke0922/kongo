@@ -28,6 +28,7 @@ a {
   max-height: calc(100vh - 10rem);
   margin: 0 0 15rem;
   padding: 0 10rem 0;
+  position: relative;
 }
 .main__head {
   width: 100%;
@@ -45,14 +46,24 @@ a {
   right: 10rem;
 }
 .main__images {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-.main__images img {
-  width: 50%;
+.main__images img:first-child {
+  width: 80rem;
   height: auto;
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 43.2rem;
+  z-index: 2;
+}
+.main__images img:last-child {
+  width: 88rem;
+  height: auto;
+  content: '';
+  position: absolute;
+  bottom: 8rem;
+  left: 10rem;
+  z-index: 1;
 }
 
 /* footer */

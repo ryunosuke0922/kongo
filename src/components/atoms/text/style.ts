@@ -10,9 +10,10 @@ export const VerticalTitle = styled.h1`
 `
 export const VerticalDescription = styled.p`
   font-size: 2rem;
+  line-height: 2;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
-  text-align: center;
+  text-align: left;
   @media screen and (min-width: 768px) {
   }
 `

@@ -26,8 +26,10 @@ const LayoutTop: FC = ({ children }) => {
                   <VerticalDescription>
                     『日本の百名山』<br></br>
                     (初刊一九六四年七月 新潮社)は、<br></br>
-                    深田久弥が執筆した山岳随筆集です。<br></br>
-                    こちらの著書を参考に日本の百名山を<br></br>
+                    深田久弥が執筆した<br></br>
+                    山岳随筆集です。<br></br>
+                    こちらの著書を参考に<br></br>
+                    日本の百名山を<br></br>
                     一覧にまとめました。
                   </VerticalDescription>
                 </div>
