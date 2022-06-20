@@ -2,6 +2,7 @@ import Card from '@/components/molecules/card'
 import Layout from '@/layouts/top'
 import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
 import type { NextPage } from 'next'
+import { Col, Row } from 'react-bootstrap'
 
 const Home: NextPage = () => {
   // no: 1,
@@ -14,11 +15,13 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      {get100FamousMountainsInJapan().map((e) => (
-        <div key={e.no}>
-          <Card data={e}></Card>
-        </div>
-      ))}
+      <Row>
+        {get100FamousMountainsInJapan().map((e) => (
+          <Col xs={12} md={6} key={e.no}>
+            <Card data={e}></Card>
+          </Col>
+        ))}
+      </Row>
     </Layout>
   )
 }
