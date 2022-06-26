@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
   height: 10rem;
   background-color: transparent;
   position: fixed;
+  z-index: 999;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
