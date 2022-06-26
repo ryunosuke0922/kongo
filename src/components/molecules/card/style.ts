@@ -22,7 +22,7 @@ export const TextBox = styled.div`
   padding: 2rem;
   box-sizing: border-box;
   background-color: #f6f6f6;
-  border-radius: 2rem;
+  border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
   transition: all ease 0.8s;
@@ -48,19 +48,38 @@ export const TextBox = styled.div`
   }
 `
 
-export const TextSmall = styled.p`
+export const TextId = styled.p`
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  color: #555;
+  border-radius: 50%;
+  background-color: #f6f6f6;
+  box-shadow: 0 3px 6px rgb(59 59 59 / 16%);
+`
+
+export const TextMountain = styled.p`
   color: #555;
   font-size: 2rem;
   line-height: 1.5;
   @media screen and (min-width: 1920px) {
     font-size: 20px;
   }
+  span {
+    padding-left: 0.4rem;
+    font-size: 1rem;
+  }
 `
-export const TextBig = styled.p`
+export const TextName = styled.p`
   color: #555;
   font-size: 2.6rem;
   line-height: 1.5;
   @media screen and (min-width: 1920px) {
     font-size: 26px;
+  }
+  span {
+    padding-left: 1rem;
+    font-size: 2rem;
+    color: #999;
   }
 `
