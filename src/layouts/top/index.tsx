@@ -12,6 +12,7 @@ const LayoutTop: FC = ({ children }) => {
   `
   const WrapperMain = styled.div`
     background: #f6f6f6;
+    border-top: rgba(0, 0, 0, 0.6);
   `
 
   return (
