@@ -50,7 +50,7 @@ export const AsideContent = styled.aside`
   background-color: #f6f6f6;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
