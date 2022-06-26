@@ -8,6 +8,9 @@ import styled from 'styled-components'
 
 const LayoutTop: FC = ({ children }) => {
   const Top = styled.div`
+    background: #fafafa;
+  `
+  const WrapperMain = styled.div`
     background: #f6f6f6;
   `
 
@@ -40,15 +43,17 @@ const LayoutTop: FC = ({ children }) => {
               </div>
             </div>
           </>
-          <WrapperContent>
-            <MainContent>
-              <div className="main__content-title">
-                <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
-              </div>
-              {children}
-            </MainContent>
-            <Sidebar></Sidebar>
-          </WrapperContent>
+          <WrapperMain>
+            <WrapperContent>
+              <MainContent>
+                <div className="main__content-title">
+                  <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
+                </div>
+                {children}
+              </MainContent>
+              <Sidebar></Sidebar>
+            </WrapperContent>
+          </WrapperMain>
         </Wrapper>
       </main>
       <Footer />

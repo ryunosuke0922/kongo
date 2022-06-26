@@ -6,7 +6,7 @@ body {
   font-family: Hiragino Mincho Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: #333;
-  background: #f6f6f6;
+  background: #fafafa;
 }
 
 a {
@@ -20,13 +20,12 @@ a {
 
 /* main */
 .container {
-  padding: 10rem 0 12rem;
+  padding: 10rem 0 0;
 }
 .main__mv {
   width: 100%;
   height: 108rem;
   max-height: calc(100vh - 10rem);
-  margin: 0 0 15rem;
   padding: 0 10rem 0;
   position: relative;
   background-color: #fafafa;
@@ -83,12 +82,11 @@ a {
 @media (min-width: 1920px) {
   /* main */
   .container {
-    padding: 100px 0 120px;
+    padding: 100px 0 0;
   }
   .main__mv {
     height: 1080px;
     max-height: calc(100vh - 100px);
-    margin: 0 0 150px;
     padding: 0 100px 0;
   }
   .main__head-description {
