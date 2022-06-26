@@ -1,5 +1,5 @@
 import { MountainsData } from 'famous-mountains-in-japan'
-import { Card, TextBox, TextId, TextMountain, TextName } from './style'
+import { Card, TextBox, TextId, TextMountain, TextName, TextWrapper } from './style'
 
 type Props = {
   data: MountainsData
@@ -14,9 +14,9 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
         rel="noreferrer"
       >
         <TextBox>
-          <div>
+          <TextWrapper>
             <TextId>{data.no}</TextId>
-          </div>
+          </TextWrapper>
           <div>
             <TextMountain>{data.mountainSystem}</TextMountain>
             <TextMountain>{data.prefectures}</TextMountain>

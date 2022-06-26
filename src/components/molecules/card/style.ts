@@ -47,15 +47,31 @@ export const TextBox = styled.div`
     }
   }
 `
-
-export const TextId = styled.p`
+export const TextWrapper = styled.p`
   width: 4rem;
   height: 4rem;
-  text-align: center;
-  color: #555;
   border-radius: 50%;
+  margin: 0 0 1.6rem;
   background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   box-shadow: 0 3px 6px rgb(59 59 59 / 16%);
+  @media screen and (min-width: 1920px) {
+    width: 40px;
+    height: 40px;
+    margin: 0 0 16px;
+  }
+`
+
+export const TextId = styled.p`
+  color: #555;
+  font-size: 1.6rem;
+  line-height: 1;
+  @media screen and (min-width: 1920px) {
+    font-size: 16px;
+  }
 `
 
 export const TextMountain = styled.p`
@@ -67,7 +83,11 @@ export const TextMountain = styled.p`
   }
   span {
     padding-left: 0.4rem;
-    font-size: 1rem;
+    font-size: 2rem;
+    @media screen and (min-width: 1920px) {
+      padding-left: 4px;
+      font-size: 20px;
+    }
   }
 `
 export const TextName = styled.p`
