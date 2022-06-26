@@ -18,8 +18,8 @@ const LayoutTop: FC = ({ children }) => {
     <Top>
       <Header />
       <main className="main container">
-        <Wrapper>
-          <>
+        <>
+          <Wrapper>
             <div className="main__mv">
               <div className="main__head">
                 <div className="main__head-title">
@@ -42,19 +42,20 @@ const LayoutTop: FC = ({ children }) => {
                 <img src="images/img01.jpg" alt="" />
               </div>
             </div>
-          </>
-          <WrapperMain>
-            <WrapperContent>
-              <MainContent>
-                <div className="main__content-title">
-                  <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
-                </div>
-                {children}
-              </MainContent>
-              <Sidebar></Sidebar>
-            </WrapperContent>
-          </WrapperMain>
-        </Wrapper>
+          </Wrapper>
+        </>
+
+        <WrapperMain>
+          <WrapperContent>
+            <MainContent>
+              <div className="main__content-title">
+                <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
+              </div>
+              {children}
+            </MainContent>
+            <Sidebar></Sidebar>
+          </WrapperContent>
+        </WrapperMain>
       </main>
       <Footer />
     </Top>
