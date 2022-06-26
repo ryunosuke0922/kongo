@@ -12,7 +12,8 @@ const LayoutTop: FC = ({ children }) => {
   `
   const WrapperMain = styled.div`
     background: #f6f6f6;
-    border-top: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(50, 50, 50, 0.05);
+    backface-visibility: hidden;
   `
 
   return (
