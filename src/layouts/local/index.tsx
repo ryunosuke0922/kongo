@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const LayoutLocal: FC = ({ children }) => {
   const Local = styled.div`
-    background: #fafafa;
+    background: #f6f6f6;
   `
 
   return (

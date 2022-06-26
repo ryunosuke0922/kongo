@@ -1,4 +1,4 @@
-import { VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
+import { Heading3, VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
 import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 const LayoutTop: FC = ({ children }) => {
   const Top = styled.div`
-    background: #fafafa;
+    background: #f6f6f6;
   `
 
   return (
@@ -41,7 +41,12 @@ const LayoutTop: FC = ({ children }) => {
             </div>
           </>
           <WrapperContent>
-            <MainContent>{children}</MainContent>
+            <MainContent>
+              <div className="main__content-title">
+                <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
+              </div>
+              {children}
+            </MainContent>
             <Sidebar></Sidebar>
           </WrapperContent>
         </Wrapper>

@@ -7,6 +7,9 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   @media screen and (min-width: 768px) {
   }
+  @media screen and (min-width: 1920px) {
+    height: 100px;
+  }
 `
 export const HeaderInner = styled.div`
   display: flex;
@@ -17,10 +20,16 @@ export const HeaderInner = styled.div`
   padding: 2rem 4rem;
   @media screen and (min-width: 768px) {
   }
+  @media screen and (min-width: 1920px) {
+    padding: 20px 40px;
+  }
   img {
     width: 8rem;
     display: block;
     @media screen and (min-width: 768px) {
+    }
+    @media screen and (min-width: 1920px) {
+      width: 80px;
     }
   }
 `

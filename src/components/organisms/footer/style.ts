@@ -17,6 +17,9 @@ export const FooterInner = styled.div`
   flex-direction: column;
   @media screen and (min-width: 768px) {
   }
+  @media screen and (min-width: 1920px) {
+    padding: 87px 87px 60px;
+  }
 `
 export const FooterContent = styled.div`
   width: 70rem;
@@ -26,5 +29,8 @@ export const FooterContent = styled.div`
   align-items: center;
   flex-direction: row-reverse;
   @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1920px) {
+    width: 700px;
   }
 `

@@ -6,7 +6,7 @@ body {
   font-family: Hiragino Mincho Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: #333;
-  background: #fafafa;
+  background: #f6f6f6;
 }
 
 a {
@@ -29,6 +29,7 @@ a {
   margin: 0 0 15rem;
   padding: 0 10rem 0;
   position: relative;
+  background-color: #fafafa;
 }
 .main__head {
   width: 100%;
@@ -65,6 +66,9 @@ a {
   left: 10rem;
   z-index: 1;
 }
+.main__content-title {
+  width: 100%;
+}
 
 /* footer */
 .footer__copyright {
@@ -74,4 +78,38 @@ a {
   font-size: 2rem;
   line-height: 1;
   color: rgba(250, 250, 250, 0.6);
+}
+
+@media (min-width: 1920px) {
+  /* main */
+  .container {
+    padding: 100px 0 120px;
+  }
+  .main__mv {
+    height: 1080px;
+    max-height: calc(100vh - 100px);
+    margin: 0 0 150px;
+    padding: 0 100px 0;
+  }
+  .main__head-description {
+    right: 100px;
+  }
+  .main__images img:first-child {
+    width: 800px;
+    top: -20px;
+    left: 432px;
+  }
+  .main__images img:last-child {
+    width: 880px;
+    bottom: 80px;
+    left: 100px;
+  }
+
+  /* footer */
+  .footer__copyright {
+    margin: 76px 0 0;
+  }
+  .footer__copyright p {
+    font-size: 20px;
+  }
 }

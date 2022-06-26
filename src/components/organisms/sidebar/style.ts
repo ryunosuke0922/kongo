@@ -7,6 +7,8 @@ export const Card = styled.div`
   margin-bottom: 1rem;
   @media screen and (min-width: 768px) {
   }
+  @media screen and (min-width: 1920px) {
+  }
 `
 
 export const TextBox = styled.div`
@@ -15,6 +17,8 @@ export const TextBox = styled.div`
   padding: 20px 18px;
   background-color: #eee;
   box-sizing: border-box;
+  @media screen and (min-width: 1920px) {
+  }
 `
 
 export const Text = styled.p`
