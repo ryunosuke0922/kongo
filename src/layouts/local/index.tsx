@@ -5,11 +5,11 @@ import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { FC } from 'react'
 import styled from 'styled-components'
 
-const LayoutLocal: FC = ({ children }) => {
-  const Local = styled.div`
-    background: #fafafa;
-  `
+const Local = styled.div`
+  background: #fafafa;
+`
 
+const LayoutLocal: FC = ({ children }) => {
   return (
     <Local>
       <Header />
