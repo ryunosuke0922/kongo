@@ -14,6 +14,14 @@ export const Card = styled.div`
       transition: all ease 0.8s;
     }
   } */
+  a {
+    visibility: hidden;
+  }
+  &:hover {
+    a {
+      visibility: visible;
+    }
+  }
 `
 
 export const TextBox = styled.div`
