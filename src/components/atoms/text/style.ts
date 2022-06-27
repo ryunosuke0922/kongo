@@ -1,26 +1,29 @@
 import styled from 'styled-components'
 
 export const VerticalTitle = styled.h1`
-  font-size: 4.8rem;
+  font-size: 5.4rem;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
-    font-size: 48px;
+    font-size: 54px;
   }
 `
 export const VerticalDescription = styled.p`
-  font-size: 2rem;
-  line-height: 2;
+  font-size: 3.2rem;
+  line-height: 1.8;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: left;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
-    font-size: 20px;
+    font-size: 32px;
+  }
+  span {
+    display: block;
   }
 `
 export const VerticalTextBoldLink = styled.div`

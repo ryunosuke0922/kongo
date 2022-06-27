@@ -29,13 +29,12 @@ const LayoutTop: FC = ({ children }) => {
                 </div>
                 <div className="main__head-description">
                   <VerticalDescription>
-                    『日本の百名山』<br></br>
-                    (初刊一九六四年七月 新潮社)は、<br></br>
-                    深田久弥が執筆した<br></br>
-                    山岳随筆集です。<br></br>
-                    こちらの著書を参考に<br></br>
-                    日本の百名山を<br></br>
-                    一覧にまとめました。
+                    <span>『日本の百名山』は、</span>
+                    <span>深田久弥が執筆した</span>
+                    <span>山岳随筆集です。</span>
+                    <span>こちらの著書を参考に</span>
+                    <span>日本の百名山を</span>
+                    <span>一覧にまとめました。</span>
                   </VerticalDescription>
                 </div>
               </div>
