@@ -38,7 +38,7 @@ const LayoutTop: FC = ({ children }) => {
                     <VerticalTitle>日本の百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
-                    <ParallaxItem targetFactor={0.05}>
+                    <ParallaxItem targetFactor={0.1}>
                       <VerticalDescription>
                         <span>『日本の百名山』は、</span>
                         <span>深田久弥が執筆した</span>
