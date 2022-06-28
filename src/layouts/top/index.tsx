@@ -54,7 +54,9 @@ const LayoutTop: FC = ({ children }) => {
           <WrapperContent>
             <MainContent>
               <div className="main__content-title">
-                <Heading3>百名山 一覧（深田 久弥 選定100座）</Heading3>
+                <Heading3>
+                  百名山 一覧<span>深田 久弥 選定100座</span>
+                </Heading3>
               </div>
               {children}
             </MainContent>

@@ -40,7 +40,7 @@ const Footer = (): JSX.Element => {
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <NLink href={'/local/chugoku'} passHref>
-                <a>関西地方</a>
+                <a>中国地方</a>
               </NLink>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>

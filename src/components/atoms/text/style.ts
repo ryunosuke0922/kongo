@@ -68,6 +68,11 @@ export const Heading3 = styled.h3`
   @media screen and (min-width: 1920px) {
     font-size: 28px;
   }
+  span {
+    font-size: 2rem;
+    color: #999;
+    padding-left: 1rem;
+  }
 `
 export const Heading4 = styled.h4`
   font-size: 2.6rem;
