@@ -21,9 +21,9 @@ const LayoutTop: FC = ({ children }) => {
     <Top>
       <Header />
       <motion.div
-        initial={{ opacity: 0, y: 10 }} // 初期状態
-        animate={{ opacity: 1, y: 0 }} // マウント時
-        exit={{ opacity: 0, y: 10 }} // アンマウント時
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }} // TODO: ??
         transition={{
           duration: 0.5,
         }}
