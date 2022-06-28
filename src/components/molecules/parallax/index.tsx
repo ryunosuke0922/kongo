@@ -1,13 +1,13 @@
 import { ReactNode, useEffect, useRef, useState } from 'react'
 
-type ParallaxProps = {
+type Props = {
   children: ReactNode
-  targetFactor?: number
+  factor?: number
 }
 
-const ParallaxItem = (props: ParallaxProps) => {
+const ParallaxItem = ({ children, factor }: Props) => {
   const domRef = useRef<HTMLDivElement>(null)
-  const targetFactor = props.targetFactor ? props.targetFactor : 0.15
+  const targetFactor = factor ? factor : 0.15
   const [offsetY, setOffsetY] = useState(0)
 
   const onScroll = () => {
@@ -28,7 +28,7 @@ const ParallaxItem = (props: ParallaxProps) => {
         transform: `translateY(${offsetY}px)`,
       }}
     >
-      {props.children}
+      {children}
     </div>
   )
 }

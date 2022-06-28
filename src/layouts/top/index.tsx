@@ -1,5 +1,6 @@
 import { Heading3, VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
 import ParallaxItem from '@/components/molecules/parallax'
+import Seo from '@/components/molecules/seo'
 import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
@@ -35,6 +36,8 @@ const WrapperMain = styled.div`
 const LayoutTop: FC = ({ children }) => {
   return (
     <Top>
+      {/* TODO: SEO */}
+      <Seo pageTitle={''} pageDescription={''} pagePath={''} />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -53,7 +56,7 @@ const LayoutTop: FC = ({ children }) => {
                     <VerticalTitle>日本の百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
-                    <ParallaxItem targetFactor={0.1}>
+                    <ParallaxItem factor={0.1}>
                       <VerticalDescription>
                         <span>『日本の百名山』は、</span>
                         <span>深田久弥が執筆した</span>
@@ -66,10 +69,10 @@ const LayoutTop: FC = ({ children }) => {
                   </div>
                 </div>
                 <div className="main__images">
-                  <ParallaxItem targetFactor={0.2}>
+                  <ParallaxItem factor={0.2}>
                     <img src="images/img01.jpg" alt="" />
                   </ParallaxItem>
-                  <ParallaxItem targetFactor={0.1}>
+                  <ParallaxItem factor={0.1}>
                     <img src="images/img02.jpg" alt="" />
                   </ParallaxItem>
                 </div>
@@ -92,7 +95,6 @@ const LayoutTop: FC = ({ children }) => {
           </WrapperMain>
         </main>
       </motion.div>
-
       <Footer />
     </Top>
   )

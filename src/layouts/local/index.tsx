@@ -1,3 +1,4 @@
+import Seo from '@/components/molecules/seo'
 import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
@@ -26,6 +27,8 @@ const Local = styled.div`
 const LayoutLocal: FC = ({ children }) => {
   return (
     <Local>
+      {/* TODO: SEO */}
+      <Seo pageTitle={'地方別'} pageDescription={''} pagePath={''} />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
