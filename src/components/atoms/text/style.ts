@@ -12,7 +12,7 @@ export const VerticalTitle = styled.h1`
   }
 `
 export const VerticalDescription = styled.p`
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   line-height: 1.8;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
@@ -20,7 +20,7 @@ export const VerticalDescription = styled.p`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
-    font-size: 32px;
+    font-size: 28px;
   }
   span {
     display: block;
