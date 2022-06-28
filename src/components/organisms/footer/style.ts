@@ -4,13 +4,13 @@ export const FooterWrapper = styled.div`
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #565656;
+  background-color: #efefef;
   @media screen and (min-width: 768px) {
   }
 `
 export const FooterInner = styled.div`
   padding: 8.7rem 8.7rem 6rem;
-  background-color: #565656;
+  background-color: #efefef;
   display: flex;
   justify-content: center;
   align-items: center;

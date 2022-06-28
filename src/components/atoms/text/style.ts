@@ -32,11 +32,58 @@ export const VerticalTextBoldLink = styled.div`
   writing-mode: vertical-rl;
   text-align: center;
   font-weight: bold;
-  color: rgba(250, 250, 250, 0.8);
+  color: #555;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
+  }
+  > a {
+    position: relative;
+    transition: all ease-in-out 0.4s;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 0.1rem;
+      height: 4rem;
+      background-color: #555;
+      transition: all ease-in-out 0.4s;
+      @media screen and (min-width: 1920px) {
+        top: -90px;
+        width: 1px;
+        height: 40px;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 0.1rem;
+      height: 4rem;
+      background-color: #efefef;
+      transition: all ease-in 0.4s;
+      @media screen and (min-width: 1920px) {
+        top: -90px;
+        width: 1px;
+        height: 40px;
+      }
+    }
+    &:hover {
+      opacity: 0.8;
+      &:before {
+        top: -5rem;
+        @media screen and (min-width: 1920px) {
+          top: -50px;
+        }
+      }
+    }
   }
 `
 export const VerticalTextNormalLink = styled.div`
@@ -44,11 +91,58 @@ export const VerticalTextNormalLink = styled.div`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
-  color: rgba(250, 250, 250, 0.8);
+  color: #555;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
+  }
+  > a {
+    position: relative;
+    transition: all ease-in-out 0.4s;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 0.1rem;
+      height: 4rem;
+      background-color: #555;
+      transition: all ease-in-out 0.4s;
+      @media screen and (min-width: 1920px) {
+        top: -90px;
+        width: 1px;
+        height: 40px;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -9rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 0.1rem;
+      height: 4rem;
+      background-color: #efefef;
+      transition: all ease-in 0.4s;
+      @media screen and (min-width: 1920px) {
+        top: -90px;
+        width: 1px;
+        height: 40px;
+      }
+    }
+    &:hover {
+      opacity: 0.8;
+      &:before {
+        top: -5rem;
+        @media screen and (min-width: 1920px) {
+          top: -50px;
+        }
+      }
+    }
   }
 `
 export const Heading2 = styled.h2`
