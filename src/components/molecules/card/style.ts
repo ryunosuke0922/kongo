@@ -10,6 +10,10 @@ export const Card = styled.div`
   @media screen and (min-width: 1920px) {
     width: 550px;
   }
+  p,
+  span {
+    transition: all ease 0.4s;
+  }
   &:hover {
     a {
       visibility: visible;
@@ -17,7 +21,11 @@ export const Card = styled.div`
       transform: translate(0, 0);
     }
     &:after {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    p,
+    span {
+      color: rgba(0, 0, 0, 0.4);
     }
   }
   &:after {
