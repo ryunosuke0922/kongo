@@ -30,15 +30,17 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
           href={`https://yamap.com/search/activities?keyword=${data.prefectures}%20${data.name}`}
           target="_blank"
           rel="noreferrer"
+          className="link-yamap"
         >
-          YAMAPで調べる
+          YAMAP
         </a>
         <a
           href={`https://www.instagram.com/explore/tags/${data.name}/`}
           target="_blank"
           rel="noreferrer"
+          className="link-insta"
         >
-          Instagramで調べる
+          Instagram
         </a>
       </TextBox>
     </Card>
