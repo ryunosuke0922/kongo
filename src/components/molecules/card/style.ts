@@ -17,7 +17,7 @@ export const Card = styled.div`
       transform: translate(0, 0);
     }
     &:after {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.4);
     }
   }
   &:after {
@@ -79,11 +79,24 @@ export const TextBox = styled.div`
     transition: all ease 0.4s;
     z-index: 11;
     transform: translate(10px, 10px);
+    @media screen and (min-width: 1920px) {
+      font-size: 16px;
+      bottom: 20px;
+    }
     &.link-yamap {
-      right: 8em;
+      right: 12rem;
+      @media screen and (min-width: 1920px) {
+        right: 120px;
+      }
     }
     &.link-insta {
       right: 3rem;
+      @media screen and (min-width: 1920px) {
+        right: 30px;
+      }
+    }
+    &:hover {
+      transform: translate(0, -2px);
     }
   }
 `
