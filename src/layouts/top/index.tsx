@@ -42,8 +42,10 @@ const LayoutTop: FC = ({ children }) => {
               </div>
               <div className="main__images">
                 <ParallaxItem targetFactor={0.2}>
-                  <img src="images/img02.jpg" alt="" />
                   <img src="images/img01.jpg" alt="" />
+                </ParallaxItem>
+                <ParallaxItem targetFactor={0.1}>
+                  <img src="images/img02.jpg" alt="" />
                 </ParallaxItem>
               </div>
             </div>
