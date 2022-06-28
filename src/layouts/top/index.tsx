@@ -13,6 +13,7 @@ const Top = styled.div`
 const WrapperMain = styled.div`
   background: #f6f6f6;
   border-top: 1px solid rgba(50, 50, 50, 0.05);
+  border-bottom: 1px solid rgba(50, 50, 50, 0.05);
   backface-visibility: hidden;
 `
 const LayoutTop: FC = ({ children }) => {
