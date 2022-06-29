@@ -108,7 +108,7 @@ export const TextBox = styled.div`
     }
   }
 `
-export const TextWrapper = styled.p`
+export const TextWrapper = styled.div`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
