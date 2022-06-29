@@ -64,7 +64,7 @@ const Footer = (): JSX.Element => {
             </VerticalTextNormalLink>
           </FooterContent>
           <div className="footer__copyright">
-            <p>Copyright © 2022 yuto maeda.All Rights Reserved.</p>
+            <p>© 2022 yuto maeda.</p>
           </div>
         </FooterInner>
         <a href={'https://github.com/ryunosuke0922/kongo'} target="_blank" rel="noreferrer">
