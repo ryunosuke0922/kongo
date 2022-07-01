@@ -28,12 +28,3 @@ export const MainContent = styled.main`
   @media screen and (min-width: 768px) {
   }
 `
-
-export const AsideContent = styled.aside`
-  width: 36.5rem;
-  max-width: 365px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  @media screen and (min-width: 768px) {
-  }
-`

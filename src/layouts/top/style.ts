@@ -40,23 +40,3 @@ export const MainContent = styled.div`
     gap: 20px 30px;
   }
 `
-
-export const AsideContent = styled.aside`
-  position: sticky;
-  top: 2.6rem;
-  width: 36.5rem;
-  max-width: 365px;
-  margin: 5.6rem 0 0;
-  padding: 5.6rem 1rem 16rem;
-  background-color: #f6f6f6;
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1920px) {
-    border-radius: 20px;
-    top: 26px;
-    margin: 56px 0 160px;
-  }
-`

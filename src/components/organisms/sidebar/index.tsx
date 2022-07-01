@@ -1,6 +1,5 @@
-import { AsideContent } from '@/layouts/top/style'
 import Link from 'next/link'
-import { Heading3, Text } from './style'
+import { AsideContent, Heading3, Text } from './style'
 
 const Sidebar = (): JSX.Element => {
   return (
