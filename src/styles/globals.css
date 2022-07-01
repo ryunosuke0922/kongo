@@ -87,18 +87,25 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   margin: 2rem 0 0;
 }
+.footer__sns > a:first-child:hover svg {
+  color: #000;
+}
+.footer__sns > a:last-child:hover svg {
+  color: #00acee;
+}
 .footer__sns svg {
-  width: 8rem;
+  width: 5rem;
   color: #555;
+  transition: all ease 0.4s;
 }
 .footer__sns svg * {
   fill: currentColor;
 }
 .footer__copyright {
-  margin: 5.6rem 0 0;
+  margin: 2.4rem 0 0;
 }
 .footer__copyright p {
   font-size: 2rem;
@@ -138,14 +145,14 @@ a {
 
   /* footer */
   .footer__sns {
-    gap: 30px;
+    gap: 20px;
     margin: 20px 0 0;
   }
   .footer__sns svg {
-    width: 80px;
+    width: 50px;
   }
   .footer__copyright {
-    margin: 56px 0 0;
+    margin: 24px 0 0;
   }
   .footer__copyright p {
     font-size: 20px;
