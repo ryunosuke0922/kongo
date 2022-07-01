@@ -1,13 +1,7 @@
 import { VerticalTextBoldLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
 import { FooterContent, FooterInner, FooterWrapper } from '@/components/organisms/footer/style'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import {
-  faGithub,
-  faGithubAlt,
-  faGithubSquare,
-  faTwitter,
-  faTwitterSquare,
-} from '@fortawesome/free-brands-svg-icons'
+import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 
@@ -63,19 +57,18 @@ const Footer = (): JSX.Element => {
               </Link>
             </VerticalTextNormalLink>
           </FooterContent>
+          <div className="footer__sns">
+            <a href={'https://github.com/ryunosuke0922/kongo'} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faGithubSquare as IconProp} />
+            </a>
+            <a href={'https://twitter.com/yutomaeda3'} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faTwitterSquare as IconProp} />
+            </a>
+          </div>
           <div className="footer__copyright">
             <p>© 2022 yuto maeda.</p>
           </div>
         </FooterInner>
-        <a href={'https://github.com/ryunosuke0922/kongo'} target="_blank" rel="noreferrer">
-          <FontAwesomeIcon icon={faGithubAlt as IconProp} />
-          <FontAwesomeIcon icon={faGithub as IconProp} />
-          <FontAwesomeIcon icon={faGithubSquare as IconProp} />
-        </a>
-        <a href={'https://twitter.com/yutomaeda3'} target="_blank" rel="noreferrer">
-          <FontAwesomeIcon icon={faTwitterSquare as IconProp} />
-          <FontAwesomeIcon icon={faTwitter as IconProp} />
-        </a>
       </FooterWrapper>
     </footer>
   )

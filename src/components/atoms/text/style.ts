@@ -32,7 +32,7 @@ export const VerticalTextBoldLink = styled.div`
   writing-mode: vertical-rl;
   text-align: center;
   font-weight: bold;
-  color: #555;
+  color: #333;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
@@ -91,7 +91,7 @@ export const VerticalTextNormalLink = styled.div`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
-  color: #555;
+  color: #333;
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
