@@ -10,6 +10,7 @@ const Home: NextPage = () => {
     text-align: center;
     color: palevioletred;
   `
+
   return (
     <Layout>
       <Title>北海道地方</Title>

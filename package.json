@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --dir src",
+    "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -23,7 +24,7 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@types/node": "17.0.7",
+    "@types/node": "^18.0.0",
     "@types/react": "17.0.38",
     "@types/styled-components": "^5.1.19",
     "@typescript-eslint/eslint-plugin": "^5.8.1",

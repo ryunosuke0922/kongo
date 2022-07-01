@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useRef, useState } from 'react'
-
 type Props = {
   children: ReactNode
   factor?: number
@@ -32,5 +31,4 @@ const ParallaxItem = ({ children, factor }: Props) => {
     </div>
   )
 }
-
 export default ParallaxItem

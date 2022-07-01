@@ -6,6 +6,7 @@ import '../styles/Home.module.css'
 
 function MyApp({ Component, pageProps }) {
   usePageTracking()
+
   return (
     <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
       <Component {...pageProps} />

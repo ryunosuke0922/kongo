@@ -10,6 +10,7 @@ const Home: NextPage = () => {
     text-align: center;
     color: palevioletred;
   `
+
   return (
     <Layout>
       <Title>九州・沖縄地方</Title>
