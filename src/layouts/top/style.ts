@@ -26,7 +26,7 @@ export const MainContent = styled.div`
   width: 118rem;
   max-width: 1180px;
   margin: 0;
-  padding: 5.6rem 2.4rem 16rem 3.4rem;
+  padding: 5.6rem 2.4rem 16rem;
   background-color: #f6f6f6;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ export const MainContent = styled.div`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
-    padding: 56px 24px 160px 34px;
+    padding: 56px 24px 160px;
     gap: 20px 30px;
   }
 `

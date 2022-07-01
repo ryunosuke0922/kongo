@@ -130,7 +130,7 @@ export const AsideContent = styled.aside`
   width: 36.5rem;
   max-width: 365px;
   margin: 5.6rem 0 0;
-  padding: 5.6rem 1rem 16rem;
+  padding: 5.6rem 1rem 16rem 2rem;
   background-color: #f6f6f6;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -140,5 +140,6 @@ export const AsideContent = styled.aside`
     border-radius: 20px;
     top: 26px;
     margin: 56px 0 160px;
+    padding: 56px 10px 160px 20px;
   }
 `
