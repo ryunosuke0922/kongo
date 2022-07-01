@@ -13,9 +13,11 @@ export const Heading3 = styled.h3`
     margin: 0 0 16px;
   }
   > a {
+    display: block;
     transition: all ease-in-out 0.4s;
+    transform: translate(0, 0);
     &:hover {
-      opacity: 0.8;
+      transform: translate(5px, 0);
       & + i {
         opacity: 1;
         overflow: visible;
@@ -76,9 +78,11 @@ export const Text = styled.div`
     margin: 0 0 8px;
   }
   > a {
+    display: block;
     transition: all ease-in-out 0.4s;
+    transform: translate(0, 0);
     &:hover {
-      opacity: 0.8;
+      transform: translate(5px, 0);
       & + i {
         opacity: 1;
         overflow: visible;

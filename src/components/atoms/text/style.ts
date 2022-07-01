@@ -41,9 +41,11 @@ export const VerticalTextBoldLink = styled.div`
     font-size: 28px;
   }
   > a {
+    display: block;
     transition: all ease-in-out 0.4s;
+    transform: translate(0, 0);
     &:hover {
-      opacity: 0.8;
+      transform: translate(0, 5px);
       & + i {
         opacity: 1;
         overflow: visible;
@@ -101,9 +103,11 @@ export const VerticalTextNormalLink = styled.div`
     font-size: 26px;
   }
   > a {
+    display: block;
     transition: all ease-in-out 0.4s;
+    transform: translate(0, 0);
     &:hover {
-      opacity: 0.8;
+      transform: translate(0, 5px);
       & + i {
         opacity: 1;
         overflow: visible;

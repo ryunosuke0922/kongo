@@ -42,7 +42,7 @@ const Sidebar = (): JSX.Element => {
       </Text>
       <Text>
         <Link href={'/local/chugoku'}>
-          <a>関西地方</a>
+          <a>中国地方</a>
         </Link>
         <i></i>
       </Text>
