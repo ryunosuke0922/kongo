@@ -75,7 +75,7 @@ export const VerticalTextBoldLink = styled.div`
     height: 6rem;
     position: absolute;
     top: -7rem;
-    left: 2.25rem;
+    left: 2.2rem;
     margin: 0 auto;
     background-color: currentColor;
     opacity: 0;
@@ -84,7 +84,7 @@ export const VerticalTextBoldLink = styled.div`
       width: 1px;
       height: 60px;
       top: -70px;
-      left: 22.5px;
+      left: 22px;
     }
   }
 `
@@ -135,7 +135,7 @@ export const VerticalTextNormalLink = styled.div`
     height: 6rem;
     position: absolute;
     top: -7rem;
-    left: 2.2rem;
+    left: 2.15rem;
     margin: 0 auto;
     background-color: currentColor;
     opacity: 0;
@@ -144,7 +144,7 @@ export const VerticalTextNormalLink = styled.div`
       width: 1px;
       height: 60px;
       top: -70px;
-      left: 22px;
+      left: 21.5px;
     }
   }
 `
