@@ -58,7 +58,7 @@ export const TextBox = styled.div`
     padding: 20px;
     border-radius: 6px;
   }
-  > div {
+  .card__wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -127,7 +127,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TextId = styled.p`
-  color: #555;
+  color: #333;
   font-size: 1.6rem;
   line-height: 1;
   @media screen and (min-width: 1920px) {
@@ -136,7 +136,7 @@ export const TextId = styled.p`
 `
 
 export const TextMountain = styled.p`
-  color: #555;
+  color: #333;
   font-size: 2rem;
   line-height: 1.5;
   @media screen and (min-width: 1920px) {
@@ -152,7 +152,7 @@ export const TextMountain = styled.p`
   }
 `
 export const TextName = styled.p`
-  color: #555;
+  color: #333;
   font-size: 2.6rem;
   line-height: 1.5;
   @media screen and (min-width: 1920px) {
@@ -161,6 +161,6 @@ export const TextName = styled.p`
   span {
     padding-left: 1rem;
     font-size: 2rem;
-    color: #999;
+    color: #666;
   }
 `

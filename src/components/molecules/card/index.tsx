@@ -12,7 +12,7 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
         <TextWrapper>
           <TextId>{data.no}</TextId>
         </TextWrapper>
-        <div>
+        <div className="card__wrapper">
           <TextMountain>{data.mountainSystem}</TextMountain>
           <TextMountain>{data.prefectures}</TextMountain>
           <TextMountain>
@@ -20,7 +20,7 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
             <span>m</span>
           </TextMountain>
         </div>
-        <div>
+        <div className="card__wrapper">
           <TextName>
             {data.name}
             <span>{data.kanaName}</span>
