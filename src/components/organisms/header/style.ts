@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.div`
   background-color: transparent;
   position: fixed;
   z-index: 999;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     height: 100px;
@@ -19,7 +19,7 @@ export const HeaderInner = styled.div`
   width: 100%;
   height: 100%;
   padding: 2rem 4rem;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     padding: 20px 40px;
@@ -27,7 +27,7 @@ export const HeaderInner = styled.div`
   img {
     width: 8rem;
     display: block;
-    @media screen and (min-width: 768px) {
+    @media screen and (max-width: 768px) {
     }
     @media screen and (min-width: 1920px) {
       width: 80px;

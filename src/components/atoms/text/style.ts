@@ -6,7 +6,8 @@ export const VerticalTitle = styled.h1`
   writing-mode: vertical-rl;
   text-align: center;
   color: #111;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 6rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 54px;
@@ -18,7 +19,8 @@ export const VerticalDescription = styled.p`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: left;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3.4rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
@@ -35,7 +37,8 @@ export const VerticalTextBoldLink = styled.div`
   font-weight: bold;
   color: #333;
   position: relative;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
@@ -97,7 +100,8 @@ export const VerticalTextNormalLink = styled.div`
   text-align: center;
   color: #333;
   position: relative;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 2.8rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
@@ -155,7 +159,8 @@ export const VerticalTextNormalLink = styled.div`
 export const Heading2 = styled.h2`
   font-size: 3.2rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3.8rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 32px;
@@ -164,7 +169,8 @@ export const Heading2 = styled.h2`
 export const Heading3 = styled.h3`
   font-size: 2.8rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3.6rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
@@ -173,12 +179,17 @@ export const Heading3 = styled.h3`
     font-size: 2rem;
     color: #999;
     padding-left: 1rem;
+    @media screen and (max-width: 768px) {
+      font-size: 2.6rem;
+      padding-left: 2rem;
+    }
   }
 `
 export const Heading4 = styled.h4`
   font-size: 2.6rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3.2rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
@@ -187,7 +198,8 @@ export const Heading4 = styled.h4`
 export const TextLarge = styled.p`
   font-size: 2.6rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3.2rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
@@ -196,7 +208,8 @@ export const TextLarge = styled.p`
 export const TextMiddle = styled.p`
   font-size: 2.4rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 3rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 24px;
@@ -205,7 +218,8 @@ export const TextMiddle = styled.p`
 export const TextSmall = styled.p`
   font-size: 2.2rem;
   line-height: 1.5;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    font-size: 2.8rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 22px;

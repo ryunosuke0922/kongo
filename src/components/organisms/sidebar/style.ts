@@ -6,7 +6,7 @@ export const Heading3 = styled.h3`
   margin: 0 0 1.6rem;
   color: #111;
   position: relative;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
@@ -70,7 +70,7 @@ export const Text = styled.div`
   margin: 0 0 0.8rem;
   color: #333;
   position: relative;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
   }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
@@ -138,7 +138,8 @@ export const AsideContent = styled.aside`
   background-color: #f6f6f6;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    display: none;
   }
   @media screen and (min-width: 1920px) {
     border-radius: 20px;
