@@ -46,7 +46,7 @@ const LayoutTop: FC = ({ children }) => {
                   </div>
                   <div className="main__head-description">
                     {isMobile ? (
-                      <div>
+                      <>
                         <VerticalDescription>
                           <span>『日本の百名山』は、</span>
                           <span>深田久弥が執筆した</span>
@@ -55,7 +55,7 @@ const LayoutTop: FC = ({ children }) => {
                           <span>日本の百名山を</span>
                           <span>一覧にまとめました。</span>
                         </VerticalDescription>
-                      </div>
+                      </>
                     ) : (
                       <ParallaxItem factor={0.1}>
                         <VerticalDescription>
