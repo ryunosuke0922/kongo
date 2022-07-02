@@ -22,6 +22,10 @@ a {
 .container {
   padding: 10rem 0 0;
 }
+.container-local {
+  padding: 0 0 0;
+}
+
 .main__mv {
   width: 100%;
   height: 108rem;

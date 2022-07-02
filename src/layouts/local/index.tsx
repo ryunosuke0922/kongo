@@ -11,6 +11,12 @@ const Local = styled.div`
   background: #fafafa;
   position: relative;
 `
+const LocalMain = styled.div`
+  background: #f6f6f6;
+  border-top: 1px solid rgba(50, 50, 50, 0.05);
+  border-bottom: 1px solid rgba(50, 50, 50, 0.05);
+  backface-visibility: hidden;
+`
 
 const LayoutLocal: FC = ({ children }) => {
   return (
@@ -26,12 +32,14 @@ const LayoutLocal: FC = ({ children }) => {
           duration: 0.5,
         }}
       >
-        <main className="main container">
+        <main className="main container-local">
           <Wrapper>
-            <WrapperContent>
-              <MainContent>{children}</MainContent>
-              <Sidebar></Sidebar>
-            </WrapperContent>
+            <LocalMain>
+              <WrapperContent>
+                <MainContent>{children}</MainContent>
+                <Sidebar></Sidebar>
+              </WrapperContent>
+            </LocalMain>
           </Wrapper>
         </main>
       </motion.div>
