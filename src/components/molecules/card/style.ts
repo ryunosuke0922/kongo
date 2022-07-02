@@ -5,7 +5,9 @@ export const Card = styled.div`
   height: auto;
   position: relative;
   transition: all ease 0.4s;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0 0 2rem;
   }
   @media screen and (min-width: 1920px) {
     width: 550px;
@@ -53,6 +55,8 @@ export const TextBox = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
   position: relative;
+  @media screen and (max-width: 768px) {
+  }
 
   @media screen and (min-width: 1920px) {
     padding: 20px;
@@ -87,18 +91,32 @@ export const TextBox = styled.div`
     transition: all ease 0.4s;
     z-index: 11;
     transform: translate(10px, 10px);
+    @media screen and (max-width: 768px) {
+      bottom: 4rem;
+      font-size: 2.2rem;
+      opacity: 1;
+      visibility: visible;
+      color: #555;
+      text-decoration: underline;
+    }
     @media screen and (min-width: 1920px) {
       font-size: 16px;
       bottom: 20px;
     }
     &.link-yamap {
       right: 12rem;
+      @media screen and (max-width: 768px) {
+        right: 17rem;
+      }
       @media screen and (min-width: 1920px) {
         right: 120px;
       }
     }
     &.link-insta {
       right: 3rem;
+      @media screen and (max-width: 768px) {
+        right: 4rem;
+      }
       @media screen and (min-width: 1920px) {
         right: 30px;
       }
@@ -130,6 +148,10 @@ export const TextId = styled.p`
   color: #333;
   font-size: 1.6rem;
   line-height: 1;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
+
   @media screen and (min-width: 1920px) {
     font-size: 16px;
   }
@@ -139,12 +161,18 @@ export const TextMountain = styled.p`
   color: #333;
   font-size: 2rem;
   line-height: 1.5;
+  @media screen and (max-width: 768px) {
+    font-size: 2.6rem;
+  }
   @media screen and (min-width: 1920px) {
     font-size: 20px;
   }
   span {
     padding-left: 0.4rem;
     font-size: 2rem;
+    @media screen and (max-width: 768px) {
+      font-size: 2.6rem;
+    }
     @media screen and (min-width: 1920px) {
       padding-left: 4px;
       font-size: 20px;
@@ -155,6 +183,9 @@ export const TextName = styled.p`
   color: #333;
   font-size: 2.6rem;
   line-height: 1.5;
+  @media screen and (max-width: 768px) {
+    font-size: 3.2rem;
+  }
   @media screen and (min-width: 1920px) {
     font-size: 26px;
   }
@@ -162,5 +193,11 @@ export const TextName = styled.p`
     padding-left: 1rem;
     font-size: 2rem;
     color: #666;
+    @media screen and (max-width: 768px) {
+      font-size: 2.6rem;
+    }
+    @media screen and (min-width: 1920px) {
+      font-size: 20px;
+    }
   }
 `

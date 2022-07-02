@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   max-width: 1920px;
   margin: 0 auto;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
   }
 `
 
@@ -18,7 +18,10 @@ export const WrapperContent = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    padding: 2rem 0 0;
+    width: 100%;
+    display: block;
   }
 `
 
@@ -33,7 +36,11 @@ export const MainContent = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem 3rem;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 5.6rem 3.6rem 12rem;
+    gap: 0;
+    display: block;
   }
   @media screen and (min-width: 1920px) {
     padding: 56px 24px 160px;
