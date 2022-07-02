@@ -163,7 +163,7 @@ a {
     box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
     backface-visibility: hidden;
   }
-  .main__images > div:first-child img {
+  .main__images:first-child img {
     width: 88rem;
     height: auto;
     max-height: 54rem;
@@ -174,7 +174,7 @@ a {
     left: 10rem;
     z-index: 1;
   }
-  .main__images > div:last-child img {
+  .main__images:last-child img {
     width: 80rem;
     height: auto;
     max-height: 49rem;
