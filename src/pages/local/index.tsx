@@ -1,4 +1,4 @@
-import Layout from '@/layouts/local'
+import Layout from '@/layouts/localList'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 
