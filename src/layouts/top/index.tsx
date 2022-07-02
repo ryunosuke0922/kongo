@@ -7,6 +7,7 @@ import Sidebar from '@/components/organisms/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
+import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 const Top = styled.div`
@@ -44,25 +45,47 @@ const LayoutTop: FC = ({ children }) => {
                     <VerticalTitle>日本の百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
-                    <ParallaxItem factor={0.1}>
-                      <VerticalDescription>
-                        <span>『日本の百名山』は、</span>
-                        <span>深田久弥が執筆した</span>
-                        <span>山岳随筆集です。</span>
-                        <span>こちらの著書を参考に</span>
-                        <span>日本の百名山を</span>
-                        <span>一覧にまとめました。</span>
-                      </VerticalDescription>
-                    </ParallaxItem>
+                    {isMobile ? (
+                      <div>
+                        <VerticalDescription>
+                          <span>『日本の百名山』は、</span>
+                          <span>深田久弥が執筆した</span>
+                          <span>山岳随筆集です。</span>
+                          <span>こちらの著書を参考に</span>
+                          <span>日本の百名山を</span>
+                          <span>一覧にまとめました。</span>
+                        </VerticalDescription>
+                      </div>
+                    ) : (
+                      <ParallaxItem factor={0.1}>
+                        <VerticalDescription>
+                          <span>『日本の百名山』は、</span>
+                          <span>深田久弥が執筆した</span>
+                          <span>山岳随筆集です。</span>
+                          <span>こちらの著書を参考に</span>
+                          <span>日本の百名山を</span>
+                          <span>一覧にまとめました。</span>
+                        </VerticalDescription>
+                      </ParallaxItem>
+                    )}
                   </div>
                 </div>
                 <div className="main__images">
-                  <ParallaxItem factor={0.2}>
-                    <img src="images/img01.jpg" alt="" />
-                  </ParallaxItem>
-                  <ParallaxItem factor={0.1}>
-                    <img src="images/img02.jpg" alt="" />
-                  </ParallaxItem>
+                  {isMobile ? (
+                    <>
+                      <img src="images/img01.jpg" alt="" />
+                      <img src="images/img02.jpg" alt="" />
+                    </>
+                  ) : (
+                    <>
+                      <ParallaxItem factor={0.2}>
+                        <img src="images/img01.jpg" alt="" />
+                      </ParallaxItem>
+                      <ParallaxItem factor={0.1}>
+                        <img src="images/img02.jpg" alt="" />
+                      </ParallaxItem>
+                    </>
+                  )}
                 </div>
               </div>
             </Wrapper>
