@@ -23,6 +23,9 @@ export const WrapperContent = styled.section`
     width: 100%;
     display: block;
   }
+  @media screen and (min-width: 1920px) {
+    padding: 80px 0 0;
+  }
 `
 
 export const MainContent = styled.div`
