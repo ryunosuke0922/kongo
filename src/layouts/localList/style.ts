@@ -10,8 +10,8 @@ export const Wrapper = styled.div`
 `
 
 export const WrapperContent = styled.section`
-  width: 161.8rem;
-  max-width: 1618px;
+  width: 118rem;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 8rem 0 0;
 
@@ -25,21 +25,18 @@ export const WrapperContent = styled.section`
 `
 
 export const MainContent = styled.div`
-  width: 118rem;
-  max-width: 1180px;
+  width: 100%;
   margin: 0;
   padding: 5.6rem 2.4rem 16rem;
   background-color: #f6f6f6;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row-reverse;
   gap: 2rem 3rem;
   @media screen and (max-width: 768px) {
-    width: 100%;
     padding: 5.6rem 3.6rem 12rem;
     gap: 0;
-    display: block;
   }
   @media screen and (min-width: 1920px) {
     padding: 56px 24px 160px;

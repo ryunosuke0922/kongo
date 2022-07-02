@@ -1,7 +1,7 @@
 import Seo from '@/components/molecules/seo'
 import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
-import { MainContent, Wrapper, WrapperContent } from '@/layouts/local/style'
+import { MainContent, Wrapper, WrapperContent } from '@/layouts/localList/style'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 import styled from 'styled-components'
