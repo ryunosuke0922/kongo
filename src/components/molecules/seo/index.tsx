@@ -35,6 +35,7 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
         rel="stylesheet"
       />
       <link rel="canonical" href={url} />
+      <meta name="google-site-verification" content="gsUZ2YcVTPf9cquxfCKRyDeZJW35s4kFIn5MpXJx0NM" />
     </Head>
   )
 }
