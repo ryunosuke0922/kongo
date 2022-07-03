@@ -20,7 +20,7 @@ export const VerticalDescription = styled.p`
   writing-mode: vertical-rl;
   text-align: left;
   @media screen and (max-width: 768px) {
-    font-size: 3.4rem;
+    font-size: 2.8rem;
   }
   @media screen and (min-width: 1920px) {
     font-size: 28px;
