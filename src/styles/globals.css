@@ -130,6 +130,7 @@ a {
     padding: 10rem 0 0;
   }
   .main__mv {
+    height: 98rem;
     max-height: 100vh;
     padding: 0 10rem 0;
   }
