@@ -25,8 +25,10 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      {/* TODO:SEO */}
-      <meta property="og:image" content={'/public/org.png'} />
+      <meta
+        property="og:image"
+        content={'https://famous-mountains-in-japan.web.app/public/org.png'}
+      />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap"
