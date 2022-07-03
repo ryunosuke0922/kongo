@@ -57,7 +57,7 @@ a {
 }
 .main__images img {
   border-radius: 2rem;
-  box-shadow: 15px 15px 50px #bebebe, -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
   backface-visibility: hidden;
   opacity: 0;
 }
@@ -92,16 +92,16 @@ a {
   top: 0rem;
   left: 43.2rem;
   z-index: 2;
-  animation: change-img-anim 18s infinite;
+  animation: change-img-anim 15s infinite;
 }
 .main__images > div:last-child img:nth-of-type(1) {
   animation-delay: 0s;
 }
 .main__images > div:last-child img:nth-of-type(2) {
-  animation-delay: 8s;
+  animation-delay: 5s;
 }
 .main__images > div:last-child img:nth-of-type(3) {
-  animation-delay: 13s;
+  animation-delay: 10s;
 }
 .main__content-title {
   width: 100%;
