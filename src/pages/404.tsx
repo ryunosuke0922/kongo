@@ -52,7 +52,7 @@ const Err404: NextPage = () => {
         <h1>404</h1>
         <h2>Page not found</h2>
         <Link href={'/'}>
-          <a>日本の百名山</a>
+          <a>日本百名山</a>
         </Link>
       </div>
       {/* </main> */}

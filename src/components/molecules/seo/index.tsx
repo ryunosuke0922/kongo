@@ -7,9 +7,9 @@ type Props = {
 }
 
 const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
-  const defaultTitle = '日本の百名山'
+  const defaultTitle = '日本百名山'
   const defaultDescription =
-    '『日本の百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本の百名山を一覧にまとめました。'
+    '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。'
 
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
   const description = pageDescription ? pageDescription : defaultDescription

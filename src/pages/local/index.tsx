@@ -8,7 +8,7 @@ const Local: NextPage = () => {
     <Layout>
       <VerticalTextBoldLink>
         <Link href={'/'}>
-          <a>日本の百名山</a>
+          <a>日本百名山</a>
         </Link>
         <i></i>
       </VerticalTextBoldLink>

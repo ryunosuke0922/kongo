@@ -42,28 +42,28 @@ const LayoutTop: FC = ({ children }) => {
               <div className="main__mv">
                 <div className="main__head">
                   <div className="main__head-title">
-                    <VerticalTitle>日本の百名山</VerticalTitle>
+                    <VerticalTitle>日本百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
                     {isMobile ? (
                       <>
                         <VerticalDescription>
-                          <span>『日本の百名山』は、</span>
+                          <span>『日本百名山』は、</span>
                           <span>深田久弥が執筆した</span>
                           <span>山岳随筆集です。</span>
                           <span>こちらの著書を参考に</span>
-                          <span>日本の百名山を</span>
+                          <span>日本百名山を</span>
                           <span>一覧にまとめました。</span>
                         </VerticalDescription>
                       </>
                     ) : (
                       <ParallaxItem factor={0.1}>
                         <VerticalDescription>
-                          <span>『日本の百名山』は、</span>
+                          <span>『日本百名山』は、</span>
                           <span>深田久弥が執筆した</span>
                           <span>山岳随筆集です。</span>
                           <span>こちらの著書を参考に</span>
-                          <span>日本の百名山を</span>
+                          <span>日本百名山を</span>
                           <span>一覧にまとめました。</span>
                         </VerticalDescription>
                       </ParallaxItem>
