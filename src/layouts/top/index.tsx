@@ -70,27 +70,25 @@ const LayoutTop: FC = ({ children }) => {
                     )}
                   </div>
                 </div>
-                <div className="main__images">
-                  {isMobile ? (
-                    <>
+                {isMobile ? (
+                  <>
+                    <img src="images/img01.jpg" alt="" />
+                    <img src="images/img02.jpg" alt="" />
+                  </>
+                ) : (
+                  <div className="main__images">
+                    <ParallaxItem factor={0.2}>
+                      <img src="images/img04.jpg" alt="" />
+                      <img src="images/img05.jpg" alt="" />
+                      <img src="images/img06.jpg" alt="" />
+                    </ParallaxItem>
+                    <ParallaxItem factor={0.1}>
                       <img src="images/img01.jpg" alt="" />
                       <img src="images/img02.jpg" alt="" />
-                    </>
-                  ) : (
-                    <>
-                      <ParallaxItem factor={0.2}>
-                        <img src="images/img04.jpg" alt="" />
-                        <img src="images/img05.jpg" alt="" />
-                        <img src="images/img06.jpg" alt="" />
-                      </ParallaxItem>
-                      <ParallaxItem factor={0.1}>
-                        <img src="images/img01.jpg" alt="" />
-                        <img src="images/img02.jpg" alt="" />
-                        <img src="images/img03.jpg" alt="" />
-                      </ParallaxItem>
-                    </>
-                  )}
-                </div>
+                      <img src="images/img03.jpg" alt="" />
+                    </ParallaxItem>
+                  </div>
+                )}
               </div>
             </Wrapper>
           </>
