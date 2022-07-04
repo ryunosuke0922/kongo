@@ -71,10 +71,10 @@ const LayoutTop: FC = ({ children }) => {
                   </div>
                 </div>
                 {isMobile ? (
-                  <>
+                  <div className="main__images-sp">
+                    <img src="images/img06.jpg" alt="" />
                     <img src="images/img01.jpg" alt="" />
-                    <img src="images/img02.jpg" alt="" />
-                  </>
+                  </div>
                 ) : (
                   <div className="main__images">
                     <ParallaxItem factor={0.2}>

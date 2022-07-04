@@ -68,7 +68,7 @@ a {
   object-fit: cover;
   content: '';
   position: absolute;
-  top: 38rem;
+  top: 35rem;
   left: 10rem;
   z-index: 1;
   animation: change-img-anim 15s infinite;
@@ -89,7 +89,7 @@ a {
   object-fit: cover;
   content: '';
   position: absolute;
-  top: 0rem;
+  top: -3rem;
   left: 43.2rem;
   z-index: 2;
   animation: change-img-anim 15s infinite;
@@ -171,14 +171,19 @@ a {
     right: -3rem;
     z-index: 1;
   }
-  .main__images img:first-child {
+  .main__images-sp img {
+    border-radius: 2rem;
+    box-shadow: 10px 10px 50px #bebebe, -10px -20px 50px #ffffff;
+    backface-visibility: hidden;
+  }
+  .main__images-sp img:first-child {
     width: 48rem;
     position: absolute;
     top: 30rem;
     left: 2rem;
     z-index: 2;
   }
-  .main__images img:last-child {
+  .main__images-sp img:last-child {
     width: 48rem;
     position: absolute;
     top: 6rem;
@@ -227,7 +232,7 @@ a {
   .main__images > div:last-child img {
     width: 800px;
     max-height: 430px;
-    top: 0px;
+    top: -30px;
     left: 432px;
   }
 
