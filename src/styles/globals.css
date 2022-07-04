@@ -54,6 +54,10 @@ a {
   right: 10rem;
 }
 .main__images {
+  display: block;
+}
+.main__images-sp {
+  display: none;
 }
 .main__images img {
   border-radius: 2rem;
@@ -170,6 +174,12 @@ a {
     top: 64rem;
     right: -3rem;
     z-index: 1;
+  }
+  .main__images {
+    display: none;
+  }
+  .main__images-sp {
+    display: block;
   }
   .main__images-sp img {
     border-radius: 2rem;
