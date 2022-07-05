@@ -53,6 +53,12 @@ a {
   top: 60rem;
   right: 10rem;
 }
+.main__head-description-pc {
+  display: block;
+}
+.main__head-description-sp {
+  display: none;
+}
 .main__images {
   display: block;
 }
@@ -165,16 +171,23 @@ a {
   .main__head-title {
     content: '';
     position: absolute;
-    top: 0;
-    right: 3rem;
+    top: -3rem;
+    right: -3rem;
   }
   .main__head-description {
     content: '';
     position: absolute;
     top: 64rem;
-    right: 26rem;
+    right: -3rem;
     z-index: 1;
   }
+  .main__head-description-pc {
+    display: none;
+  }
+  .main__head-description-sp {
+    display: block;
+  }
+
   .main__images {
     display: none;
   }
@@ -189,7 +202,7 @@ a {
   .main__images-sp img:first-child {
     width: 48rem;
     position: absolute;
-    top: 30rem;
+    top: 32rem;
     left: 2rem;
     z-index: 2;
   }
