@@ -38,42 +38,23 @@ const LayoutTop: FC = ({ children }) => {
         <main className="main container">
           <>
             <Wrapper>
-              <div className="main__mv">
+              <div className="main__mv-pc">
                 <div className="main__head">
                   <div className="main__head-title">
                     <VerticalTitle>日本百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
-                    <div className="main__head-description-pc">
-                      <ParallaxItem factor={0.1}>
-                        <VerticalDescription>
-                          <span>『日本百名山』は、</span>
-                          <span>深田久弥が執筆した</span>
-                          <span>山岳随筆集です。</span>
-                          <span>こちらの著書を参考に</span>
-                          <span>日本百名山を</span>
-                          <span>一覧にまとめました。</span>
-                        </VerticalDescription>
-                      </ParallaxItem>
-                    </div>
-                    <div className="main__head-description-sp">
-                      <div>
-                        <VerticalDescription>
-                          <span>『日本百名山』は、</span>
-                          <span>深田久弥が執筆した</span>
-                          <span>山岳随筆集です。</span>
-                          <span>こちらの著書を参考に</span>
-                          <span>日本百名山を</span>
-                          <span>一覧にまとめました。</span>
-                        </VerticalDescription>
-                      </div>
-                    </div>
+                    <ParallaxItem factor={0.1}>
+                      <VerticalDescription>
+                        <span>『日本百名山』は、</span>
+                        <span>深田久弥が執筆した</span>
+                        <span>山岳随筆集です。</span>
+                        <span>こちらの著書を参考に</span>
+                        <span>日本百名山を</span>
+                        <span>一覧にまとめました。</span>
+                      </VerticalDescription>
+                    </ParallaxItem>
                   </div>
-                </div>
-
-                <div className="main__images-sp">
-                  <img src="images/img06.jpg" alt="" />
-                  <img src="images/img01.jpg" alt="" />
                 </div>
 
                 <div className="main__images">
@@ -87,6 +68,31 @@ const LayoutTop: FC = ({ children }) => {
                     <img src="images/img02.jpg" alt="" />
                     <img src="images/img03.jpg" alt="" />
                   </ParallaxItem>
+                </div>
+              </div>
+
+              <div className="main__mv-sp">
+                <div className="main__head">
+                  <div className="main__head-title">
+                    <VerticalTitle>日本百名山</VerticalTitle>
+                  </div>
+                  <div className="main__head-description">
+                    <div>
+                      <VerticalDescription>
+                        <span>『日本百名山』は、</span>
+                        <span>深田久弥が執筆した</span>
+                        <span>山岳随筆集です。</span>
+                        <span>こちらの著書を参考に</span>
+                        <span>日本百名山を</span>
+                        <span>一覧にまとめました。</span>
+                      </VerticalDescription>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="main__images">
+                  <img src="images/img06.jpg" alt="" />
+                  <img src="images/img01.jpg" alt="" />
                 </div>
               </div>
             </Wrapper>
