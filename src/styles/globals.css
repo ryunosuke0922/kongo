@@ -74,7 +74,7 @@ a {
   height: auto;
   max-height: 54rem;
   object-fit: cover;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: 35rem;
   left: 10rem;
@@ -95,7 +95,7 @@ a {
   height: auto;
   max-height: 49rem;
   object-fit: cover;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: -3rem;
   left: 43.2rem;
