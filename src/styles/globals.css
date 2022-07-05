@@ -165,14 +165,14 @@ a {
   .main__head-title {
     content: '';
     position: absolute;
-    top: -3rem;
-    right: -3rem;
+    top: 0;
+    right: 3rem;
   }
   .main__head-description {
     content: '';
     position: absolute;
     top: 64rem;
-    right: -3rem;
+    right: 26rem;
     z-index: 1;
   }
   .main__images {
