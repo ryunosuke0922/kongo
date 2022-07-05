@@ -51,7 +51,7 @@ const Err404: NextPage = () => {
       <div className="error">
         <h1>404</h1>
         <h2>Page not found</h2>
-        <Link href={'/'}>
+        <Link href={'/'} passHref>
           <a>日本百名山</a>
         </Link>
       </div>
