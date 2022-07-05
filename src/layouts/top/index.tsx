@@ -7,7 +7,6 @@ import Sidebar from '@/components/organisms/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
-import { isMobile } from 'react-device-detect'
 import styled from 'styled-components'
 
 const Top = styled.div`
@@ -45,18 +44,7 @@ const LayoutTop: FC = ({ children }) => {
                     <VerticalTitle>日本百名山</VerticalTitle>
                   </div>
                   <div className="main__head-description">
-                    {isMobile ? (
-                      <>
-                        <VerticalDescription>
-                          <span>『日本百名山』は、</span>
-                          <span>深田久弥が執筆した</span>
-                          <span>山岳随筆集です。</span>
-                          <span>こちらの著書を参考に</span>
-                          <span>日本百名山を</span>
-                          <span>一覧にまとめました。</span>
-                        </VerticalDescription>
-                      </>
-                    ) : (
+                    <div className="main__head-description-pc">
                       <ParallaxItem factor={0.1}>
                         <VerticalDescription>
                           <span>『日本百名山』は、</span>
@@ -67,7 +55,19 @@ const LayoutTop: FC = ({ children }) => {
                           <span>一覧にまとめました。</span>
                         </VerticalDescription>
                       </ParallaxItem>
-                    )}
+                    </div>
+                    <div className="main__head-description-sp">
+                      <div>
+                        <VerticalDescription>
+                          <span>『日本百名山』は、</span>
+                          <span>深田久弥が執筆した</span>
+                          <span>山岳随筆集です。</span>
+                          <span>こちらの著書を参考に</span>
+                          <span>日本百名山を</span>
+                          <span>一覧にまとめました。</span>
+                        </VerticalDescription>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
