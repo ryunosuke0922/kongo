@@ -19,6 +19,8 @@ export const VerticalDescription = styled.p`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: left;
+  display: block;
+  margin-left: auto;
   @media screen and (max-width: 768px) {
     font-size: 2.8rem;
   }

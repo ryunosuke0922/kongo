@@ -55,6 +55,7 @@ a {
   right: 10rem;
 }
 .main__head-description {
+  width: 100%;
   content: '';
   position: absolute;
   top: 60rem;
