@@ -6,6 +6,8 @@ export const VerticalTitle = styled.h1`
   writing-mode: vertical-rl;
   text-align: center;
   color: #111;
+  display: block;
+  margin-left: auto;
   @media screen and (max-width: 768px) {
     font-size: 6rem;
   }

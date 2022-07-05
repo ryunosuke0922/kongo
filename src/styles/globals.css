@@ -49,14 +49,13 @@ a {
   align-items: flex-start;
 }
 .main__head-title {
-  content: '';
+  width: 100%;
   position: absolute;
   top: -2rem;
   right: 10rem;
 }
 .main__head-description {
   width: 100%;
-  content: '';
   position: absolute;
   top: 60rem;
   right: 10rem;
