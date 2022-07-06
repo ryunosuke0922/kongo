@@ -53,12 +53,19 @@ a {
   position: absolute;
   top: -2rem;
   right: 10rem;
+  opacity: 0;
+  visibility: hidden;
+  animation: textAnimation 2s forwards;
 }
 .main__head-description {
   width: 100%;
   position: absolute;
   top: 60rem;
   right: 10rem;
+  opacity: 0;
+  visibility: hidden;
+  animation: textAnimation 2s forwards;
+  animation-delay: 0.2s;
 }
 .main__images {
 }
@@ -74,42 +81,40 @@ a {
   height: auto;
   max-height: 54rem;
   object-fit: cover;
-  /* content: ''; */
   position: absolute;
   top: 35rem;
   left: 10rem;
   z-index: 1;
-  animation: change-img-anim 15s infinite;
+  animation: change-img-anim 17s infinite;
 }
 .main__images > div:first-child img:nth-of-type(1) {
-  animation-delay: 0s;
+  animation-delay: 2s;
 }
 .main__images > div:first-child img:nth-of-type(2) {
-  animation-delay: 5s;
+  animation-delay: 7s;
 }
 .main__images > div:first-child img:nth-of-type(3) {
-  animation-delay: 10s;
+  animation-delay: 12s;
 }
 .main__images > div:last-child img {
   width: 80rem;
   height: auto;
   max-height: 49rem;
   object-fit: cover;
-  /* content: ''; */
   position: absolute;
   top: -3rem;
   left: 43.2rem;
   z-index: 2;
-  animation: change-img-anim 15s infinite;
+  animation: change-img-anim 17s infinite;
 }
 .main__images > div:last-child img:nth-of-type(1) {
-  animation-delay: 0s;
+  animation-delay: 2s;
 }
 .main__images > div:last-child img:nth-of-type(2) {
-  animation-delay: 5s;
+  animation-delay: 7s;
 }
 .main__images > div:last-child img:nth-of-type(3) {
-  animation-delay: 10s;
+  animation-delay: 12s;
 }
 .main__content-title {
   width: 100%;
@@ -173,13 +178,11 @@ a {
     width: 100%;
   }
   .main__head-title {
-    content: '';
     position: absolute;
     top: -3rem;
     right: -3rem;
   }
   .main__head-description {
-    content: '';
     position: absolute;
     top: 64rem;
     right: -3rem;
@@ -190,11 +193,14 @@ a {
     border-radius: 2rem;
     box-shadow: 10px 10px 50px #bebebe, -10px -20px 50px #ffffff;
     backface-visibility: hidden;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
+    animation: img-anim 2s forwards;
+    animation-delay: 2s;
   }
   .main__images img:first-child {
     width: 48rem;
+    height: auto;
     position: absolute;
     top: 32rem;
     left: 2rem;
@@ -202,6 +208,7 @@ a {
   }
   .main__images img:last-child {
     width: 48rem;
+    height: auto;
     position: absolute;
     top: 6rem;
     left: 8rem;
@@ -355,5 +362,38 @@ a {
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15%);
+  }
+  25% {
+    opacity: 0.3;
+    visibility: hidden;
+    transform: translateY(-15%);
+  }
+  75% {
+    opacity: 0.3;
+    visibility: hidden;
+    transform: translateY(-8%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+@keyframes img-anim {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
   }
 }
