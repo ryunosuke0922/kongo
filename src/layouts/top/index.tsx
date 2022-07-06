@@ -59,14 +59,14 @@ const LayoutTop: FC = ({ children }) => {
 
                 <div className="main__images">
                   <ParallaxItem factor={0.2}>
-                    <img src="images/img04.jpg" alt="" loading="lazy" width={880} height={490} />
-                    <img src="images/img05.jpg" alt="" loading="lazy" width={880} height={490} />
-                    <img src="images/img06.jpg" alt="" loading="lazy" width={880} height={490} />
+                    <img src="images/img04.jpg" alt="" />
+                    <img src="images/img05.jpg" alt="" />
+                    <img src="images/img06.jpg" alt="" />
                   </ParallaxItem>
                   <ParallaxItem factor={0.1}>
-                    <img src="images/img01.jpg" alt="" loading="lazy" width={800} height={430} />
-                    <img src="images/img02.jpg" alt="" loading="lazy" width={800} height={430} />
-                    <img src="images/img03.jpg" alt="" loading="lazy" width={800} height={430} />
+                    <img src="images/img01.jpg" alt="" />
+                    <img src="images/img02.jpg" alt="" />
+                    <img src="images/img03.jpg" alt="" />
                   </ParallaxItem>
                 </div>
               </div>
@@ -91,8 +91,8 @@ const LayoutTop: FC = ({ children }) => {
                 </div>
 
                 <div className="main__images">
-                  <img src="images/img06.jpg" alt="" loading="lazy" width={480} height={288} />
-                  <img src="images/img01.jpg" alt="" loading="lazy" width={480} height={288} />
+                  <img src="images/img06.jpg" alt="" />
+                  <img src="images/img01.jpg" alt="" />
                 </div>
               </div>
             </Wrapper>
