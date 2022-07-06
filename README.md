@@ -6,4 +6,4 @@
 
 <h1 align="center">日本百名山の一覧</h2>
 
-🚀website https://famous-mountains-in-japan.web.app/
+<p align="center">🚀website https://famous-mountains-in-japan.web.app/</p>
