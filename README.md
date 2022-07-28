@@ -4,6 +4,10 @@
   </a>
 </p>
 
-<h1 align="center">日本百名山の一覧</h2>
+<h1 align="center">日本百名山の一覧</h1>
 
 <p align="center">🚀website https://famous-mountains-in-japan.web.app/</p>
+
+## Lisence
+
+This project is licensed under the MIT License, see the [LICENSE](https://github.com/ryunosuke0922/kongo/blob/master/LICENSE) file for details
