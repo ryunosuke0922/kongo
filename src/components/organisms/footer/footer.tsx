@@ -73,9 +73,12 @@ const Footer = (): JSX.Element => {
             <a href={'https://twitter.com/yutomaeda3'} target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faTwitterSquare as IconProp} />
             </a>
+            <a href={'https://twitter.com/ryunosuke092_'} target="_blank" rel="noreferrer">
+              <FontAwesomeIcon icon={faTwitterSquare as IconProp} />
+            </a>
           </div>
           <div className="footer__copyright">
-            <p>© 2022 yuto maeda.</p>
+            <p>© 2022</p>
           </div>
         </FooterInner>
       </FooterWrapper>
