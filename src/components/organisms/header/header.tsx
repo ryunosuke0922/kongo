@@ -5,7 +5,7 @@ const Header = (): JSX.Element => {
     <header>
       <HeaderWrapper>
         <HeaderInner>
-          <img src="/images/logo_hyaku.svg" alt="日本百名山"></img>
+          <img src="/images/logo_hyaku.svg" alt="日本百名山" width={80} height={56}></img>
         </HeaderInner>
       </HeaderWrapper>
     </header>
