@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://famous-mountains-100-in-japan.web.app/',
+  siteUrl: 'https://www.famous-mountains-in-japan.com',
   generateRobotsTxt: true,
   outDir: './out',
 }

@@ -8,7 +8,7 @@
     "url": "https://github.com/ryunosuke0922/kongo"
   },
   "author": "ryunosuke0922 (https://github.com/ryunosuke0922)",
-  "homepage": "https://famous-mountains-100-in-japan.web.app",
+  "homepage": "https://www.famous-mountains-in-japan.com",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
