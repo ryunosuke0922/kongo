@@ -5,6 +5,8 @@ export declare type MountainsData = {
     elevation: number;
     mountainSystem: string;
     prefectures: string;
+    nameEn: string;
+    prefecturesEn: string;
     longitude: number;
     latitude: number;
     remarks: string;
