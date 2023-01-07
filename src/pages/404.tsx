@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { useLocale } from '../i18n/index'
 
 const Err = styled.div`
   background: #fafafa;
@@ -44,6 +45,8 @@ const Err = styled.div`
   }
 `
 const Err404: NextPage = () => {
+  const { t } = useLocale()
+
   return (
     <Err>
       {/* <Header /> */}
@@ -52,7 +55,7 @@ const Err404: NextPage = () => {
         <h1>404</h1>
         <h2>Page not found</h2>
         <Link href={'/'} passHref>
-          <a>日本百名山</a>
+          <a>{t.TITLE}</a>
         </Link>
       </div>
       {/* </main> */}

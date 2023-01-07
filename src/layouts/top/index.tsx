@@ -8,6 +8,7 @@ import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 import styled from 'styled-components'
+import { useLocale } from '../../i18n/index'
 
 const Top = styled.div`
   background: #fafafa;
@@ -22,6 +23,8 @@ const WrapperMain = styled.div`
 `
 
 const LayoutTop: FC = ({ children }) => {
+  const { t } = useLocale()
+
   return (
     <Top className="noise">
       {/* TODO: SEO */}
@@ -41,7 +44,7 @@ const LayoutTop: FC = ({ children }) => {
               <div className="main__mv-pc">
                 <div className="main__head">
                   <div className="main__head-title">
-                    <VerticalTitle>日本百名山</VerticalTitle>
+                    <VerticalTitle>{t.TITLE}</VerticalTitle>
                   </div>
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
@@ -59,14 +62,14 @@ const LayoutTop: FC = ({ children }) => {
 
                 <div className="main__images">
                   <ParallaxItem factor={0.2}>
-                    <img src="images/img04.jpg" alt="" />
-                    <img src="images/img05.jpg" alt="" />
-                    <img src="images/img06.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img04.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img05.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
                   </ParallaxItem>
                   <ParallaxItem factor={0.1}>
-                    <img src="images/img01.jpg" alt="" />
-                    <img src="images/img02.jpg" alt="" />
-                    <img src="images/img03.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img02.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img03.jpg" alt="" />
                   </ParallaxItem>
                 </div>
               </div>
@@ -91,8 +94,8 @@ const LayoutTop: FC = ({ children }) => {
                 </div>
 
                 <div className="main__images">
-                  <img src="images/img06.jpg" alt="" />
-                  <img src="images/img01.jpg" alt="" />
+                  <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
+                  <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
                 </div>
               </div>
             </Wrapper>
