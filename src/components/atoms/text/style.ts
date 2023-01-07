@@ -15,6 +15,22 @@ export const VerticalTitle = styled.h1`
     font-size: 54px;
   }
 `
+export const HorizonTitle = styled.h1`
+  font-size: 5.4rem;
+  z-index: 7;
+  /* -ms-writing-mode: tb-rl; */
+  /* writing-mode: vertical-rl; */
+  text-align: center;
+  color: #111;
+  display: block;
+  margin-left: auto;
+  @media screen and (max-width: 768px) {
+    font-size: 6rem;
+  }
+  @media screen and (min-width: 1920px) {
+    font-size: 54px;
+  }
+`
 export const VerticalDescription = styled.p`
   font-size: 2.8rem;
   line-height: 1.8;

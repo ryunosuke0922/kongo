@@ -1,4 +1,9 @@
-import { Heading3, VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
+import {
+  Heading3,
+  HorizonTitle,
+  VerticalDescription,
+  VerticalTitle,
+} from '@/components/atoms/text/style'
 import ParallaxItem from '@/components/molecules/parallax'
 import Seo from '@/components/molecules/seo'
 import Footer from '@/components/organisms/footer/footer'
@@ -48,7 +53,7 @@ const LayoutTop: FC = ({ children }) => {
                   <div className="main__head-title">
                     {locale === 'en' ? (
                       // TODO: 英語
-                      <VerticalTitle>{t.TITLE}英語</VerticalTitle>
+                      <HorizonTitle>{t.TITLE}英語</HorizonTitle>
                     ) : (
                       <VerticalTitle>{t.TITLE}</VerticalTitle>
                     )}
