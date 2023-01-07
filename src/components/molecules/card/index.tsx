@@ -1,4 +1,5 @@
 import { MountainsData } from 'famous-mountains-in-japan'
+import { useLocale } from '../../../i18n/index'
 import { Card, TextBox, TextId, TextMountain, TextName, TextWrapper } from './style'
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
 }
 
 const EnhancedCard = ({ data }: Props): JSX.Element => {
+  const { locale } = useLocale()
+
   return (
     <Card>
       <TextBox>
@@ -14,7 +17,10 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
         </TextWrapper>
         <div className="card__wrapper">
           <TextMountain>{data.mountainSystem}</TextMountain>
-          <TextMountain>{data.prefectures}</TextMountain>
+          <TextMountain>
+            {data.prefectures}
+            {locale === 'en' ?? data.prefecturesEn}
+          </TextMountain>
           <TextMountain>
             標高：{data.elevation}
             <span>m</span>
@@ -23,6 +29,8 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
         <div className="card__wrapper">
           <TextName>
             {data.name}
+            {/* TODO: 英語 */}
+            {locale === 'en' ?? data.nameEn}
             <span>{data.kanaName}</span>
           </TextName>
         </div>

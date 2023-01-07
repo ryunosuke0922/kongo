@@ -11,7 +11,6 @@ import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 import styled from 'styled-components'
 import { useLocale } from '../../i18n/index'
@@ -29,8 +28,7 @@ const WrapperMain = styled.div`
 `
 
 const LayoutTop: FC = ({ children }) => {
-  const { t } = useLocale()
-  const { locale } = useRouter()
+  const { t, locale } = useLocale()
 
   return (
     <Top className="noise">
