@@ -4,8 +4,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import { useLocale } from '../../../i18n/index'
 
 const Footer = (): JSX.Element => {
+  const { t } = useLocale()
+
   return (
     <footer>
       <FooterWrapper>
@@ -13,55 +16,55 @@ const Footer = (): JSX.Element => {
           <FooterContent>
             <VerticalTextBoldLink>
               <Link href={'/'} passHref>
-                <a>日本百名山</a>
+                <a>{t.TITLE}</a>
               </Link>
               <i></i>
             </VerticalTextBoldLink>
             <VerticalTextNormalLink>
               <Link href={'/local/hokkaido'} passHref>
-                <a>北海道地方</a>
+                <a>{t.HOKKAIDO_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/tohoku'} passHref>
-                <a>東北地方</a>
+                <a>{t.TOHOKU_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/kanto'} passHref>
-                <a>関東地方</a>
+                <a>{t.KANTO_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/chubu'} passHref>
-                <a>中部地方</a>
+                <a>{t.TOHOKU_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/kansai'} passHref>
-                <a>関西地方</a>
+                <a>{t.KANSAI_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/chugoku'} passHref>
-                <a>中国地方</a>
+                <a>{t.CHUGOKU_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/shikoku'} passHref>
-                <a>四国地方</a>
+                <a>{t.SHIKOKU_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>
             <VerticalTextNormalLink>
               <Link href={'/local/kyushu-okinawa'} passHref>
-                <a>九州・沖縄地方</a>
+                <a>{t.KYUSHU_OKINAWA_REGION}</a>
               </Link>
               <i></i>
             </VerticalTextNormalLink>

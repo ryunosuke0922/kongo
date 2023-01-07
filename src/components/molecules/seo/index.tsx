@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useLocale } from '../../../i18n/index'
 
 type Props = {
   pageTitle: string
@@ -7,9 +8,10 @@ type Props = {
 }
 
 const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
-  const defaultTitle = '日本百名山'
-  const defaultDescription =
-    '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。'
+  const { t } = useLocale()
+
+  const defaultTitle = t.TITLE
+  const defaultDescription = t.DESCRIPTION
 
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle
   const description = pageDescription ? pageDescription : defaultDescription

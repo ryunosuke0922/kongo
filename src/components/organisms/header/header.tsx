@@ -1,7 +1,10 @@
 import { HeaderInner, HeaderWrapper } from '@/components/organisms/header/style'
 import Link from 'next/link'
+import { useLocale } from '../../../i18n/index'
 
 const Header = (): JSX.Element => {
+  const { t } = useLocale()
+
   return (
     <header>
       <HeaderWrapper>
@@ -16,7 +19,7 @@ const Header = (): JSX.Element => {
           </Link>
         </button>
         <HeaderInner>
-          <img src="/images/logo_hyaku.svg" alt="日本百名山" width={80} height={56}></img>
+          <img src="/images/logo_hyaku.svg" alt={t.TITLE} width={80} height={56}></img>
         </HeaderInner>
       </HeaderWrapper>
     </header>

@@ -6,6 +6,7 @@ import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 import styled from 'styled-components'
 import { useLocale } from '../../i18n/index'
@@ -24,6 +25,7 @@ const WrapperMain = styled.div`
 
 const LayoutTop: FC = ({ children }) => {
   const { t } = useLocale()
+  const { locale } = useRouter()
 
   return (
     <Top className="noise">
@@ -44,17 +46,22 @@ const LayoutTop: FC = ({ children }) => {
               <div className="main__mv-pc">
                 <div className="main__head">
                   <div className="main__head-title">
-                    <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    {locale === 'en' ? (
+                      // TODO: 英語
+                      <VerticalTitle>{t.TITLE}英語</VerticalTitle>
+                    ) : (
+                      <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    )}
                   </div>
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
                       <VerticalDescription>
-                        <span>『日本百名山』は、</span>
-                        <span>深田久弥が執筆した</span>
-                        <span>山岳随筆集です。</span>
-                        <span>こちらの著書を参考に</span>
-                        <span>日本百名山を</span>
-                        <span>一覧にまとめました。</span>
+                        <span>{t.DESCRIPTION_1}</span>
+                        <span>{t.DESCRIPTION_2}</span>
+                        <span>{t.DESCRIPTION_3}</span>
+                        <span>{t.DESCRIPTION_4}</span>
+                        <span>{t.DESCRIPTION_5}</span>
+                        <span>{t.DESCRIPTION_6}</span>
                       </VerticalDescription>
                     </ParallaxItem>
                   </div>
@@ -77,17 +84,17 @@ const LayoutTop: FC = ({ children }) => {
               <div className="main__mv-sp">
                 <div className="main__head">
                   <div className="main__head-title">
-                    <VerticalTitle>日本百名山</VerticalTitle>
+                    <VerticalTitle>{t.TITLE}</VerticalTitle>
                   </div>
                   <div className="main__head-description">
                     <div>
                       <VerticalDescription>
-                        <span>『日本百名山』は、</span>
-                        <span>深田久弥が執筆した</span>
-                        <span>山岳随筆集です。</span>
-                        <span>こちらの著書を参考に</span>
-                        <span>日本百名山を</span>
-                        <span>一覧にまとめました。</span>
+                        <span>{t.DESCRIPTION_1}</span>
+                        <span>{t.DESCRIPTION_2}</span>
+                        <span>{t.DESCRIPTION_3}</span>
+                        <span>{t.DESCRIPTION_4}</span>
+                        <span>{t.DESCRIPTION_5}</span>
+                        <span>{t.DESCRIPTION_6}</span>
                       </VerticalDescription>
                     </div>
                   </div>
@@ -106,7 +113,8 @@ const LayoutTop: FC = ({ children }) => {
               <MainContent>
                 <div className="main__content-title">
                   <Heading3>
-                    百名山 一覧<span>深田 久弥 選定100座</span>
+                    {t.INFO}
+                    <span>{t.INFO_NAME}</span>
                   </Heading3>
                 </div>
                 {children}
