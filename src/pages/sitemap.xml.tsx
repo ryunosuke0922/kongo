@@ -7,14 +7,24 @@ type Post = {
 async function getAllPosts(): Promise<Post[]> {
   return [
     { path: '/' },
-    { path: '/local/hokkaido' },
-    { path: '/local/tohoku' },
-    { path: '/local/kanto' },
-    { path: '/local/chubu' },
-    { path: '/local/kansai' },
-    { path: '/local/chugoku' },
-    { path: '/local/shikoku' },
-    { path: '/local/kyushu-okinawa' },
+    { path: '/jp' },
+    { path: '/jp/local/hokkaido' },
+    { path: '/jp/local/tohoku' },
+    { path: '/jp/local/kanto' },
+    { path: '/jp/local/chubu' },
+    { path: '/jp/local/kansai' },
+    { path: '/jp/local/chugoku' },
+    { path: '/jp/local/shikoku' },
+    { path: '/jp/local/kyushu-okinawa' },
+    { path: '/en' },
+    { path: '/en/local/hokkaido' },
+    { path: '/en/local/tohoku' },
+    { path: '/en/local/kanto' },
+    { path: '/en/local/chubu' },
+    { path: '/en/local/kansai' },
+    { path: '/en/local/chugoku' },
+    { path: '/en/local/shikoku' },
+    { path: '/en/local/kyushu-okinawa' },
   ]
 }
 
