@@ -21,7 +21,6 @@ a {
 /* main */
 .container {
   padding: 10rem 0 0;
-  overflow: hidden;
 }
 .container-local {
   padding: 0 0 0;
