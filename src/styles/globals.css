@@ -21,6 +21,7 @@ a {
 /* main */
 .container {
   padding: 10rem 0 0;
+  overflow: hidden;
 }
 .container-local {
   padding: 0 0 0;
@@ -67,7 +68,7 @@ a {
 .main__head-description {
   width: 100%;
   position: absolute;
-  top: 60rem;
+  top: 54rem;
   right: 10rem;
   opacity: 0;
   visibility: hidden;
@@ -169,7 +170,6 @@ a {
   /* main */
   .container {
     padding: 10rem 0 0;
-    overflow: hidden;
   }
   .main__mv-sp {
     height: 98rem;
