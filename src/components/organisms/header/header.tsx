@@ -8,6 +8,9 @@ const Header = (): JSX.Element => {
   return (
     <header>
       <HeaderWrapper>
+        <HeaderInner>
+          <img src="/images/logo_hyaku.svg" alt={t.TITLE} width={80} height={56}></img>
+        </HeaderInner>
         <button>
           <Link href="/en" locale="en" passHref>
             en
@@ -18,9 +21,6 @@ const Header = (): JSX.Element => {
             jp
           </Link>
         </button>
-        <HeaderInner>
-          <img src="/images/logo_hyaku.svg" alt={t.TITLE} width={80} height={56}></img>
-        </HeaderInner>
       </HeaderWrapper>
     </header>
   )
