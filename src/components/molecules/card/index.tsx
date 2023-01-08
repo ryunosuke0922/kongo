@@ -27,10 +27,6 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
               <></>
             )}
           </TextMountain>
-          <TextMountain>
-            標高：{data.elevation}
-            <span>m</span>
-          </TextMountain>
         </div>
         <div className="card__wrapper">
           <TextName>
@@ -44,6 +40,12 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
             )}
             <span>{data.kanaName}</span>
           </TextName>
+        </div>
+        <div className="card__wrapper">
+          <TextMountain>
+            標高：{data.elevation}
+            <span>m</span>
+          </TextMountain>
         </div>
         <a
           href={`https://yamap.com/search/activities?keyword=${data.prefectures}%20${data.name}`}

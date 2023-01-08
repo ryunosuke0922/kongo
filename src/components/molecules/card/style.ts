@@ -71,10 +71,11 @@ export const TextBox = styled.div`
       gap: 0 20px;
     }
     &:nth-of-type(1),
-    &:nth-of-type(2) {
-      margin: 0 0 1rem;
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      margin: 0 0 0.8rem;
       @media screen and (min-width: 1920px) {
-        margin: 0 0 10px;
+        margin: 0 0 8px;
       }
     }
   }
