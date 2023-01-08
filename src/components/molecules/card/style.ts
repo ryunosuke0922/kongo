@@ -71,10 +71,11 @@ export const TextBox = styled.div`
       gap: 0 20px;
     }
     &:nth-of-type(1),
-    &:nth-of-type(2) {
-      margin: 0 0 1rem;
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      margin: 0 0 0.8rem;
       @media screen and (min-width: 1920px) {
-        margin: 0 0 10px;
+        margin: 0 0 8px;
       }
     }
   }
@@ -178,6 +179,10 @@ export const TextMountain = styled.p`
       font-size: 20px;
     }
   }
+  i {
+    font-style: normal;
+    margin: 0 0 0 1rem;
+  }
 `
 export const TextName = styled.p`
   color: #333;
@@ -191,7 +196,7 @@ export const TextName = styled.p`
   }
   span {
     padding-left: 1rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #666;
     @media screen and (max-width: 768px) {
       font-size: 2.6rem;
@@ -199,5 +204,10 @@ export const TextName = styled.p`
     @media screen and (min-width: 1920px) {
       font-size: 20px;
     }
+  }
+  i {
+    font-style: normal;
+    font-size: 1.8rem;
+    margin: 0 0 0 1rem;
   }
 `

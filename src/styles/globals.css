@@ -47,20 +47,28 @@ a {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  z-index: 5;
 }
 .main__head-title {
   width: 100%;
   position: absolute;
-  top: -2rem;
-  right: 10rem;
   opacity: 0;
   visibility: hidden;
   animation: textAnimation 2s forwards;
 }
+.main__head-title.is-jp {
+  top: -2rem;
+  right: 10rem;
+}
+.main__head-title.is-en {
+  width: auto;
+  top: 4rem;
+  right: 4rem;
+}
 .main__head-description {
   width: 100%;
   position: absolute;
-  top: 60rem;
+  top: 54rem;
   right: 10rem;
   opacity: 0;
   visibility: hidden;
@@ -177,10 +185,16 @@ a {
   .main__head {
     width: 100%;
   }
-  .main__head-title {
+  .main__head-title.is-jp {
     position: absolute;
     top: -3rem;
     right: -3rem;
+  }
+  .main__head-title.is-en {
+    width: 40rem;
+    position: absolute;
+    top: -3rem;
+    right: -4rem;
   }
   .main__head-description {
     position: absolute;

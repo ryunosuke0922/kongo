@@ -1,0 +1,21 @@
+export default {
+  TITLE: '100 Famous Japanese Mountains.',
+  DESCRIPTION:
+    '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',
+  DESCRIPTION_1: '『日本百名山』は、',
+  DESCRIPTION_2: '深田久弥が執筆した',
+  DESCRIPTION_3: '山岳随筆集です。',
+  DESCRIPTION_4: 'こちらの著書を参考に',
+  DESCRIPTION_5: '日本百名山を',
+  DESCRIPTION_6: '一覧にまとめました。',
+  HOKKAIDO_REGION: 'Hokkaido region',
+  TOHOKU_REGION: 'Tohoku region',
+  KANTO_REGION: 'Kanto region',
+  CHUBU_REGION: 'Chubu region',
+  KANSAI_REGION: 'Kansai region',
+  CHUGOKU_REGION: 'Chugoku region',
+  SHIKOKU_REGION: 'Shikoku region',
+  KYUSHU_OKINAWA_REGION: 'Kyushu/Okinawa region',
+  INFO: 'List of 100 Famous Mountains',
+  INFO_NAME: 'Hisaya Fukada Selected 100 seats',
+}

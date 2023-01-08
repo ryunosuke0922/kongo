@@ -1,4 +1,9 @@
-import { Heading3, VerticalDescription, VerticalTitle } from '@/components/atoms/text/style'
+import {
+  Heading3,
+  HorizonTitle,
+  VerticalDescription,
+  VerticalTitle,
+} from '@/components/atoms/text/style'
 import ParallaxItem from '@/components/molecules/parallax'
 import Seo from '@/components/molecules/seo'
 import Footer from '@/components/organisms/footer/footer'
@@ -8,6 +13,7 @@ import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
 import { FC } from 'react'
 import styled from 'styled-components'
+import { useLocale } from '../../i18n/index'
 
 const Top = styled.div`
   background: #fafafa;
@@ -22,6 +28,8 @@ const WrapperMain = styled.div`
 `
 
 const LayoutTop: FC = ({ children }) => {
+  const { t, locale } = useLocale()
+
   return (
     <Top className="noise">
       {/* TODO: SEO */}
@@ -40,18 +48,25 @@ const LayoutTop: FC = ({ children }) => {
             <Wrapper>
               <div className="main__mv-pc">
                 <div className="main__head">
-                  <div className="main__head-title">
-                    <VerticalTitle>日本百名山</VerticalTitle>
-                  </div>
+                  {locale === 'en' ? (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-jp">
+                      <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    </div>
+                  )}
+
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
                       <VerticalDescription>
-                        <span>『日本百名山』は、</span>
-                        <span>深田久弥が執筆した</span>
-                        <span>山岳随筆集です。</span>
-                        <span>こちらの著書を参考に</span>
-                        <span>日本百名山を</span>
-                        <span>一覧にまとめました。</span>
+                        <span>{t.DESCRIPTION_1}</span>
+                        <span>{t.DESCRIPTION_2}</span>
+                        <span>{t.DESCRIPTION_3}</span>
+                        <span>{t.DESCRIPTION_4}</span>
+                        <span>{t.DESCRIPTION_5}</span>
+                        <span>{t.DESCRIPTION_6}</span>
                       </VerticalDescription>
                     </ParallaxItem>
                   </div>
@@ -59,40 +74,47 @@ const LayoutTop: FC = ({ children }) => {
 
                 <div className="main__images">
                   <ParallaxItem factor={0.2}>
-                    <img src="images/img04.jpg" alt="" />
-                    <img src="images/img05.jpg" alt="" />
-                    <img src="images/img06.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img04.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img05.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
                   </ParallaxItem>
                   <ParallaxItem factor={0.1}>
-                    <img src="images/img01.jpg" alt="" />
-                    <img src="images/img02.jpg" alt="" />
-                    <img src="images/img03.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img02.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img03.jpg" alt="" />
                   </ParallaxItem>
                 </div>
               </div>
 
               <div className="main__mv-sp">
                 <div className="main__head">
-                  <div className="main__head-title">
-                    <VerticalTitle>日本百名山</VerticalTitle>
-                  </div>
+                  {locale === 'en' ? (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-jp">
+                      <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    </div>
+                  )}
+
                   <div className="main__head-description">
                     <div>
                       <VerticalDescription>
-                        <span>『日本百名山』は、</span>
-                        <span>深田久弥が執筆した</span>
-                        <span>山岳随筆集です。</span>
-                        <span>こちらの著書を参考に</span>
-                        <span>日本百名山を</span>
-                        <span>一覧にまとめました。</span>
+                        <span>{t.DESCRIPTION_1}</span>
+                        <span>{t.DESCRIPTION_2}</span>
+                        <span>{t.DESCRIPTION_3}</span>
+                        <span>{t.DESCRIPTION_4}</span>
+                        <span>{t.DESCRIPTION_5}</span>
+                        <span>{t.DESCRIPTION_6}</span>
                       </VerticalDescription>
                     </div>
                   </div>
                 </div>
 
                 <div className="main__images">
-                  <img src="images/img06.jpg" alt="" />
-                  <img src="images/img01.jpg" alt="" />
+                  <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
+                  <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
                 </div>
               </div>
             </Wrapper>
@@ -103,7 +125,8 @@ const LayoutTop: FC = ({ children }) => {
               <MainContent>
                 <div className="main__content-title">
                   <Heading3>
-                    百名山 一覧<span>深田 久弥 選定100座</span>
+                    {t.INFO}
+                    <span>{t.INFO_NAME}</span>
                   </Heading3>
                 </div>
                 {children}
