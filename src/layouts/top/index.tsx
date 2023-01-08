@@ -48,14 +48,16 @@ const LayoutTop: FC = ({ children }) => {
             <Wrapper>
               <div className="main__mv-pc">
                 <div className="main__head">
-                  <div className="main__head-title">
-                    {locale === 'en' ? (
-                      // TODO: 英語
-                      <HorizonTitle>{t.TITLE}英語</HorizonTitle>
-                    ) : (
+                  {locale === 'en' ? (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-jp">
                       <VerticalTitle>{t.TITLE}</VerticalTitle>
-                    )}
-                  </div>
+                    </div>
+                  )}
+
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
                       <VerticalDescription>
@@ -86,9 +88,16 @@ const LayoutTop: FC = ({ children }) => {
 
               <div className="main__mv-sp">
                 <div className="main__head">
-                  <div className="main__head-title">
-                    <VerticalTitle>{t.TITLE}</VerticalTitle>
-                  </div>
+                  {locale === 'en' ? (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-jp">
+                      <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    </div>
+                  )}
+
                   <div className="main__head-description">
                     <div>
                       <VerticalDescription>

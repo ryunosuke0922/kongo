@@ -178,6 +178,10 @@ export const TextMountain = styled.p`
       font-size: 20px;
     }
   }
+  i {
+    font-style: normal;
+    margin: 0 0 0 1rem;
+  }
 `
 export const TextName = styled.p`
   color: #333;
@@ -199,5 +203,9 @@ export const TextName = styled.p`
     @media screen and (min-width: 1920px) {
       font-size: 20px;
     }
+  }
+  i {
+    font-style: normal;
+    margin: 0 0 0 1rem;
   }
 `

@@ -5,7 +5,7 @@ export const VerticalTitle = styled.h1`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
-  color: #111;
+  color: #333;
   display: block;
   margin-left: auto;
   @media screen and (max-width: 768px) {
@@ -21,7 +21,7 @@ export const HorizonTitle = styled.h1`
   /* -ms-writing-mode: tb-rl; */
   /* writing-mode: vertical-rl; */
   text-align: center;
-  color: #111;
+  color: #333;
   display: block;
   margin-left: auto;
   @media screen and (max-width: 768px) {

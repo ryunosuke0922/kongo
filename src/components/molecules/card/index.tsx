@@ -19,7 +19,13 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
           <TextMountain>{data.mountainSystem}</TextMountain>
           <TextMountain>
             {data.prefectures}
-            {locale === 'en' ? <>{data.prefecturesEn}</> : <></>}
+            {locale === 'en' ? (
+              <>
+                <i>{data.prefecturesEn}</i>
+              </>
+            ) : (
+              <></>
+            )}
           </TextMountain>
           <TextMountain>
             標高：{data.elevation}
@@ -29,8 +35,13 @@ const EnhancedCard = ({ data }: Props): JSX.Element => {
         <div className="card__wrapper">
           <TextName>
             {data.name}
-            {/* TODO: 英語 */}
-            {locale === 'en' ? <>{data.nameEn}</> : <></>}
+            {locale === 'en' ? (
+              <>
+                <i>{data.nameEn}</i>
+              </>
+            ) : (
+              <></>
+            )}
             <span>{data.kanaName}</span>
           </TextName>
         </div>

@@ -47,15 +47,22 @@ a {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  z-index: 5;
 }
 .main__head-title {
   width: 100%;
   position: absolute;
-  top: -2rem;
-  right: 10rem;
   opacity: 0;
   visibility: hidden;
   animation: textAnimation 2s forwards;
+}
+.main__head-title.is-jp {
+  top: -2rem;
+  right: 10rem;
+}
+.main__head-title.is-en {
+  top: 4rem;
+  right: -30rem;
 }
 .main__head-description {
   width: 100%;
@@ -162,6 +169,7 @@ a {
   /* main */
   .container {
     padding: 10rem 0 0;
+    overflow: hidden;
   }
   .main__mv-sp {
     height: 98rem;
@@ -177,10 +185,15 @@ a {
   .main__head {
     width: 100%;
   }
-  .main__head-title {
+  .main__head-title.is-jp {
     position: absolute;
     top: -3rem;
     right: -3rem;
+  }
+  .main__head-title.is-en {
+    position: absolute;
+    top: -3rem;
+    right: -14rem;
   }
   .main__head-description {
     position: absolute;
