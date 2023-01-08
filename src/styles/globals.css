@@ -61,8 +61,9 @@ a {
   right: 10rem;
 }
 .main__head-title.is-en {
+  width: auto;
   top: 4rem;
-  right: -30rem;
+  right: 4rem;
 }
 .main__head-description {
   width: 100%;
@@ -190,9 +191,10 @@ a {
     right: -3rem;
   }
   .main__head-title.is-en {
+    width: 40rem;
     position: absolute;
     top: -3rem;
-    right: -14rem;
+    right: -4rem;
   }
   .main__head-description {
     position: absolute;
