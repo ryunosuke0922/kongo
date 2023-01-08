@@ -196,7 +196,7 @@ export const TextName = styled.p`
   }
   span {
     padding-left: 1rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #666;
     @media screen and (max-width: 768px) {
       font-size: 2.6rem;
@@ -207,6 +207,7 @@ export const TextName = styled.p`
   }
   i {
     font-style: normal;
+    font-size: 1.8rem;
     margin: 0 0 0 1rem;
   }
 `
