@@ -74,9 +74,51 @@ const LayoutTop: FC = ({ children }) => {
 
                 <div className="main__images">
                   <ParallaxItem factor={0.2}>
-                    <img src="https://www.famous-mountains-in-japan.com/images/img04.jpg" alt="" />
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img04.webp"
+                      />
+                      <source
+                        type="image/jpeg"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img04.jpg"
+                      />
+                      <img
+                        src="https://www.famous-mountains-in-japan.com/images/img04.jpg"
+                        alt=""
+                      />
+                    </picture>
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img05.webp"
+                      />
+                      <source
+                        type="image/jpeg"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img05.jpg"
+                      />
+                      <img
+                        src="https://www.famous-mountains-in-japan.com/images/img05.jpg"
+                        alt=""
+                      />
+                    </picture>
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img06.webp"
+                      />
+                      <source
+                        type="image/jpeg"
+                        srcSet="https://www.famous-mountains-in-japan.com/images/img06.jpg"
+                      />
+                      <img
+                        src="https://www.famous-mountains-in-japan.com/images/img06.jpg"
+                        alt=""
+                      />
+                    </picture>
+                    {/* <img src="https://www.famous-mountains-in-japan.com/images/img04.jpg" alt="" />
                     <img src="https://www.famous-mountains-in-japan.com/images/img05.jpg" alt="" />
-                    <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
+                    <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" /> */}
                   </ParallaxItem>
                   <ParallaxItem factor={0.1}>
                     <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
