@@ -17,6 +17,19 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
   const description = pageDescription ? pageDescription : defaultDescription
   const url = pagePath
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '100 Famous Japanese Mountains. | 日本百名山',
+    url: 'https://www.famous-mountains-in-japan.com/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.famous-mountains-in-japan.com/images/logo_hyaku.svg',
+      height: '67',
+      width: '56',
+    },
+  }
+
   return (
     <Head>
       <title>{title}</title>
@@ -38,6 +51,7 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
       />
       <link rel="canonical" href={url} />
       <meta name="google-site-verification" content="gsUZ2YcVTPf9cquxfCKRyDeZJW35s4kFIn5MpXJx0NM" />
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
     </Head>
   )
 }
