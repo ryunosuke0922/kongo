@@ -18,8 +18,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: yarn install
+      # - name: Install dependencies
+      #   run: yarn install
 
       - name: Run Lint
         run: yarn lint
