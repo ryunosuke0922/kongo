@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "日本百名山の一覧",
+  "engines": {
+    "node": "18.x"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ryunosuke0922/kongo"
@@ -16,7 +19,8 @@
     "start": "next start",
     "export": "yarn run build && next export",
     "lint": "next lint --dir src",
-    "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
