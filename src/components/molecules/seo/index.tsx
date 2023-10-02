@@ -17,16 +17,17 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
   const description = pageDescription ? pageDescription : defaultDescription
   const url = pagePath
 
+  // prettier-ignore
   const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: '100 Famous Japanese Mountains. | 日本百名山',
-    url: 'https://www.famous-mountains-in-japan.com/',
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "100 Famous Japanese Mountains. | 日本百名山",
+    url: "https://www.famous-mountains-in-japan.com/",
     logo: {
-      '@type': 'ImageObject',
-      url: 'https://www.famous-mountains-in-japan.com/images/logo_hyaku.svg',
-      height: '67',
-      width: '56',
+      "@type": "ImageObject",
+      url: "https://www.famous-mountains-in-japan.com/images/logo_hyaku.svg",
+      height: "67",
+      width: "56",
     },
   }
 
