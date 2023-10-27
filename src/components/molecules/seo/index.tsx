@@ -52,7 +52,10 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
       />
       <link rel="canonical" href={url} />
       <meta name="google-site-verification" content="gsUZ2YcVTPf9cquxfCKRyDeZJW35s4kFIn5MpXJx0NM" />
-      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      ></script>
     </Head>
   )
 }
