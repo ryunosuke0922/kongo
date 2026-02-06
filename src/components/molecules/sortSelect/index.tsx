@@ -1,6 +1,5 @@
-import { ChangeEvent } from 'react'
 import type { SortType } from '@/hooks/useMountainFilter'
-import { SortField, SortLabel, SortWrapper } from './style'
+import { SortLabel, SortTagButton, SortTags, SortWrapper } from './style'
 
 type Option = {
   value: SortType
@@ -15,20 +14,23 @@ type Props = {
 }
 
 const SortSelect = ({ value, label, options, onChange }: Props) => {
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value as SortType)
-  }
-
   return (
-    <SortWrapper>
+    <SortWrapper role="radiogroup" aria-label={label}>
       <SortLabel>{label}</SortLabel>
-      <SortField value={value} onChange={handleChange}>
+      <SortTags>
         {options.map((option) => (
-          <option value={option.value} key={option.value}>
+          <SortTagButton
+            key={option.value}
+            type="button"
+            role="radio"
+            aria-checked={value === option.value}
+            $active={value === option.value}
+            onClick={() => onChange(option.value)}
+          >
             {option.label}
-          </option>
+          </SortTagButton>
         ))}
-      </SortField>
+      </SortTags>
     </SortWrapper>
   )
 }

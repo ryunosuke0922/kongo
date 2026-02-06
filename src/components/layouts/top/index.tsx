@@ -98,18 +98,50 @@ type Props = {
   resultSummary?: ReactNode
 }
 
+type DescriptionProps = {
+  locale: 'en' | 'ja'
+  descriptions: string[]
+}
+
+const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
+  if (locale === 'en') {
+    return (
+      <HorizonDescription>
+        {descriptions.map((description, index) => (
+          <span key={`${description}-${index}`}>{description}</span>
+        ))}
+      </HorizonDescription>
+    )
+  }
+
+  return (
+    <VerticalDescription>
+      {descriptions.map((description, index) => (
+        <span key={`${description}-${index}`}>{description}</span>
+      ))}
+    </VerticalDescription>
+  )
+}
+
 const LayoutTop = ({ children, controls, resultSummary }: Props) => {
   const { t, locale } = useLocale()
+  const descriptions = [
+    t.DESCRIPTION_1,
+    t.DESCRIPTION_2,
+    t.DESCRIPTION_3,
+    t.DESCRIPTION_4,
+    t.DESCRIPTION_5,
+    t.DESCRIPTION_6,
+  ]
 
   return (
     <Top className="noise">
-      {/* TODO: SEO */}
       <Seo />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }} // TODO: ??
+        exit={{ opacity: 0, y: 10 }}
         transition={{
           duration: 0.5,
         }}
@@ -131,25 +163,7 @@ const LayoutTop = ({ children, controls, resultSummary }: Props) => {
 
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
-                      {locale === 'en' ? (
-                        <HorizonDescription>
-                          <span>{t.DESCRIPTION_1}</span>
-                          <span>{t.DESCRIPTION_2}</span>
-                          <span>{t.DESCRIPTION_3}</span>
-                          <span>{t.DESCRIPTION_4}</span>
-                          <span>{t.DESCRIPTION_5}</span>
-                          <span>{t.DESCRIPTION_6}</span>
-                        </HorizonDescription>
-                      ) : (
-                        <VerticalDescription>
-                          <span>{t.DESCRIPTION_1}</span>
-                          <span>{t.DESCRIPTION_2}</span>
-                          <span>{t.DESCRIPTION_3}</span>
-                          <span>{t.DESCRIPTION_4}</span>
-                          <span>{t.DESCRIPTION_5}</span>
-                          <span>{t.DESCRIPTION_6}</span>
-                        </VerticalDescription>
-                      )}
+                      <DescriptionText locale={locale} descriptions={descriptions} />
                     </ParallaxItem>
                   </div>
                 </div>
@@ -178,25 +192,7 @@ const LayoutTop = ({ children, controls, resultSummary }: Props) => {
 
                   <div className="main__head-description">
                     <div>
-                      {locale === 'en' ? (
-                        <HorizonDescription>
-                          <span>{t.DESCRIPTION_1}</span>
-                          <span>{t.DESCRIPTION_2}</span>
-                          <span>{t.DESCRIPTION_3}</span>
-                          <span>{t.DESCRIPTION_4}</span>
-                          <span>{t.DESCRIPTION_5}</span>
-                          <span>{t.DESCRIPTION_6}</span>
-                        </HorizonDescription>
-                      ) : (
-                        <VerticalDescription>
-                          <span>{t.DESCRIPTION_1}</span>
-                          <span>{t.DESCRIPTION_2}</span>
-                          <span>{t.DESCRIPTION_3}</span>
-                          <span>{t.DESCRIPTION_4}</span>
-                          <span>{t.DESCRIPTION_5}</span>
-                          <span>{t.DESCRIPTION_6}</span>
-                        </VerticalDescription>
-                      )}
+                      <DescriptionText locale={locale} descriptions={descriptions} />
                     </div>
                   </div>
                 </div>

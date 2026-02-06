@@ -20,13 +20,12 @@ const LocalMain = styled.div`
 const LayoutLocalList = ({ children }: { children: ReactNode }) => {
   return (
     <Local className="noise">
-      {/* TODO: SEO */}
       <Seo />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }} // TODO: ??
+        exit={{ opacity: 0, y: 10 }}
         transition={{
           duration: 0.5,
         }}

@@ -70,6 +70,7 @@ const Home: NextPage<Props> = ({ mountains }) => {
               value={searchQuery}
               placeholder={t.SEARCH_PLACEHOLDER}
               ariaLabel={t.SEARCH_PLACEHOLDER}
+              clearAriaLabel={t.SEARCH_CLEAR_ARIA}
               onChange={setSearchQuery}
               onClear={() => setSearchQuery('')}
             />

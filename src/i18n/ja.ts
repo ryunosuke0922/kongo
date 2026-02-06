@@ -27,6 +27,7 @@ const ja = {
   SEARCH_RESULT_LABEL: '検索結果',
   SEARCH_RESULT: '件',
   NO_SEARCH_RESULTS: '該当する山がありません',
+  SEARCH_CLEAR_ARIA: '検索入力をクリア',
 }
 
 export type LocaleMessages = typeof ja

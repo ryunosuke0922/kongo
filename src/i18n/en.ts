@@ -29,6 +29,7 @@ const en: LocaleMessages = {
   SEARCH_RESULT_LABEL: 'Results',
   SEARCH_RESULT: 'results',
   NO_SEARCH_RESULTS: 'No matching mountains found',
+  SEARCH_CLEAR_ARIA: 'Clear search input',
 }
 
 export default en

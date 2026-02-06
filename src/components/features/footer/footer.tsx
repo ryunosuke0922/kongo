@@ -9,6 +9,7 @@ import {
   FooterInner,
   FooterWrapper,
 } from '@/components/features/footer/style'
+import { REGION_LINKS } from '@/constants/regionLinks'
 import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
@@ -28,38 +29,12 @@ const Footer = () => {
                   <Link href={'/'}>{t.TITLE}</Link>
                   <i></i>
                 </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/hokkaido'}>{t.HOKKAIDO_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/tohoku'}>{t.TOHOKU_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/kanto'}>{t.KANTO_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/chubu'}>{t.TOHOKU_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/kansai'}>{t.KANSAI_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/chugoku'}>{t.CHUGOKU_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/shikoku'}>{t.SHIKOKU_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                <HorizonTextNormalLink>
-                  <Link href={'/local/kyushu-okinawa'}>{t.KYUSHU_OKINAWA_REGION}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
+                {REGION_LINKS.map((link) => (
+                  <HorizonTextNormalLink key={link.path}>
+                    <Link href={link.path}>{t[link.labelKey]}</Link>
+                    <i></i>
+                  </HorizonTextNormalLink>
+                ))}
               </FooterContentEn>
             ) : (
               <FooterContent>
@@ -67,38 +42,12 @@ const Footer = () => {
                   <Link href={'/'}>{t.TITLE}</Link>
                   <i></i>
                 </VerticalTextBoldLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/hokkaido'}>{t.HOKKAIDO_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/tohoku'}>{t.TOHOKU_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/kanto'}>{t.KANTO_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/chubu'}>{t.TOHOKU_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/kansai'}>{t.KANSAI_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/chugoku'}>{t.CHUGOKU_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/shikoku'}>{t.SHIKOKU_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
-                <VerticalTextNormalLink>
-                  <Link href={'/local/kyushu-okinawa'}>{t.KYUSHU_OKINAWA_REGION}</Link>
-                  <i></i>
-                </VerticalTextNormalLink>
+                {REGION_LINKS.map((link) => (
+                  <VerticalTextNormalLink key={link.path}>
+                    <Link href={link.path}>{t[link.labelKey]}</Link>
+                    <i></i>
+                  </VerticalTextNormalLink>
+                ))}
               </FooterContent>
             )}
           </nav>

@@ -5,11 +5,12 @@ type Props = {
   value: string
   placeholder: string
   ariaLabel: string
+  clearAriaLabel: string
   onChange: (value: string) => void
   onClear: () => void
 }
 
-const SearchBar = ({ value, placeholder, ariaLabel, onChange, onClear }: Props) => {
+const SearchBar = ({ value, placeholder, ariaLabel, clearAriaLabel, onChange, onClear }: Props) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value)
   }
@@ -25,7 +26,7 @@ const SearchBar = ({ value, placeholder, ariaLabel, onChange, onClear }: Props) 
         onChange={handleChange}
       />
       {value ? (
-        <ClearButton type="button" onClick={onClear} aria-label="Clear search input">
+        <ClearButton type="button" onClick={onClear} aria-label={clearAriaLabel}>
           ×
         </ClearButton>
       ) : null}
