@@ -10,7 +10,13 @@ import Slideshow from '@/components/molecules/slideshow'
 import Footer from '@/components/features/footer/footer'
 import Header from '@/components/features/header/header'
 import Sidebar from '@/components/features/sidebar'
-import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/top/style'
+import {
+  FilterArea,
+  FilterResult,
+  MainContent,
+  Wrapper,
+  WrapperContent,
+} from '@/components/layouts/top/style'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ReactNode } from 'react'
@@ -85,7 +91,13 @@ const frontColumnImages = [
   },
 ]
 
-const LayoutTop = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode
+  controls?: ReactNode
+  resultSummary?: ReactNode
+}
+
+const LayoutTop = ({ children, controls, resultSummary }: Props) => {
   const { t, locale } = useLocale()
 
   return (
@@ -197,6 +209,8 @@ const LayoutTop = ({ children }: { children: ReactNode }) => {
                     <span>{t.INFO_NAME}</span>
                   </Heading3>
                 </div>
+                {controls ? <FilterArea>{controls}</FilterArea> : null}
+                {resultSummary ? <FilterResult>{resultSummary}</FilterResult> : null}
                 {children}
               </MainContent>
               <Sidebar></Sidebar>

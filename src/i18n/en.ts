@@ -20,6 +20,15 @@ const en: LocaleMessages = {
   KYUSHU_OKINAWA_REGION: 'Kyushu/Okinawa region',
   INFO: 'List of 100 Famous Mountains',
   INFO_NAME: 'Hisaya Fukada Selected 100 seats',
+  SEARCH_PLACEHOLDER: 'Search by name',
+  SORT_LABEL: 'Sort by',
+  SORT_NO: 'Number',
+  SORT_ELEVATION_DESC: 'Highest first',
+  SORT_ELEVATION_ASC: 'Lowest first',
+  SORT_KANA: 'Alphabetical',
+  SEARCH_RESULT_LABEL: 'Results',
+  SEARCH_RESULT: 'results',
+  NO_SEARCH_RESULTS: 'No matching mountains found',
 }
 
 export default en

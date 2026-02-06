@@ -51,3 +51,23 @@ export const MainContent = styled.div`
     gap: 20px 30px;
   }
 `
+
+export const FilterArea = styled.div`
+  width: 100%;
+  margin: 0 0 1.6rem;
+`
+
+export const FilterResult = styled.p`
+  width: 100%;
+  margin: 0 0 2rem;
+  font-size: 2rem;
+  color: #555;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    font-size: 2.4rem;
+  }
+
+  @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
+    font-size: 20px;
+  }
+`

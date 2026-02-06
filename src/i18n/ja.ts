@@ -18,6 +18,15 @@ const ja = {
   KYUSHU_OKINAWA_REGION: '九州・沖縄地方',
   INFO: '百名山 一覧',
   INFO_NAME: '深田 久弥 選定100座',
+  SEARCH_PLACEHOLDER: '山名で検索',
+  SORT_LABEL: '並び替え',
+  SORT_NO: '番号順',
+  SORT_ELEVATION_DESC: '標高が高い順',
+  SORT_ELEVATION_ASC: '標高が低い順',
+  SORT_KANA: '50音順',
+  SEARCH_RESULT_LABEL: '検索結果',
+  SEARCH_RESULT: '件',
+  NO_SEARCH_RESULTS: '該当する山がありません',
 }
 
 export type LocaleMessages = typeof ja
