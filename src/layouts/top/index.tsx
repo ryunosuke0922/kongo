@@ -6,6 +6,7 @@ import {
 } from '@/components/atoms/text/style'
 import ParallaxItem from '@/components/molecules/parallax'
 import Seo from '@/components/molecules/seo'
+import Slideshow from '@/components/molecules/slideshow'
 import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
@@ -26,6 +27,22 @@ const WrapperMain = styled.div`
   border-bottom: 1px solid rgba(50, 50, 50, 0.05);
   backface-visibility: hidden;
 `
+
+const backColumnImages = [
+  { webp: '/images/img01.webp', jpg: '/images/img01.jpg' },
+  { webp: '/images/img02.webp', jpg: '/images/img02.jpg' },
+  { webp: '/images/img03.webp', jpg: '/images/img03.jpg' },
+  { webp: '/images/img04.webp', jpg: '/images/img04.jpg' },
+  { webp: '/images/img05.webp', jpg: '/images/img05.jpg' },
+]
+
+const frontColumnImages = [
+  { webp: '/images/img06.webp', jpg: '/images/img06.jpg' },
+  { webp: '/images/img07.webp', jpg: '/images/img07.jpg' },
+  { webp: '/images/img08.webp', jpg: '/images/img08.jpg' },
+  { webp: '/images/img09.webp', jpg: '/images/img09.jpg' },
+  { webp: '/images/img10.webp', jpg: '/images/img10.jpg' },
+]
 
 const LayoutTop = ({ children }: { children: ReactNode }) => {
   const { t, locale } = useLocale()
@@ -74,92 +91,10 @@ const LayoutTop = ({ children }: { children: ReactNode }) => {
 
                 <div className="main__images">
                   <ParallaxItem factor={0.2}>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img04.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img04.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img04.jpg"
-                        alt=""
-                      />
-                    </picture>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img05.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img05.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img05.jpg"
-                        alt=""
-                      />
-                    </picture>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img06.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img06.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img06.jpg"
-                        alt=""
-                      />
-                    </picture>
+                    <Slideshow images={backColumnImages} />
                   </ParallaxItem>
                   <ParallaxItem factor={0.1}>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img01.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img01.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img01.jpg"
-                        alt=""
-                      />
-                    </picture>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img02.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img02.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img02.jpg"
-                        alt=""
-                      />
-                    </picture>
-                    <picture>
-                      <source
-                        type="image/webp"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img03.webp"
-                      />
-                      <source
-                        type="image/jpeg"
-                        srcSet="https://www.famous-mountains-in-japan.com/images/img03.jpg"
-                      />
-                      <img
-                        src="https://www.famous-mountains-in-japan.com/images/img03.jpg"
-                        alt=""
-                      />
-                    </picture>
+                    <Slideshow images={frontColumnImages} />
                   </ParallaxItem>
                 </div>
               </div>
@@ -191,8 +126,8 @@ const LayoutTop = ({ children }: { children: ReactNode }) => {
                 </div>
 
                 <div className="main__images">
-                  <img src="https://www.famous-mountains-in-japan.com/images/img06.jpg" alt="" />
-                  <img src="https://www.famous-mountains-in-japan.com/images/img01.jpg" alt="" />
+                  <img src="/images/img06.jpg" alt="" />
+                  <img src="/images/img01.jpg" alt="" />
                 </div>
               </div>
             </Wrapper>
