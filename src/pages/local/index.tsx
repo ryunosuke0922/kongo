@@ -1,5 +1,6 @@
 import { VerticalTextBoldLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
-import Layout from '@/layouts/localList'
+import Layout from '@/components/layouts/localList'
+import { REGION_LINKS } from '@/constants/regionLinks'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useLocale } from '../../i18n/index'
@@ -9,60 +10,18 @@ const Local: NextPage = () => {
 
   return (
     <Layout>
-      <VerticalTextBoldLink>
-        <Link href={'/'} passHref>
-          <a>{t.TITLE}</a>
-        </Link>
-        <i></i>
-      </VerticalTextBoldLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/hokkaido'} passHref>
-          <a>{t.HOKKAIDO_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/tohoku'} passHref>
-          <a>{t.TOHOKU_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/kanto'} passHref>
-          <a>{t.KANTO_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/chubu'} passHref>
-          <a>{t.TOHOKU_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/kansai'} passHref>
-          <a>{t.KANSAI_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/chugoku'} passHref>
-          <a>{t.CHUGOKU_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/shikoku'} passHref>
-          <a>{t.SHIKOKU_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
-      <VerticalTextNormalLink>
-        <Link href={'/local/kyushu-okinawa'} passHref>
-          <a>{t.KYUSHU_OKINAWA_REGION}</a>
-        </Link>
-        <i></i>
-      </VerticalTextNormalLink>
+      <nav aria-label="Local area mountain navigation">
+        <VerticalTextBoldLink>
+          <Link href={'/'}>{t.TITLE}</Link>
+          <i></i>
+        </VerticalTextBoldLink>
+        {REGION_LINKS.map((link) => (
+          <VerticalTextNormalLink key={link.path}>
+            <Link href={link.path}>{t[link.labelKey]}</Link>
+            <i></i>
+          </VerticalTextNormalLink>
+        ))}
+      </nav>
     </Layout>
   )
 }

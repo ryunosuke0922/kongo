@@ -1,4 +1,4 @@
-export default {
+const ja = {
   TITLE: '日本百名山',
   DESCRIPTION:
     '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',
@@ -18,4 +18,28 @@ export default {
   KYUSHU_OKINAWA_REGION: '九州・沖縄地方',
   INFO: '百名山 一覧',
   INFO_NAME: '深田 久弥 選定100座',
+  SEARCH_PLACEHOLDER: '山名で検索',
+  SORT_LABEL: '並び替え',
+  SORT_NO: '番号順',
+  SORT_ELEVATION_DESC: '標高が高い順',
+  SORT_ELEVATION_ASC: '標高が低い順',
+  SORT_KANA: '50音順',
+  SEARCH_RESULT_LABEL: '検索結果',
+  SEARCH_RESULT: '件',
+  NO_SEARCH_RESULTS: '該当する山がありません',
+  SEARCH_CLEAR_ARIA: '検索入力をクリア',
+  PREFECTURE_LABEL: '都道府県',
+  PREFECTURE_ALL: 'すべて',
+  ELEVATION_LABEL: '標高',
+  ELEVATION_ALL: 'すべて',
+  ELEVATION_GTE_3000: '3000m以上',
+  ELEVATION_2000_3000: '2000m〜3000m',
+  ELEVATION_LT_2000: '2000m未満',
+  STATS_HIGHEST: '最高',
+  STATS_LOWEST: '最低',
+  STATS_AVERAGE: '平均',
 }
+
+export type LocaleMessages = typeof ja
+
+export default ja

@@ -1,13 +1,15 @@
-export default {
+import type { LocaleMessages } from './ja'
+
+const en: LocaleMessages = {
   TITLE: '100 Famous Japanese Mountains.',
   DESCRIPTION:
-    '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',
-  DESCRIPTION_1: '『日本百名山』は、',
-  DESCRIPTION_2: '深田久弥が執筆した',
-  DESCRIPTION_3: '山岳随筆集です。',
-  DESCRIPTION_4: 'こちらの著書を参考に',
-  DESCRIPTION_5: '日本百名山を',
-  DESCRIPTION_6: '一覧にまとめました。',
+    '"Nihon Hyakumeizan" is a collection of mountain essays written by Kyuya Fukada. This site lists all 100 famous mountains.',
+  DESCRIPTION_1: '"Nihon Hyakumeizan"',
+  DESCRIPTION_2: 'is a collection of',
+  DESCRIPTION_3: 'mountain essays',
+  DESCRIPTION_4: 'written by Kyuya Fukada.',
+  DESCRIPTION_5: 'This site lists all',
+  DESCRIPTION_6: '100 famous mountains.',
   HOKKAIDO_REGION: 'Hokkaido region',
   TOHOKU_REGION: 'Tohoku region',
   KANTO_REGION: 'Kanto region',
@@ -18,4 +20,26 @@ export default {
   KYUSHU_OKINAWA_REGION: 'Kyushu/Okinawa region',
   INFO: 'List of 100 Famous Mountains',
   INFO_NAME: 'Hisaya Fukada Selected 100 seats',
+  SEARCH_PLACEHOLDER: 'Search by name',
+  SORT_LABEL: 'Sort by',
+  SORT_NO: 'Number',
+  SORT_ELEVATION_DESC: 'Highest first',
+  SORT_ELEVATION_ASC: 'Lowest first',
+  SORT_KANA: 'Alphabetical',
+  SEARCH_RESULT_LABEL: 'Results',
+  SEARCH_RESULT: 'results',
+  NO_SEARCH_RESULTS: 'No matching mountains found',
+  SEARCH_CLEAR_ARIA: 'Clear search input',
+  PREFECTURE_LABEL: 'Prefecture',
+  PREFECTURE_ALL: 'All',
+  ELEVATION_LABEL: 'Elevation',
+  ELEVATION_ALL: 'All',
+  ELEVATION_GTE_3000: '3000m and above',
+  ELEVATION_2000_3000: '2000m to 3000m',
+  ELEVATION_LT_2000: 'Below 2000m',
+  STATS_HIGHEST: 'Highest',
+  STATS_LOWEST: 'Lowest',
+  STATS_AVERAGE: 'Average',
 }
+
+export default en

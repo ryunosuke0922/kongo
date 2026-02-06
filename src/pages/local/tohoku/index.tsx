@@ -1,11 +1,15 @@
 import { Heading3 } from '@/components/atoms/text/style'
-import Card from '@/components/molecules/card'
-import Layout from '@/layouts/local'
-import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
-import type { NextPage } from 'next'
+import MountainCardList from '@/components/molecules/mountainCardList'
+import Layout from '@/components/layouts/local'
+import type { MountainsData } from '@/types/mountains'
+import type { GetStaticProps, NextPage } from 'next'
 import { useLocale } from '../../../i18n/index'
 
-const Home: NextPage = () => {
+type Props = {
+  mountains: MountainsData[]
+}
+
+const Home: NextPage<Props> = ({ mountains }) => {
   const { t } = useLocale()
 
   return (
@@ -13,33 +17,17 @@ const Home: NextPage = () => {
       <div className="main__content-title">
         <Heading3>{t.TOHOKU_REGION}</Heading3>
       </div>
-      {get100FamousMountainsInJapan()
-        .filter(
-          (e) =>
-            e.no === 10 ||
-            e.no === 11 ||
-            e.no === 12 ||
-            e.no === 13 ||
-            e.no === 14 ||
-            e.no === 15 ||
-            e.no === 16 ||
-            e.no === 17 ||
-            e.no === 18 ||
-            e.no === 19 ||
-            e.no === 20 ||
-            e.no === 21 ||
-            e.no === 22 ||
-            e.no === 23 ||
-            e.no === 24 ||
-            e.no === 28,
-        )
-        .map((e) => (
-          <div key={e.no}>
-            <Card data={e}></Card>
-          </div>
-        ))}
+      <MountainCardList mountains={mountains} />
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const allMountains: MountainsData[] = (await import('@/data/mountains.json')).default
+  const ids = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28]
+  const mountains = allMountains.filter((e) => ids.includes(e.no))
+
+  return { props: { mountains } }
 }
 
 export default Home

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.famous-mountains-in-japan.com/sitemap.xml

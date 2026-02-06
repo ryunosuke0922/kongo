@@ -1,3 +1,4 @@
+import { UI_COLORS } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const VerticalTitle = styled.h1`
@@ -5,7 +6,7 @@ export const VerticalTitle = styled.h1`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
-  color: #333;
+  color: ${UI_COLORS.textPrimary};
   display: block;
   margin-left: auto;
   @media screen and (max-width: 768px) {
@@ -21,7 +22,7 @@ export const HorizonTitle = styled.h1`
   /* -ms-writing-mode: tb-rl; */
   /* writing-mode: vertical-rl; */
   text-align: center;
-  color: #333;
+  color: ${UI_COLORS.textPrimary};
   display: block;
   margin-left: auto;
   @media screen and (max-width: 768px) {
@@ -49,13 +50,33 @@ export const VerticalDescription = styled.p`
     display: block;
   }
 `
+
+export const HorizonDescription = styled.p`
+  font-size: 2rem;
+  line-height: 1.8;
+  text-align: right;
+  display: block;
+  margin-left: auto;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2.4rem;
+  }
+
+  @media screen and (min-width: 1920px) {
+    font-size: 20px;
+  }
+
+  span {
+    display: block;
+  }
+`
 export const VerticalTextBoldLink = styled.div`
   font-size: 2.8rem;
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
   font-weight: bold;
-  color: #333;
+  color: ${UI_COLORS.textPrimary};
   position: relative;
   @media screen and (max-width: 768px) {
     font-size: 3rem;
@@ -118,7 +139,7 @@ export const VerticalTextNormalLink = styled.div`
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   text-align: center;
-  color: #333;
+  color: ${UI_COLORS.textPrimary};
   position: relative;
   @media screen and (max-width: 768px) {
     font-size: 2.8rem;
@@ -181,7 +202,7 @@ export const HorizonTextNormalLink = styled.div`
   /* -ms-writing-mode: tb-rl; */
   /* writing-mode: vertical-rl; */
   /* text-align: center; */
-  color: #333;
+  color: ${UI_COLORS.textPrimary};
   position: relative;
   margin-bottom: 2rem;
   @media screen and (max-width: 768px) {
@@ -261,7 +282,7 @@ export const Heading3 = styled.h3`
   }
   span {
     font-size: 2rem;
-    color: #999;
+    color: ${UI_COLORS.textSubtle};
     padding-left: 1rem;
     @media screen and (max-width: 768px) {
       font-size: 2.6rem;
