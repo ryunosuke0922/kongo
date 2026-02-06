@@ -5,6 +5,8 @@ type SlideshowImage = {
   webp: string
   jpg: string
   alt?: string
+  width?: number
+  height?: number
 }
 
 type Props = {
@@ -35,6 +37,8 @@ const Slideshow = ({ images, intervalMs = 5000, duration = 1.4 }: Props) => {
   }
 
   const currentImage = images[currentIndex]
+  const imageWidth = currentImage.width ?? 1280
+  const imageHeight = currentImage.height ?? 768
 
   return (
     <AnimatePresence mode="sync" initial={false}>
@@ -48,7 +52,12 @@ const Slideshow = ({ images, intervalMs = 5000, duration = 1.4 }: Props) => {
         <picture>
           <source type="image/webp" srcSet={currentImage.webp} />
           <source type="image/jpeg" srcSet={currentImage.jpg} />
-          <img src={currentImage.jpg} alt={currentImage.alt ?? ''} />
+          <img
+            src={currentImage.jpg}
+            alt={currentImage.alt ?? 'Famous mountain landscape'}
+            width={imageWidth}
+            height={imageHeight}
+          />
         </picture>
       </motion.div>
     </AnimatePresence>

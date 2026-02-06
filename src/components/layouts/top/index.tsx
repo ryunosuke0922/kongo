@@ -7,14 +7,15 @@ import {
 import ParallaxItem from '@/components/molecules/parallax'
 import Seo from '@/components/molecules/seo'
 import Slideshow from '@/components/molecules/slideshow'
-import Footer from '@/components/organisms/footer/footer'
-import Header from '@/components/organisms/header/header'
-import Sidebar from '@/components/organisms/sidebar'
-import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
+import Footer from '@/components/features/footer/footer'
+import Header from '@/components/features/header/header'
+import Sidebar from '@/components/features/sidebar'
+import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/top/style'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useLocale } from '../../i18n/index'
+import { useLocale } from '@/i18n/index'
 
 const Top = styled.div`
   background: #fafafa;
@@ -29,19 +30,59 @@ const WrapperMain = styled.div`
 `
 
 const backColumnImages = [
-  { webp: '/images/img01.webp', jpg: '/images/img01.jpg' },
-  { webp: '/images/img02.webp', jpg: '/images/img02.jpg' },
-  { webp: '/images/img03.webp', jpg: '/images/img03.jpg' },
-  { webp: '/images/img04.webp', jpg: '/images/img04.jpg' },
-  { webp: '/images/img05.webp', jpg: '/images/img05.jpg' },
+  {
+    webp: '/images/img01.webp',
+    jpg: '/images/img01.jpg',
+    alt: 'Landscape of a famous Japanese mountain 01',
+  },
+  {
+    webp: '/images/img02.webp',
+    jpg: '/images/img02.jpg',
+    alt: 'Landscape of a famous Japanese mountain 02',
+  },
+  {
+    webp: '/images/img03.webp',
+    jpg: '/images/img03.jpg',
+    alt: 'Landscape of a famous Japanese mountain 03',
+  },
+  {
+    webp: '/images/img04.webp',
+    jpg: '/images/img04.jpg',
+    alt: 'Landscape of a famous Japanese mountain 04',
+  },
+  {
+    webp: '/images/img05.webp',
+    jpg: '/images/img05.jpg',
+    alt: 'Landscape of a famous Japanese mountain 05',
+  },
 ]
 
 const frontColumnImages = [
-  { webp: '/images/img06.webp', jpg: '/images/img06.jpg' },
-  { webp: '/images/img07.webp', jpg: '/images/img07.jpg' },
-  { webp: '/images/img08.webp', jpg: '/images/img08.jpg' },
-  { webp: '/images/img09.webp', jpg: '/images/img09.jpg' },
-  { webp: '/images/img10.webp', jpg: '/images/img10.jpg' },
+  {
+    webp: '/images/img06.webp',
+    jpg: '/images/img06.jpg',
+    alt: 'Landscape of a famous Japanese mountain 06',
+  },
+  {
+    webp: '/images/img07.webp',
+    jpg: '/images/img07.jpg',
+    alt: 'Landscape of a famous Japanese mountain 07',
+  },
+  {
+    webp: '/images/img08.webp',
+    jpg: '/images/img08.jpg',
+    alt: 'Landscape of a famous Japanese mountain 08',
+  },
+  {
+    webp: '/images/img09.webp',
+    jpg: '/images/img09.jpg',
+    alt: 'Landscape of a famous Japanese mountain 09',
+  },
+  {
+    webp: '/images/img10.webp',
+    jpg: '/images/img10.jpg',
+    alt: 'Landscape of a famous Japanese mountain 10',
+  },
 ]
 
 const LayoutTop = ({ children }: { children: ReactNode }) => {
@@ -50,7 +91,7 @@ const LayoutTop = ({ children }: { children: ReactNode }) => {
   return (
     <Top className="noise">
       {/* TODO: SEO */}
-      <Seo pageTitle={''} pageDescription={''} pagePath={''} />
+      <Seo />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -126,8 +167,22 @@ const LayoutTop = ({ children }: { children: ReactNode }) => {
                 </div>
 
                 <div className="main__images">
-                  <img src="/images/img06.jpg" alt="" />
-                  <img src="/images/img01.jpg" alt="" />
+                  <Image
+                    src="/images/img06.jpg"
+                    alt="Landscape of a famous Japanese mountain 06"
+                    width={1280}
+                    height={768}
+                    className="main__image-sp-back"
+                    priority
+                  />
+                  <Image
+                    src="/images/img01.jpg"
+                    alt="Landscape of a famous Japanese mountain 01"
+                    width={1280}
+                    height={768}
+                    className="main__image-sp-front"
+                    priority
+                  />
                 </div>
               </div>
             </Wrapper>

@@ -1,3 +1,4 @@
+import { BREAKPOINTS } from '@/constants/breakpoints'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -5,7 +6,7 @@ export const Wrapper = styled.div`
   max-width: 1920px;
   margin: 0 auto;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
   }
 `
 
@@ -18,9 +19,13 @@ export const WrapperContent = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    padding: 2rem 0 0;
     width: 100%;
     display: block;
+  }
+  @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
+    padding: 80px 0 0;
   }
 `
 
@@ -35,13 +40,13 @@ export const MainContent = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem 3rem;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
     width: 100%;
     padding: 5.6rem 3.6rem 12rem;
     gap: 0;
     display: block;
   }
-  @media screen and (min-width: 1920px) {
+  @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
     padding: 56px 24px 160px;
     gap: 20px 30px;
   }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Card = styled.div`
+export const Card = styled.article`
   width: 55rem;
   height: auto;
   position: relative;
@@ -53,7 +53,9 @@ export const TextBox = styled.div`
   background-color: #f6f6f6;
   border-radius: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    -2px -2px 5px rgba(255, 255, 255, 1),
+    3px 3px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   @media screen and (max-width: 768px) {
   }

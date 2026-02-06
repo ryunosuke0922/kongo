@@ -1,7 +1,8 @@
 import Seo from '@/components/molecules/seo'
-import Footer from '@/components/organisms/footer/footer'
-import Header from '@/components/organisms/header/header'
-import { MainContent, Wrapper, WrapperContent } from '@/layouts/localList/style'
+import Footer from '@/components/features/footer/footer'
+import Header from '@/components/features/header/header'
+import Sidebar from '@/components/features/sidebar'
+import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/local/style'
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
@@ -17,11 +18,11 @@ const LocalMain = styled.div`
   backface-visibility: hidden;
 `
 
-const LayoutLocalList = ({ children }: { children: ReactNode }) => {
+const LayoutLocal = ({ children }: { children: ReactNode }) => {
   return (
     <Local className="noise">
       {/* TODO: SEO */}
-      <Seo pageTitle={'地方別'} pageDescription={''} pagePath={''} />
+      <Seo />
       <Header />
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -36,7 +37,7 @@ const LayoutLocalList = ({ children }: { children: ReactNode }) => {
             <LocalMain>
               <WrapperContent>
                 <MainContent>{children}</MainContent>
-                {/* <Sidebar></Sidebar> */}
+                <Sidebar></Sidebar>
               </WrapperContent>
             </LocalMain>
           </Wrapper>
@@ -48,4 +49,4 @@ const LayoutLocalList = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export default LayoutLocalList
+export default LayoutLocal

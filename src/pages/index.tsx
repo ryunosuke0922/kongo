@@ -1,5 +1,5 @@
 import Card from '@/components/molecules/card'
-import Layout from '@/layouts/top'
+import Layout from '@/components/layouts/top'
 import type { MountainsData } from '@/types/mountains'
 import type { GetStaticProps, NextPage } from 'next'
 

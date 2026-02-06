@@ -1,4 +1,6 @@
-export default {
+import type { LocaleMessages } from './ja'
+
+const en: LocaleMessages = {
   TITLE: '100 Famous Japanese Mountains.',
   DESCRIPTION:
     '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',
@@ -19,3 +21,5 @@ export default {
   INFO: 'List of 100 Famous Mountains',
   INFO_NAME: 'Hisaya Fukada Selected 100 seats',
 }
+
+export default en

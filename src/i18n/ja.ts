@@ -1,4 +1,4 @@
-export default {
+const ja = {
   TITLE: '日本百名山',
   DESCRIPTION:
     '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',
@@ -19,3 +19,7 @@ export default {
   INFO: '百名山 一覧',
   INFO_NAME: '深田 久弥 選定100座',
 }
+
+export type LocaleMessages = typeof ja
+
+export default ja

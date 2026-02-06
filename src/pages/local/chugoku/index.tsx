@@ -1,6 +1,6 @@
 import { Heading3 } from '@/components/atoms/text/style'
 import Card from '@/components/molecules/card'
-import Layout from '@/layouts/local'
+import Layout from '@/components/layouts/local'
 import type { MountainsData } from '@/types/mountains'
 import type { GetStaticProps, NextPage } from 'next'
 import { useLocale } from '../../../i18n/index'

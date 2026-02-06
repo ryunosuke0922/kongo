@@ -5,37 +5,34 @@ type Post = {
 }
 
 async function getAllPosts(): Promise<Post[]> {
-  return [
-    { path: '/' },
-    { path: '/jp' },
-    { path: '/jp/local/hokkaido' },
-    { path: '/jp/local/tohoku' },
-    { path: '/jp/local/kanto' },
-    { path: '/jp/local/chubu' },
-    { path: '/jp/local/kansai' },
-    { path: '/jp/local/chugoku' },
-    { path: '/jp/local/shikoku' },
-    { path: '/jp/local/kyushu-okinawa' },
-    { path: '/en' },
-    { path: '/en/local/hokkaido' },
-    { path: '/en/local/tohoku' },
-    { path: '/en/local/kanto' },
-    { path: '/en/local/chubu' },
-    { path: '/en/local/kansai' },
-    { path: '/en/local/chugoku' },
-    { path: '/en/local/shikoku' },
-    { path: '/en/local/kyushu-okinawa' },
+  const regionPaths = [
+    '/local/hokkaido',
+    '/local/tohoku',
+    '/local/kanto',
+    '/local/chubu',
+    '/local/kansai',
+    '/local/chugoku',
+    '/local/shikoku',
+    '/local/kyushu-okinawa',
   ]
+
+  const basePaths = ['/', '/local', ...regionPaths]
+  const localizedPaths = ['ja', 'en'].flatMap((locale) => {
+    return [`/${locale}`, `/${locale}/local`, ...regionPaths.map((path) => `/${locale}${path}`)]
+  })
+
+  const allPaths = Array.from(new Set([...basePaths, ...localizedPaths]))
+
+  return allPaths.map((path) => ({ path }))
 }
 
 async function generateSitemapXml(): Promise<string> {
-  const appHost = 'https://www.famous-mountains-in-japan.com/'
-  const lastmod = '2023-01-01T00:00:00+00:00'
+  const appHost = 'https://www.famous-mountains-in-japan.com'
+  const lastmod = new Date().toISOString()
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
 
-  // ここでurlを足していく
   const posts = await getAllPosts()
   posts.forEach((post) => {
     xml += `
