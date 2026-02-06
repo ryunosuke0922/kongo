@@ -49,6 +49,26 @@ export const VerticalDescription = styled.p`
     display: block;
   }
 `
+
+export const HorizonDescription = styled.p`
+  font-size: 2rem;
+  line-height: 1.8;
+  text-align: right;
+  display: block;
+  margin-left: auto;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2.4rem;
+  }
+
+  @media screen and (min-width: 1920px) {
+    font-size: 20px;
+  }
+
+  span {
+    display: block;
+  }
+`
 export const VerticalTextBoldLink = styled.div`
   font-size: 2.8rem;
   -ms-writing-mode: tb-rl;

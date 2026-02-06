@@ -37,12 +37,19 @@ export const FooterContent = styled.div`
   }
 `
 export const FooterContentEn = styled.div`
-  /* width: 70rem; */
+  width: 70rem;
   margin: 0 auto;
-  /* display: flex; */
-  /* justify-content: space-between; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  /* flex-direction: row-reverse; */
+  text-align: center;
+
+  > div {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
   }

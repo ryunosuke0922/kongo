@@ -1,5 +1,6 @@
 import {
   Heading3,
+  HorizonDescription,
   HorizonTitle,
   VerticalDescription,
   VerticalTitle,
@@ -130,14 +131,25 @@ const LayoutTop = ({ children, controls, resultSummary }: Props) => {
 
                   <div className="main__head-description">
                     <ParallaxItem factor={0.1}>
-                      <VerticalDescription>
-                        <span>{t.DESCRIPTION_1}</span>
-                        <span>{t.DESCRIPTION_2}</span>
-                        <span>{t.DESCRIPTION_3}</span>
-                        <span>{t.DESCRIPTION_4}</span>
-                        <span>{t.DESCRIPTION_5}</span>
-                        <span>{t.DESCRIPTION_6}</span>
-                      </VerticalDescription>
+                      {locale === 'en' ? (
+                        <HorizonDescription>
+                          <span>{t.DESCRIPTION_1}</span>
+                          <span>{t.DESCRIPTION_2}</span>
+                          <span>{t.DESCRIPTION_3}</span>
+                          <span>{t.DESCRIPTION_4}</span>
+                          <span>{t.DESCRIPTION_5}</span>
+                          <span>{t.DESCRIPTION_6}</span>
+                        </HorizonDescription>
+                      ) : (
+                        <VerticalDescription>
+                          <span>{t.DESCRIPTION_1}</span>
+                          <span>{t.DESCRIPTION_2}</span>
+                          <span>{t.DESCRIPTION_3}</span>
+                          <span>{t.DESCRIPTION_4}</span>
+                          <span>{t.DESCRIPTION_5}</span>
+                          <span>{t.DESCRIPTION_6}</span>
+                        </VerticalDescription>
+                      )}
                     </ParallaxItem>
                   </div>
                 </div>
@@ -166,14 +178,25 @@ const LayoutTop = ({ children, controls, resultSummary }: Props) => {
 
                   <div className="main__head-description">
                     <div>
-                      <VerticalDescription>
-                        <span>{t.DESCRIPTION_1}</span>
-                        <span>{t.DESCRIPTION_2}</span>
-                        <span>{t.DESCRIPTION_3}</span>
-                        <span>{t.DESCRIPTION_4}</span>
-                        <span>{t.DESCRIPTION_5}</span>
-                        <span>{t.DESCRIPTION_6}</span>
-                      </VerticalDescription>
+                      {locale === 'en' ? (
+                        <HorizonDescription>
+                          <span>{t.DESCRIPTION_1}</span>
+                          <span>{t.DESCRIPTION_2}</span>
+                          <span>{t.DESCRIPTION_3}</span>
+                          <span>{t.DESCRIPTION_4}</span>
+                          <span>{t.DESCRIPTION_5}</span>
+                          <span>{t.DESCRIPTION_6}</span>
+                        </HorizonDescription>
+                      ) : (
+                        <VerticalDescription>
+                          <span>{t.DESCRIPTION_1}</span>
+                          <span>{t.DESCRIPTION_2}</span>
+                          <span>{t.DESCRIPTION_3}</span>
+                          <span>{t.DESCRIPTION_4}</span>
+                          <span>{t.DESCRIPTION_5}</span>
+                          <span>{t.DESCRIPTION_6}</span>
+                        </VerticalDescription>
+                      )}
                     </div>
                   </div>
                 </div>
