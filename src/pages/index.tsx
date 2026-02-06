@@ -1,18 +1,32 @@
 import Card from '@/components/molecules/card'
 import Layout from '@/layouts/top'
-import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
-import type { NextPage } from 'next'
+import type { MountainsData } from '@/types/mountains'
+import type { GetStaticProps, NextPage } from 'next'
 
-const Home: NextPage = () => {
+type Props = {
+  mountains: MountainsData[]
+}
+
+const Home: NextPage<Props> = ({ mountains }) => {
   return (
     <Layout>
-      {get100FamousMountainsInJapan().map((e) => (
+      {mountains.map((e) => (
         <div key={e.no}>
           <Card data={e}></Card>
         </div>
       ))}
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const mountains: MountainsData[] = (await import('@/data/mountains.json')).default
+
+  return {
+    props: {
+      mountains,
+    },
+  }
 }
 
 export default Home

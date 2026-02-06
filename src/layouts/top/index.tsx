@@ -11,7 +11,7 @@ import Header from '@/components/organisms/header/header'
 import Sidebar from '@/components/organisms/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/top/style'
 import { motion } from 'framer-motion'
-import { FC } from 'react'
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useLocale } from '../../i18n/index'
 
@@ -27,7 +27,7 @@ const WrapperMain = styled.div`
   backface-visibility: hidden;
 `
 
-const LayoutTop: FC = ({ children }) => {
+const LayoutTop = ({ children }: { children: ReactNode }) => {
   const { t, locale } = useLocale()
 
   return (

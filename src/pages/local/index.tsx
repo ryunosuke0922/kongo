@@ -10,57 +10,39 @@ const Local: NextPage = () => {
   return (
     <Layout>
       <VerticalTextBoldLink>
-        <Link href={'/'} passHref>
-          <a>{t.TITLE}</a>
-        </Link>
+        <Link href={'/'}>{t.TITLE}</Link>
         <i></i>
       </VerticalTextBoldLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/hokkaido'} passHref>
-          <a>{t.HOKKAIDO_REGION}</a>
-        </Link>
+        <Link href={'/local/hokkaido'}>{t.HOKKAIDO_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/tohoku'} passHref>
-          <a>{t.TOHOKU_REGION}</a>
-        </Link>
+        <Link href={'/local/tohoku'}>{t.TOHOKU_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/kanto'} passHref>
-          <a>{t.KANTO_REGION}</a>
-        </Link>
+        <Link href={'/local/kanto'}>{t.KANTO_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/chubu'} passHref>
-          <a>{t.TOHOKU_REGION}</a>
-        </Link>
+        <Link href={'/local/chubu'}>{t.TOHOKU_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/kansai'} passHref>
-          <a>{t.KANSAI_REGION}</a>
-        </Link>
+        <Link href={'/local/kansai'}>{t.KANSAI_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/chugoku'} passHref>
-          <a>{t.CHUGOKU_REGION}</a>
-        </Link>
+        <Link href={'/local/chugoku'}>{t.CHUGOKU_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/shikoku'} passHref>
-          <a>{t.SHIKOKU_REGION}</a>
-        </Link>
+        <Link href={'/local/shikoku'}>{t.SHIKOKU_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
       <VerticalTextNormalLink>
-        <Link href={'/local/kyushu-okinawa'} passHref>
-          <a>{t.KYUSHU_OKINAWA_REGION}</a>
-        </Link>
+        <Link href={'/local/kyushu-okinawa'}>{t.KYUSHU_OKINAWA_REGION}</Link>
         <i></i>
       </VerticalTextNormalLink>
     </Layout>

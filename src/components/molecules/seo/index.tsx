@@ -45,11 +45,6 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
         property="og:image"
         content={'https://www.famous-mountains-in-japan.com/public/org.png'}
       />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap"
-        rel="stylesheet"
-      />
       <link rel="canonical" href={url} />
       <meta name="google-site-verification" content="gsUZ2YcVTPf9cquxfCKRyDeZJW35s4kFIn5MpXJx0NM" />
       <script

@@ -49,17 +49,11 @@ const Err404: NextPage = () => {
 
   return (
     <Err>
-      {/* <Header /> */}
-      {/* <main className="main container"> */}
       <div className="error">
         <h1>404</h1>
         <h2>Page not found</h2>
-        <Link href={'/'} passHref>
-          <a>{t.TITLE}</a>
-        </Link>
+        <Link href={'/'}>{t.TITLE}</Link>
       </div>
-      {/* </main> */}
-      {/* <Footer /> */}
     </Err>
   )
 }

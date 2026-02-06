@@ -3,7 +3,7 @@ import Footer from '@/components/organisms/footer/footer'
 import Header from '@/components/organisms/header/header'
 import { MainContent, Wrapper, WrapperContent } from '@/layouts/localList/style'
 import { motion } from 'framer-motion'
-import { FC } from 'react'
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const Local = styled.div`
@@ -17,7 +17,7 @@ const LocalMain = styled.div`
   backface-visibility: hidden;
 `
 
-const LayoutLocalList: FC = ({ children }) => {
+const LayoutLocalList = ({ children }: { children: ReactNode }) => {
   return (
     <Local className="noise">
       {/* TODO: SEO */}

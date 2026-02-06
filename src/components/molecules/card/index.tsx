@@ -1,4 +1,4 @@
-import { MountainsData } from 'famous-mountains-in-japan'
+import { MountainsData } from '@/types/mountains'
 import { useLocale } from '../../../i18n/index'
 import { Card, TextBox, TextId, TextMountain, TextName, TextWrapper } from './style'
 
@@ -6,7 +6,7 @@ type Props = {
   data: MountainsData
 }
 
-const EnhancedCard = ({ data }: Props): JSX.Element => {
+const EnhancedCard = ({ data }: Props) => {
   const { locale } = useLocale()
 
   return (

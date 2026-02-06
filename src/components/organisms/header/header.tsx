@@ -2,7 +2,7 @@ import { HeaderButton, HeaderInner, HeaderWrapper } from '@/components/organisms
 import Link from 'next/link'
 import { useLocale } from '../../../i18n/index'
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const { t, locale } = useLocale()
 
   return (
@@ -15,12 +15,12 @@ const Header = (): JSX.Element => {
           {locale === 'en' ? (
             <div>
               <button className="is-current">
-                <Link href="/en" locale="en" passHref>
+                <Link href="/en" locale="en">
                   en
                 </Link>
               </button>
               <button>
-                <Link href="/ja" locale="ja" passHref>
+                <Link href="/ja" locale="ja">
                   jp
                 </Link>
               </button>
@@ -28,12 +28,12 @@ const Header = (): JSX.Element => {
           ) : (
             <div>
               <button>
-                <Link href="/en" locale="en" passHref>
+                <Link href="/en" locale="en">
                   en
                 </Link>
               </button>
               <button className="is-current">
-                <Link href="/ja" locale="ja" passHref>
+                <Link href="/ja" locale="ja">
                   jp
                 </Link>
               </button>
