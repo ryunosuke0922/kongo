@@ -1,10 +1,17 @@
 import { HeaderButton, HeaderInner, HeaderWrapper } from '@/components/features/header/style'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useLocale } from '../../../i18n/index'
 
 const Header = () => {
   const { t, locale } = useLocale()
+  const router = useRouter()
+
+  const localeHref = {
+    pathname: router.pathname,
+    query: router.query,
+  }
 
   return (
     <header>
@@ -21,33 +28,26 @@ const Header = () => {
         </HeaderInner>
         <nav aria-label="Language switcher">
           <HeaderButton>
-            {locale === 'en' ? (
-              <div>
-                <button className="is-current">
-                  <Link href="/en" locale="en" aria-label="Switch language to English">
-                    en
-                  </Link>
-                </button>
-                <button>
-                  <Link href="/ja" locale="ja" aria-label="Switch language to Japanese">
-                    jp
-                  </Link>
-                </button>
-              </div>
-            ) : (
-              <div>
-                <button>
-                  <Link href="/en" locale="en" aria-label="Switch language to English">
-                    en
-                  </Link>
-                </button>
-                <button className="is-current">
-                  <Link href="/ja" locale="ja" aria-label="Switch language to Japanese">
-                    jp
-                  </Link>
-                </button>
-              </div>
-            )}
+            <div>
+              <Link
+                href={localeHref}
+                locale="en"
+                aria-label="Switch language to English"
+                aria-current={locale === 'en' ? 'page' : undefined}
+                className={locale === 'en' ? 'is-current' : ''}
+              >
+                en
+              </Link>
+              <Link
+                href={localeHref}
+                locale="ja"
+                aria-label="Switch language to Japanese"
+                aria-current={locale === 'ja' ? 'page' : undefined}
+                className={locale === 'ja' ? 'is-current' : ''}
+              >
+                jp
+              </Link>
+            </div>
           </HeaderButton>
         </nav>
       </HeaderWrapper>

@@ -10,10 +10,28 @@ import {
   FooterWrapper,
 } from '@/components/features/footer/style'
 import { REGION_LINKS } from '@/constants/regionLinks'
-import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { faGithubSquare, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useLocale } from '../../../i18n/index'
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://github.com/ryunosuke0922/kongo',
+    ariaLabel: 'GitHub repository (opens in a new tab)',
+    icon: faGithubSquare,
+  },
+  {
+    href: 'https://x.com/yutomaeda3',
+    ariaLabel: 'X @yutomaeda3 (opens in a new tab)',
+    icon: faXTwitter,
+  },
+  {
+    href: 'https://x.com/ryuuuu092',
+    ariaLabel: 'X @ryuuuu092 (opens in a new tab)',
+    icon: faXTwitter,
+  },
+] as const
 
 const Footer = () => {
   const { t, locale } = useLocale()
@@ -52,30 +70,17 @@ const Footer = () => {
             )}
           </nav>
           <div className="footer__sns">
-            <a
-              href={'https://github.com/ryunosuke0922/kongo'}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub repository (opens in a new tab)"
-            >
-              <FontAwesomeIcon icon={faGithubSquare} />
-            </a>
-            <a
-              href={'https://twitter.com/yutomaeda3'}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Twitter @yutomaeda3 (opens in a new tab)"
-            >
-              <FontAwesomeIcon icon={faTwitterSquare} />
-            </a>
-            <a
-              href={'https://x.com/ryuuuu092'}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="X @ryuuuu092 (opens in a new tab)"
-            >
-              <FontAwesomeIcon icon={faTwitterSquare} />
-            </a>
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={link.ariaLabel}
+                key={link.href}
+              >
+                <FontAwesomeIcon icon={link.icon} />
+              </a>
+            ))}
           </div>
           <div className="footer__copyright">
             <p>© 2022</p>

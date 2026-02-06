@@ -1,4 +1,5 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import { UI_COLORS } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -34,7 +35,7 @@ export const MainContent = styled.div`
   max-width: 1180px;
   margin: 0;
   padding: 5.6rem 2.4rem 16rem;
-  background-color: #f6f6f6;
+  background-color: ${UI_COLORS.surfacePrimary};
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -49,25 +50,5 @@ export const MainContent = styled.div`
   @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
     padding: 56px 24px 160px;
     gap: 20px 30px;
-  }
-`
-
-export const FilterArea = styled.div`
-  width: 100%;
-  margin: 0 0 1.6rem;
-`
-
-export const FilterResult = styled.p`
-  width: 100%;
-  margin: 0 0 2rem;
-  font-size: 2rem;
-  color: #555;
-
-  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
-    font-size: 2.4rem;
-  }
-
-  @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
-    font-size: 20px;
   }
 `

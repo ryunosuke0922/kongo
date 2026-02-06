@@ -1,9 +1,11 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import { UI_COLORS, UI_SPACE } from '@/constants/ui'
+import { controlFieldBase } from '@/components/molecules/sharedControls/style'
 import styled from 'styled-components'
 
 export const SearchWrapper = styled.div`
   width: 100%;
-  max-width: 48rem;
+  max-width: 52rem;
   position: relative;
 
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
@@ -13,27 +15,20 @@ export const SearchWrapper = styled.div`
 
 export const SearchIcon = styled.span`
   position: absolute;
-  left: 1.4rem;
+  left: ${UI_SPACE.md};
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.8rem;
-  color: #555;
+  color: ${UI_COLORS.textSecondary};
   pointer-events: none;
 `
 
 export const SearchInput = styled.input`
-  width: 100%;
-  height: 5rem;
+  ${controlFieldBase}
   padding: 0 4.8rem 0 4rem;
-  border: 1px solid rgba(50, 50, 50, 0.2);
-  border-radius: 0.8rem;
-  background-color: #f6f6f6;
-  font-size: 1.8rem;
-  color: #333;
 
-  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
-    height: 6rem;
-    font-size: 2.2rem;
+  &::placeholder {
+    color: ${UI_COLORS.textSecondary};
   }
 `
 
@@ -44,9 +39,18 @@ export const ClearButton = styled.button`
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color: #555;
+  color: ${UI_COLORS.textSecondary};
   font-size: 2rem;
   line-height: 1;
-  padding: 0.4rem;
+  padding: ${UI_SPACE.xs};
   cursor: pointer;
+
+  &:hover {
+    color: ${UI_COLORS.textPrimary};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${UI_COLORS.focus};
+    outline-offset: 2px;
+  }
 `

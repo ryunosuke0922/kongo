@@ -2,18 +2,19 @@ import Seo from '@/components/molecules/seo'
 import Footer from '@/components/features/footer/footer'
 import Header from '@/components/features/header/header'
 import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/localList/style'
+import { UI_COLORS } from '@/constants/ui'
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const Local = styled.div`
-  background: #fafafa;
+  background: ${UI_COLORS.pageBackground};
   position: relative;
 `
 const LocalMain = styled.div`
-  background: #f6f6f6;
-  border-top: 1px solid rgba(50, 50, 50, 0.05);
-  border-bottom: 1px solid rgba(50, 50, 50, 0.05);
+  background: ${UI_COLORS.surfacePrimary};
+  border-top: 1px solid ${UI_COLORS.borderSubtle};
+  border-bottom: 1px solid ${UI_COLORS.borderSubtle};
   backface-visibility: hidden;
 `
 

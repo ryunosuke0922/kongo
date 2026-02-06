@@ -1,4 +1,5 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import { UI_COLORS, UI_RADIUS, UI_SPACE } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.div`
@@ -19,7 +20,7 @@ export const HeaderInner = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 2rem 4rem;
+  padding: ${UI_SPACE.xl} 4rem;
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
   }
   @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
@@ -48,31 +49,31 @@ export const HeaderButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f6f6f6;
+    background-color: ${UI_COLORS.surfacePrimary};
     overflow: hidden;
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     border-left: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 0.6rem;
+    border-radius: ${UI_RADIUS.sm};
     box-shadow:
-      -2px -2px 5px rgba(255, 255, 255, 1),
-      3px 3px 5px rgba(0, 0, 0, 0.3);
-    button {
-      width: 100%;
-      display: block;
-      border: none;
-      padding: 0;
-      background-color: #f6f6f6;
+      -2px -2px 5px ${UI_COLORS.shadowLight},
+      3px 3px 5px ${UI_COLORS.shadowStrong};
+    a {
+      display: inline-block;
+      font-size: 2.6rem;
+      color: ${UI_COLORS.textPrimary};
+      padding: 1.4rem 3.6rem;
+      background-color: ${UI_COLORS.surfacePrimary};
+      transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
       &.is-current {
-        background-color: #555;
-        a {
-          color: #fafafa;
-        }
+        background-color: ${UI_COLORS.textSecondary};
+        color: ${UI_COLORS.textInverted};
       }
-      a {
-        display: inline-block;
-        font-size: 2.6rem;
-        color: #333;
-        padding: 1.4rem 3.6rem;
+
+      &:focus-visible {
+        outline: 2px solid ${UI_COLORS.focus};
+        outline-offset: -2px;
       }
     }
   }

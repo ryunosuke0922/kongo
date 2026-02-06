@@ -1,16 +1,15 @@
-import type { SortType } from '@/hooks/useMountainFilter'
 import { SortLabel, SortTagButton, SortTags, SortWrapper } from './style'
 
 type Option = {
-  value: SortType
+  value: string
   label: string
 }
 
 type Props = {
-  value: SortType
+  value: string
   label: string
   options: Option[]
-  onChange: (value: SortType) => void
+  onChange: (value: string) => void
 }
 
 const SortSelect = ({ value, label, options, onChange }: Props) => {

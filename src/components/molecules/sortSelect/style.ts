@@ -1,4 +1,6 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import { ControlLabel } from '@/components/molecules/sharedControls/style'
+import { UI_COLORS, UI_RADIUS, UI_SPACE } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const SortWrapper = styled.div`
@@ -6,36 +8,37 @@ export const SortWrapper = styled.div`
   display: block;
 `
 
-export const SortLabel = styled.span`
-  display: block;
-  margin: 0 0 0.8rem;
-  font-size: 1.6rem;
-  color: #555;
-
-  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
-    font-size: 2rem;
-  }
-`
+export const SortLabel = styled(ControlLabel)``
 
 export const SortTags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: ${UI_SPACE.sm};
 `
 
 export const SortTagButton = styled.button<{ $active: boolean }>`
   min-height: 5rem;
-  border: 1px solid rgba(50, 50, 50, 0.2);
-  border-radius: 999px;
-  background-color: ${({ $active }) => ($active ? '#333' : '#f6f6f6')};
-  color: ${({ $active }) => ($active ? '#fafafa' : '#333')};
+  border: 1px solid ${UI_COLORS.borderSoft};
+  border-radius: ${UI_RADIUS.pill};
+  background-color: ${({ $active }) =>
+    $active ? UI_COLORS.textPrimary : UI_COLORS.surfacePrimary};
+  color: ${({ $active }) => ($active ? UI_COLORS.textInverted : UI_COLORS.textPrimary)};
   font-size: 1.6rem;
   line-height: 1;
-  padding: 0 1.6rem;
+  padding: 0 ${UI_SPACE.lg};
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
     transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${UI_COLORS.focus};
+    outline-offset: 2px;
   }
 
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {

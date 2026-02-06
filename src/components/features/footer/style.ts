@@ -1,16 +1,17 @@
+import { UI_COLORS } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const FooterWrapper = styled.div`
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #efefef;
+  background-color: ${UI_COLORS.surfaceSecondary};
   @media screen and (max-width: 768px) {
   }
 `
 export const FooterInner = styled.div`
   padding: 8.7rem 8.7rem 6rem;
-  background-color: #efefef;
+  background-color: ${UI_COLORS.surfaceSecondary};
   display: flex;
   justify-content: center;
   align-items: center;

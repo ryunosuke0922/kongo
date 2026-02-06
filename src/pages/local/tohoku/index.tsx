@@ -1,5 +1,5 @@
 import { Heading3 } from '@/components/atoms/text/style'
-import Card from '@/components/molecules/card'
+import MountainCardList from '@/components/molecules/mountainCardList'
 import Layout from '@/components/layouts/local'
 import type { MountainsData } from '@/types/mountains'
 import type { GetStaticProps, NextPage } from 'next'
@@ -17,11 +17,7 @@ const Home: NextPage<Props> = ({ mountains }) => {
       <div className="main__content-title">
         <Heading3>{t.TOHOKU_REGION}</Heading3>
       </div>
-      {mountains.map((e) => (
-        <div key={e.no}>
-          <Card data={e}></Card>
-        </div>
-      ))}
+      <MountainCardList mountains={mountains} />
     </Layout>
   )
 }

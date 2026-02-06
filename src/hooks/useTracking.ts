@@ -19,13 +19,19 @@ const usePageTracking = () => {
       })
     }
 
-    handleRouteChange(router.asPath)
     router.events.on('routeChangeComplete', handleRouteChange)
 
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [router.asPath, router.events])
+  }, [router.events])
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: 'pageview',
+      page: router.asPath,
+    })
+  }, [router.asPath])
 }
 
 export default usePageTracking

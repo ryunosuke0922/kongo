@@ -2,7 +2,16 @@
   "name": "kongo",
   "version": "1.0.0",
   "private": true,
-  "description": "日本百名山の一覧",
+  "description": "日本百名山を日英対応で閲覧できる Next.js サイト",
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "japan",
+    "mountains",
+    "seo",
+    "i18n"
+  ],
   "engines": {
     "node": ">=18.x"
   },
@@ -12,12 +21,18 @@
   },
   "author": "ryunosuke0922 (https://github.com/ryunosuke0922)",
   "homepage": "https://www.famous-mountains-in-japan.com",
+  "bugs": {
+    "url": "https://github.com/ryunosuke0922/kongo/issues"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir src",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
+    "typecheck": "tsc --noEmit",
+    "check": "yarn lint && yarn typecheck && yarn build",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {

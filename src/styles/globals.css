@@ -1,3 +1,14 @@
+:root {
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-bg-page: #fafafa;
+  --color-bg-surface: #f6f6f6;
+  --color-accent-github: #000;
+  --color-accent-twitter: #00acee;
+  --color-accent-x: #111;
+  --color-focus: #333;
+}
+
 html,
 body {
   padding: 0;
@@ -16,8 +27,8 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  color: #333;
-  background: #fafafa;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
 }
 
 a {
@@ -27,7 +38,7 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #333;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -50,7 +61,7 @@ button:focus-visible {
   max-height: calc(100vh - 10rem);
   padding: 0 10rem 0;
   position: relative;
-  background-color: #fafafa;
+  background-color: var(--color-bg-page);
 }
 .main__mv-pc {
   display: block;
@@ -135,18 +146,19 @@ button:focus-visible {
   margin: 2rem 0 0;
 }
 .footer__sns > a:first-child:hover svg {
-  color: #000;
+  color: var(--color-accent-github);
 }
-.footer__sns > a:last-child:hover svg {
-  color: #00acee;
+.footer__sns > a:nth-child(2):hover svg,
+.footer__sns > a:nth-child(3):hover svg {
+  color: var(--color-accent-x);
 }
 .footer__sns svg {
   width: 5rem;
   min-width: 5rem;
   height: 5rem;
   min-height: 5rem;
-  color: #555;
-  transition: all ease 0.4s;
+  color: var(--color-text-secondary);
+  transition: color ease 0.3s;
 }
 .footer__sns svg * {
   fill: currentColor;
@@ -157,7 +169,7 @@ button:focus-visible {
 .footer__copyright p {
   font-size: 2rem;
   line-height: 1;
-  color: #555;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -373,5 +385,41 @@ button:focus-visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+}
+
+@media print {
+  html,
+  body {
+    font-size: 12pt;
+    background: #fff;
+    color: #000;
+  }
+
+  .noise::after,
+  header,
+  footer,
+  .main__mv-pc,
+  .main__mv-sp,
+  .main__content-controls {
+    display: none !important;
+  }
+
+  .container,
+  .container-local {
+    padding: 0 !important;
+  }
+
+  .main__content-title {
+    margin-bottom: 1rem !important;
+  }
+
+  .main__content-statistics {
+    margin-bottom: 1.2rem !important;
+  }
+
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }

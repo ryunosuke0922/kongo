@@ -28,6 +28,16 @@ const ja = {
   SEARCH_RESULT: '件',
   NO_SEARCH_RESULTS: '該当する山がありません',
   SEARCH_CLEAR_ARIA: '検索入力をクリア',
+  PREFECTURE_LABEL: '都道府県',
+  PREFECTURE_ALL: 'すべて',
+  ELEVATION_LABEL: '標高',
+  ELEVATION_ALL: 'すべて',
+  ELEVATION_GTE_3000: '3000m以上',
+  ELEVATION_2000_3000: '2000m〜3000m',
+  ELEVATION_LT_2000: '2000m未満',
+  STATS_HIGHEST: '最高',
+  STATS_LOWEST: '最低',
+  STATS_AVERAGE: '平均',
 }
 
 export type LocaleMessages = typeof ja

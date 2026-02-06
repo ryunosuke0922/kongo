@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import 'modern-css-reset/dist/reset.min.css'
 import '../styles/globals.css'
-import '../styles/Home.module.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   usePageTracking()

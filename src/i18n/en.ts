@@ -30,6 +30,16 @@ const en: LocaleMessages = {
   SEARCH_RESULT: 'results',
   NO_SEARCH_RESULTS: 'No matching mountains found',
   SEARCH_CLEAR_ARIA: 'Clear search input',
+  PREFECTURE_LABEL: 'Prefecture',
+  PREFECTURE_ALL: 'All',
+  ELEVATION_LABEL: 'Elevation',
+  ELEVATION_ALL: 'All',
+  ELEVATION_GTE_3000: '3000m and above',
+  ELEVATION_2000_3000: '2000m to 3000m',
+  ELEVATION_LT_2000: 'Below 2000m',
+  STATS_HIGHEST: 'Highest',
+  STATS_LOWEST: 'Lowest',
+  STATS_AVERAGE: 'Average',
 }
 
 export default en

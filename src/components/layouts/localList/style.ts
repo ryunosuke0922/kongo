@@ -1,4 +1,5 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import { UI_COLORS } from '@/constants/ui'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -29,7 +30,7 @@ export const MainContent = styled.div`
   width: 100%;
   margin: 0;
   padding: 5.6rem 2.4rem 16rem;
-  background-color: #f6f6f6;
+  background-color: ${UI_COLORS.surfacePrimary};
   display: flex;
   justify-content: space-between;
   align-items: center;

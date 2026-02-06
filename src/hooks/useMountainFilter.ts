@@ -3,6 +3,7 @@ import type { MountainsData } from '@/types/mountains'
 import { useEffect, useMemo, useState } from 'react'
 
 export type SortType = 'no' | 'elevation-asc' | 'elevation-desc' | 'kana'
+export type ElevationFilterType = 'all' | 'gte3000' | 'between2000_3000' | 'lt2000'
 
 const normalizeText = (value: string): string => {
   return value.trim().toLowerCase()
@@ -19,6 +20,8 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('')
   const [sortType, setSortType] = useState<SortType>('no')
+  const [prefectureFilter, setPrefectureFilter] = useState('all')
+  const [elevationFilter, setElevationFilter] = useState<ElevationFilterType>('all')
 
   useEffect(() => {
     const timerId = window.setTimeout(() => {
@@ -40,8 +43,30 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
 
             return candidates.some((candidate) => normalizeText(candidate).includes(query))
           })
+    const filteredByPrefecture =
+      prefectureFilter === 'all'
+        ? filtered
+        : filtered.filter((mountain) => {
+            const value = locale === 'en' ? mountain.prefecturesEn : mountain.prefectures
 
-    const sorted = [...filtered]
+            return value === prefectureFilter
+          })
+
+    const filteredByElevation =
+      elevationFilter === 'all'
+        ? filteredByPrefecture
+        : filteredByPrefecture.filter((mountain) => {
+            if (elevationFilter === 'gte3000') {
+              return mountain.elevation >= 3000
+            }
+            if (elevationFilter === 'between2000_3000') {
+              return mountain.elevation >= 2000 && mountain.elevation < 3000
+            }
+
+            return mountain.elevation < 2000
+          })
+
+    const sorted = [...filteredByElevation]
     if (sortType === 'elevation-asc') {
       sorted.sort((a, b) => a.elevation - b.elevation)
     } else if (sortType === 'elevation-desc') {
@@ -53,7 +78,7 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
     }
 
     return sorted
-  }, [debouncedSearchQuery, locale, mountains, sortType])
+  }, [debouncedSearchQuery, locale, mountains, sortType, prefectureFilter, elevationFilter])
 
   return {
     filteredMountains,
@@ -61,6 +86,10 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
     setSearchQuery,
     sortType,
     setSortType,
+    prefectureFilter,
+    setPrefectureFilter,
+    elevationFilter,
+    setElevationFilter,
     resultCount: filteredMountains.length,
   }
 }

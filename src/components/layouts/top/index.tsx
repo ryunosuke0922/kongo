@@ -11,28 +11,23 @@ import Slideshow from '@/components/molecules/slideshow'
 import Footer from '@/components/features/footer/footer'
 import Header from '@/components/features/header/header'
 import Sidebar from '@/components/features/sidebar'
-import {
-  FilterArea,
-  FilterResult,
-  MainContent,
-  Wrapper,
-  WrapperContent,
-} from '@/components/layouts/top/style'
+import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/top/style'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { useLocale } from '@/i18n/index'
+import { UI_COLORS } from '@/constants/ui'
 
 const Top = styled.div`
-  background: #fafafa;
+  background: ${UI_COLORS.pageBackground};
   position: relative;
 `
 
 const WrapperMain = styled.div`
-  background: #f6f6f6;
-  border-top: 1px solid rgba(50, 50, 50, 0.05);
-  border-bottom: 1px solid rgba(50, 50, 50, 0.05);
+  background: ${UI_COLORS.surfacePrimary};
+  border-top: 1px solid ${UI_COLORS.borderSubtle};
+  border-bottom: 1px solid ${UI_COLORS.borderSubtle};
   backface-visibility: hidden;
 `
 
@@ -94,8 +89,6 @@ const frontColumnImages = [
 
 type Props = {
   children: ReactNode
-  controls?: ReactNode
-  resultSummary?: ReactNode
 }
 
 type DescriptionProps = {
@@ -123,7 +116,7 @@ const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
   )
 }
 
-const LayoutTop = ({ children, controls, resultSummary }: Props) => {
+const LayoutTop = ({ children }: Props) => {
   const { t, locale } = useLocale()
   const descriptions = [
     t.DESCRIPTION_1,
@@ -228,8 +221,6 @@ const LayoutTop = ({ children, controls, resultSummary }: Props) => {
                     <span>{t.INFO_NAME}</span>
                   </Heading3>
                 </div>
-                {controls ? <FilterArea>{controls}</FilterArea> : null}
-                {resultSummary ? <FilterResult>{resultSummary}</FilterResult> : null}
                 {children}
               </MainContent>
               <Sidebar></Sidebar>

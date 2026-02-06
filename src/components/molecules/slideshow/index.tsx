@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 type SlideshowImage = {
@@ -40,8 +41,10 @@ const Slideshow = ({ images, intervalMs = 5000, duration = 1.4 }: Props) => {
   const imageWidth = currentImage.width ?? 1280
   const imageHeight = currentImage.height ?? 768
 
+  const imageSrc = currentImage.webp || currentImage.jpg
+
   return (
-    <AnimatePresence mode="sync" initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={`${currentImage.jpg}-${currentIndex}`}
         initial={{ opacity: 0 }}
@@ -49,16 +52,13 @@ const Slideshow = ({ images, intervalMs = 5000, duration = 1.4 }: Props) => {
         exit={{ opacity: 0 }}
         transition={{ duration, ease: 'easeInOut' }}
       >
-        <picture>
-          <source type="image/webp" srcSet={currentImage.webp} />
-          <source type="image/jpeg" srcSet={currentImage.jpg} />
-          <img
-            src={currentImage.jpg}
-            alt={currentImage.alt ?? 'Famous mountain landscape'}
-            width={imageWidth}
-            height={imageHeight}
-          />
-        </picture>
+        <Image
+          src={imageSrc}
+          alt={currentImage.alt ?? 'Famous mountain landscape'}
+          width={imageWidth}
+          height={imageHeight}
+          sizes="(max-width: 768px) 48rem, (max-width: 1920px) 88rem, 880px"
+        />
       </motion.div>
     </AnimatePresence>
   )
