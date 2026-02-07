@@ -1,5 +1,5 @@
-import { get100FamousMountainsInJapan } from 'famous-mountains-in-japan'
-import type { MountainsData } from 'famous-mountains-in-japan'
+import mountainsData from '@/data/mountains.json'
+import type { MountainsData } from '@/types/mountains'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useLocale } from '../../../i18n/index'
@@ -183,7 +183,7 @@ const Seo = ({ pageTitle, pageDescription, pagePath }: Props) => {
     })),
   }
 
-  const allMountains = uniqueByNo(get100FamousMountainsInJapan())
+  const allMountains = uniqueByNo(mountainsData as MountainsData[])
   const regionIds = REGION_MOUNTAIN_IDS[pathname]
   let targetMountains: MountainsData[] = []
   if (pathname === '/') {
