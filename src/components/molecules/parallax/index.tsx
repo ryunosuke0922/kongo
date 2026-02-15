@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 
 type Props = {
   children: ReactNode
@@ -7,34 +7,39 @@ type Props = {
 
 const ParallaxItem = ({ children, factor }: Props) => {
   const domRef = useRef<HTMLDivElement>(null)
+  const rafIdRef = useRef<number | null>(null)
   const targetFactor = factor ?? 0.15
-  const [offsetY, setOffsetY] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => {
+    const applyTransform = () => {
+      rafIdRef.current = null
+
       if (domRef.current !== null) {
         const scrollY = window.pageYOffset
-        setOffsetY(scrollY * targetFactor * -1)
+        const offsetY = scrollY * targetFactor * -1
+        domRef.current.style.transform = `translate3d(0, ${offsetY}px, 0)`
       }
     }
 
+    const onScroll = () => {
+      if (rafIdRef.current !== null) {
+        return
+      }
+
+      rafIdRef.current = window.requestAnimationFrame(applyTransform)
+    }
+
     onScroll()
-    document.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     return () => {
-      document.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', onScroll)
+      if (rafIdRef.current !== null) {
+        window.cancelAnimationFrame(rafIdRef.current)
+      }
     }
   }, [targetFactor])
 
-  return (
-    <div
-      ref={domRef}
-      style={{
-        transform: `translateY(${offsetY}px)`,
-      }}
-    >
-      {children}
-    </div>
-  )
+  return <div ref={domRef}>{children}</div>
 }
 export default ParallaxItem

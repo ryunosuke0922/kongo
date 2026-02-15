@@ -197,7 +197,6 @@ const LayoutTop = ({ children }: Props) => {
                     width={1280}
                     height={768}
                     className="main__image-sp-back"
-                    priority
                   />
                   <Image
                     src="/images/img01.jpg"
@@ -205,7 +204,6 @@ const LayoutTop = ({ children }: Props) => {
                     width={1280}
                     height={768}
                     className="main__image-sp-front"
-                    priority
                   />
                 </div>
               </div>

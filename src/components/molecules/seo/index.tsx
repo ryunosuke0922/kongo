@@ -44,13 +44,15 @@ const withTrailingSlash = (path: string): string => {
 
 const toLocalePath = (pathname: string, locale: 'ja' | 'en'): string => {
   const safePath = pathname || '/'
-  const prefix = locale === 'en' ? '/en' : '/ja'
-
-  if (safePath === '/') {
-    return withTrailingSlash(prefix)
+  if (locale === 'ja') {
+    return withTrailingSlash(safePath)
   }
 
-  return withTrailingSlash(`${prefix}${safePath}`)
+  if (safePath === '/') {
+    return '/en/'
+  }
+
+  return withTrailingSlash(`/en${safePath}`)
 }
 
 const toAbsoluteUrl = (path: string): string => {

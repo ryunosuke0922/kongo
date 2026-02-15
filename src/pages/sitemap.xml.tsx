@@ -4,6 +4,14 @@ type Post = {
   path: string
 }
 
+const withTrailingSlash = (path: string): string => {
+  if (path === '/') {
+    return '/'
+  }
+
+  return path.endsWith('/') ? path : `${path}/`
+}
+
 async function getAllPosts(): Promise<Post[]> {
   const regionPaths = [
     '/local/hokkaido',
@@ -16,12 +24,16 @@ async function getAllPosts(): Promise<Post[]> {
     '/local/kyushu-okinawa',
   ]
 
-  const basePaths = ['/', '/local', ...regionPaths]
-  const localizedPaths = ['ja', 'en'].flatMap((locale) => {
-    return [`/${locale}`, `/${locale}/local`, ...regionPaths.map((path) => `/${locale}${path}`)]
+  const jaPaths = ['/', '/local', ...regionPaths].map((path) => withTrailingSlash(path))
+  const enPaths = jaPaths.map((path) => {
+    if (path === '/') {
+      return '/en/'
+    }
+
+    return withTrailingSlash(`/en${path}`)
   })
 
-  const allPaths = Array.from(new Set([...basePaths, ...localizedPaths]))
+  const allPaths = Array.from(new Set([...jaPaths, ...enPaths]))
 
   return allPaths.map((path) => ({ path }))
 }
