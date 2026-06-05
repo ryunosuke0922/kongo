@@ -47,6 +47,8 @@ const TILE_ZOOM = 5
 const TILE_SCALE = TILE_SIZE * 2 ** TILE_ZOOM
 const MAP_ASPECT_RATIO = 16 / 9
 const MAP_PADDING_RATIO = 0.14
+const MIN_MAP_BOUNDS_WIDTH = 120
+const MIN_ZOOM_BOUNDS_WIDTH = 48
 const MAX_ZOOM_LEVEL = 4
 const ZOOM_STEP = 1.65
 const KEYBOARD_PAN_RATIO = 0.12
@@ -216,8 +218,8 @@ const getMapBounds = (mountains: UnifiedMountainData[]): MapBounds => {
   const right = Math.max(...projectedPoints.map((point) => point.x))
   const top = Math.min(...projectedPoints.map((point) => point.y))
   const bottom = Math.max(...projectedPoints.map((point) => point.y))
-  const width = Math.max(right - left, TILE_SIZE)
-  const height = Math.max(bottom - top, TILE_SIZE)
+  const width = Math.max(right - left, MIN_MAP_BOUNDS_WIDTH)
+  const height = Math.max(bottom - top, MIN_MAP_BOUNDS_WIDTH / MAP_ASPECT_RATIO)
   let paddedLeft = left - width * MAP_PADDING_RATIO
   let paddedTop = top - height * MAP_PADDING_RATIO
   let paddedWidth = width * (1 + MAP_PADDING_RATIO * 2)
@@ -244,8 +246,8 @@ const getMapBounds = (mountains: UnifiedMountainData[]): MapBounds => {
   return {
     left: clampedLeft,
     top: clampedTop,
-    width: Math.max(TILE_SIZE, clampedRight - clampedLeft),
-    height: Math.max(TILE_SIZE, clampedBottom - clampedTop),
+    width: Math.max(MIN_MAP_BOUNDS_WIDTH, clampedRight - clampedLeft),
+    height: Math.max(MIN_MAP_BOUNDS_WIDTH / MAP_ASPECT_RATIO, clampedBottom - clampedTop),
   }
 }
 
@@ -268,8 +270,8 @@ const getZoomedBounds = (
   }
 
   const zoomScale = ZOOM_STEP ** zoomLevel
-  const width = Math.max(TILE_SIZE, baseBounds.width / zoomScale)
-  const height = Math.max(TILE_SIZE / MAP_ASPECT_RATIO, baseBounds.height / zoomScale)
+  const width = Math.max(MIN_ZOOM_BOUNDS_WIDTH, baseBounds.width / zoomScale)
+  const height = Math.max(MIN_ZOOM_BOUNDS_WIDTH / MAP_ASPECT_RATIO, baseBounds.height / zoomScale)
   const centerX = baseBounds.left + baseBounds.width / 2 + panOffset.x
   const centerY = baseBounds.top + baseBounds.height / 2 + panOffset.y
 
