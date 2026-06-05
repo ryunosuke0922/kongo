@@ -2,16 +2,21 @@ import { HeaderButton, HeaderInner, HeaderWrapper } from '@/components/features/
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { useLocale } from '../../../i18n/index'
 
 const Header = () => {
   const { t, locale } = useLocale()
   const router = useRouter()
+  const [localeHref, setLocaleHref] = useState('/')
 
-  const localeHref = {
-    pathname: router.pathname,
-    query: router.query,
-  }
+  useEffect(() => {
+    if (!router.isReady) {
+      return
+    }
+
+    setLocaleHref(router.asPath || '/')
+  }, [router.asPath, router.isReady])
 
   return (
     <header>

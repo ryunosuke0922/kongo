@@ -93,7 +93,9 @@ const EnhancedCard = ({ data, showListLabel = true }: Props) => {
             <span>m</span>
           </TextMountain>
         </div>
-        <DetailLink href={detailHref}>{t.DETAIL_LINK}</DetailLink>
+        <DetailLink href={detailHref} tabIndex={-1}>
+          {t.DETAIL_LINK}
+        </DetailLink>
         <a
           href={data.yamapUrl || `https://yamap.com/search/activities?keyword=${yamapKeyword}`}
           target="_blank"

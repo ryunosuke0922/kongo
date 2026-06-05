@@ -9,7 +9,14 @@ import { getLocalizedMountainName } from '@/i18n/mountains'
 import type { UnifiedMountainData } from '@/types/mountains'
 import { toLocalizedPath } from '@/utils/seoPaths'
 import Link from 'next/link'
-import { useMemo, useRef, useState, type PointerEvent, type WheelEvent } from 'react'
+import {
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type PointerEvent,
+  type WheelEvent,
+} from 'react'
 import styled from 'styled-components'
 
 type Props = {
@@ -42,6 +49,7 @@ const MAP_ASPECT_RATIO = 16 / 9
 const MAP_PADDING_RATIO = 0.14
 const MAX_ZOOM_LEVEL = 4
 const ZOOM_STEP = 1.65
+const KEYBOARD_PAN_RATIO = 0.12
 
 const MapSection = styled.section`
   ${sectionPanel}
@@ -398,6 +406,60 @@ const MountainMap = ({ mountains }: Props) => {
     event.currentTarget.releasePointerCapture(event.pointerId)
     endDrag()
   }
+  const panByRatio = (deltaXRatio: number, deltaYRatio: number) => {
+    if (!baseMapBounds || !mapBounds) {
+      return
+    }
+
+    setPanOffset((current) =>
+      clampPanOffset(baseMapBounds, zoomLevel, {
+        x: current.x + deltaXRatio * mapBounds.width,
+        y: current.y + deltaYRatio * mapBounds.height,
+      }),
+    )
+  }
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === '+') {
+      event.preventDefault()
+      zoomIn()
+
+      return
+    }
+    if (event.key === '-') {
+      event.preventDefault()
+      zoomOut()
+
+      return
+    }
+    if (event.key === '0') {
+      event.preventDefault()
+      resetZoom()
+
+      return
+    }
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      panByRatio(-KEYBOARD_PAN_RATIO, 0)
+
+      return
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      panByRatio(KEYBOARD_PAN_RATIO, 0)
+
+      return
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      panByRatio(0, -KEYBOARD_PAN_RATIO)
+
+      return
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      panByRatio(0, KEYBOARD_PAN_RATIO)
+    }
+  }
 
   return (
     <MapSection aria-labelledby="mountain-map-title">
@@ -405,6 +467,10 @@ const MountainMap = ({ mountains }: Props) => {
       <MapDescription>{t.MAP_DESCRIPTION}</MapDescription>
       <MapCanvas
         ref={canvasRef}
+        role="application"
+        tabIndex={0}
+        aria-label={t.MAP_TITLE}
+        onKeyDown={handleKeyDown}
         onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -412,7 +478,7 @@ const MountainMap = ({ mountains }: Props) => {
         onPointerCancel={endDrag}
         onPointerLeave={endDrag}
       >
-        <MapControls aria-label={t.MAP_ZOOM_CONTROLS}>
+        <MapControls role="group" aria-label={t.MAP_ZOOM_CONTROLS}>
           <MapControlButton type="button" onClick={zoomIn} disabled={zoomLevel === MAX_ZOOM_LEVEL}>
             +
           </MapControlButton>

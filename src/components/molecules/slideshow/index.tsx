@@ -115,7 +115,8 @@ const Slideshow = ({ images, intervalMs = 8000, duration = 2.4 }: Props) => {
             alt={currentImage.alt ?? 'Famous mountain landscape'}
             width={imageWidth}
             height={imageHeight}
-            sizes="(max-width: 768px) 48rem, (max-width: 1920px) 88rem, 880px"
+            priority={currentIndex === 0}
+            sizes="(max-width: 768px) 480px, (max-width: 1920px) 880px, 880px"
           />
         </SlideLayer>
       </AnimatePresence>

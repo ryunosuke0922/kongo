@@ -70,7 +70,7 @@ const formatElevation = (value: number, locale: SupportedLocale): string => {
 const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) => {
   const router = useRouter()
   const { t, locale } = useLocale()
-  const syncKey = `${router.locale ?? ''}:${router.pathname}`
+  const syncKey = `${locale}:${router.pathname}`
   const hydratedPathRef = useRef('')
   const {
     filteredMountains,
@@ -232,7 +232,11 @@ const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) =
           </FilterItemMobileSpacing>
         </FilterRowMobileStack>
       </FilterControls>
-      {shouldShowResult ? <ResultSummary>{resultText}</ResultSummary> : null}
+      {shouldShowResult ? (
+        <ResultSummary role="status" aria-live="polite">
+          {resultText}
+        </ResultSummary>
+      ) : null}
       {statsText ? (
         <StatsSummary className="main__content-statistics">{statsText}</StatsSummary>
       ) : null}

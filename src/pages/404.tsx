@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { UI_COLORS, UI_RADIUS, UI_SPACE } from '@/constants/ui'
 import { useLocale } from '@/i18n/index'
+import { toLocalizedPath } from '@/utils/seoPaths'
 
 const ErrorPage = styled.main`
   display: flex;
@@ -65,16 +67,24 @@ const ErrorPage = styled.main`
 `
 
 const Err404: NextPage = () => {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
 
   return (
-    <ErrorPage>
-      <div className="error">
-        <h1>404</h1>
-        <h2>{t.PAGE_NOT_FOUND}</h2>
-        <Link href={'/'}>{t.BACK_TO_HOME}</Link>
-      </div>
-    </ErrorPage>
+    <>
+      <Head>
+        <title>
+          {t.PAGE_NOT_FOUND} | {t.TITLE}
+        </title>
+        <meta name="robots" content="noindex,follow" />
+      </Head>
+      <ErrorPage>
+        <div className="error">
+          <h1>404</h1>
+          <h2>{t.PAGE_NOT_FOUND}</h2>
+          <Link href={toLocalizedPath('/', locale)}>{t.BACK_TO_HOME}</Link>
+        </div>
+      </ErrorPage>
+    </>
   )
 }
 
