@@ -65,12 +65,13 @@ export const Heading3 = styled.h3`
   }
 `
 
-export const Text = styled.div`
+export const Text = styled.div<{ $active?: boolean }>`
   font-size: 2.6rem;
   line-height: 1.5;
   padding: ${UI_SPACE.xs} 0 ${UI_SPACE.xs} ${UI_SPACE.lg};
   margin: 0 0 ${UI_SPACE.sm};
   color: ${UI_COLORS.textPrimary};
+  font-weight: ${({ $active }) => ($active ? 700 : 400)};
   position: relative;
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
   }
@@ -81,8 +82,15 @@ export const Text = styled.div`
   }
   > a {
     display: inline-block;
+    color: inherit;
+    font-weight: inherit;
     transition: all ease-in-out 0.4s;
     transform: translate(0, 0);
+
+    &[aria-current='page'] {
+      font-weight: 700;
+    }
+
     &:hover {
       transform: translate(5px, 0);
       & + i {

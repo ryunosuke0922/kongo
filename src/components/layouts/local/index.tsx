@@ -4,6 +4,7 @@ import Header from '@/components/features/header/header'
 import Sidebar from '@/components/features/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/local/style'
 import { UI_COLORS } from '@/constants/ui'
+import type { MountainListId } from '@/types/mountains'
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
@@ -19,13 +20,27 @@ const LocalMain = styled.div`
   backface-visibility: hidden;
 `
 
-const LayoutLocal = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode
+  seo?: ReactNode
+  footerListId?: MountainListId
+  showSidebar?: boolean
+  sidebarVariant?: 'regions' | 'lists'
+}
+
+const LayoutLocal = ({
+  children,
+  seo,
+  footerListId = 'hyakumeizan',
+  showSidebar = true,
+  sidebarVariant = 'regions',
+}: Props) => {
   return (
     <Local className="noise">
-      <Seo />
+      {seo ?? <Seo />}
       <Header />
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{
@@ -37,14 +52,16 @@ const LayoutLocal = ({ children }: { children: ReactNode }) => {
             <LocalMain>
               <WrapperContent>
                 <MainContent>{children}</MainContent>
-                <Sidebar></Sidebar>
+                {showSidebar ? (
+                  <Sidebar currentListId={footerListId} variant={sidebarVariant} />
+                ) : null}
               </WrapperContent>
             </LocalMain>
           </Wrapper>
         </main>
       </motion.div>
 
-      <Footer />
+      <Footer currentListId={footerListId} />
     </Local>
   )
 }

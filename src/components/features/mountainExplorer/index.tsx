@@ -3,25 +3,36 @@ import {
   type ElevationFilterType,
   type SortType,
 } from '@/hooks/useMountainFilter'
-import { useLocale } from '@/i18n/index'
+import { useLocale, type SupportedLocale } from '@/i18n/index'
+import {
+  getLocalizedMountainName,
+  getLocalizedPrefectureOrder,
+  getLocalizedPrefectureValues,
+} from '@/i18n/mountains'
 import FilterSelect from '@/components/molecules/filterSelect'
 import MountainCardList from '@/components/molecules/mountainCardList'
+import MountainListNav from '@/components/molecules/mountainListNav'
+import MountainMap from '@/components/molecules/mountainMap'
 import SearchBar from '@/components/molecules/searchBar'
 import SortSelect from '@/components/molecules/sortSelect'
-import type { MountainsData } from '@/types/mountains'
+import type { MountainListId, UnifiedMountainData } from '@/types/mountains'
 import { useRouter } from 'next/router'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import {
   EmptyText,
   FilterControls,
   FilterItemMobileSpacing,
   FilterRowMobileStack,
   ResultSummary,
+  SearchGuide,
+  SearchGuideText,
+  SearchGuideTitle,
   StatsSummary,
 } from './style'
 
 type Props = {
-  mountains: MountainsData[]
+  mountains: UnifiedMountainData[]
+  currentListId?: MountainListId
 }
 
 type QueryValue = string | string[] | undefined
@@ -37,16 +48,30 @@ const firstQueryValue = (value: QueryValue): string => {
   return value ?? ''
 }
 
-const formatElevation = (value: number, locale: 'ja' | 'en'): string => {
-  const formatter = new Intl.NumberFormat(locale === 'en' ? 'en-US' : 'ja-JP')
+const firstPathQueryValue = (asPath: string, key: string): string => {
+  const queryString = asPath.split('?')[1]?.split('#')[0]
+  if (!queryString) {
+    return ''
+  }
+
+  return new URLSearchParams(queryString).get(key) ?? ''
+}
+
+const queryValue = (value: QueryValue, asPath: string, key: string): string => {
+  return firstQueryValue(value) || firstPathQueryValue(asPath, key)
+}
+
+const formatElevation = (value: number, locale: SupportedLocale): string => {
+  const formatter = new Intl.NumberFormat(locale === 'ja' ? 'ja-JP' : locale)
 
   return `${formatter.format(value)}m`
 }
 
-const MountainExplorer = ({ mountains }: Props) => {
+const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) => {
   const router = useRouter()
   const { t, locale } = useLocale()
-  const syncKey = `${router.locale ?? ''}:${router.pathname}`
+  const syncKey = `${locale}:${router.pathname}`
+  const hydratedPathRef = useRef('')
   const {
     filteredMountains,
     searchQuery,
@@ -59,7 +84,6 @@ const MountainExplorer = ({ mountains }: Props) => {
     setElevationFilter,
     resultCount,
   } = useMountainFilter(mountains, locale)
-  const [hydratedKey, setHydratedKey] = useState('')
 
   const sortOptions: { value: SortType; label: string }[] = [
     { value: 'no', label: t.SORT_NO },
@@ -69,15 +93,10 @@ const MountainExplorer = ({ mountains }: Props) => {
   ]
 
   const prefectureOptions = useMemo(() => {
-    const values = Array.from(
-      new Set(
-        mountains.map((mountain) =>
-          locale === 'en' ? mountain.prefecturesEn.trim() : mountain.prefectures.trim(),
-        ),
-      ),
-    ).filter((value) => value.length > 0)
-
-    values.sort((a, b) => a.localeCompare(b, locale))
+    const availableValues = new Set(
+      mountains.flatMap((mountain) => getLocalizedPrefectureValues(mountain, locale)),
+    )
+    const values = getLocalizedPrefectureOrder(locale).filter((value) => availableValues.has(value))
 
     return [
       { value: 'all', label: t.PREFECTURE_ALL },
@@ -91,16 +110,17 @@ const MountainExplorer = ({ mountains }: Props) => {
     { value: 'between2000_3000', label: t.ELEVATION_2000_3000 },
     { value: 'lt2000', label: t.ELEVATION_LT_2000 },
   ]
-
   useEffect(() => {
-    if (!router.isReady) {
+    const hydrationKey = `${syncKey}:${router.asPath}`
+
+    if (!router.isReady || hydratedPathRef.current === hydrationKey) {
       return
     }
 
-    const queryText = firstQueryValue(router.query.q)
-    const sortFromQuery = firstQueryValue(router.query.sort)
-    const prefectureFromQuery = firstQueryValue(router.query.pref)
-    const elevationFromQuery = firstQueryValue(router.query.elev)
+    const queryText = queryValue(router.query.q, router.asPath, 'q')
+    const sortFromQuery = queryValue(router.query.sort, router.asPath, 'sort')
+    const prefectureFromQuery = queryValue(router.query.pref, router.asPath, 'pref')
+    const elevationFromQuery = queryValue(router.query.elev, router.asPath, 'elev')
 
     const nextSort = VALID_SORTS.includes(sortFromQuery as SortType)
       ? (sortFromQuery as SortType)
@@ -115,9 +135,10 @@ const MountainExplorer = ({ mountains }: Props) => {
     setSortType(nextSort)
     setPrefectureFilter(nextPrefecture)
     setElevationFilter(nextElevation)
-    setHydratedKey(syncKey)
+    hydratedPathRef.current = hydrationKey
   }, [
     prefectureOptions,
+    router.asPath,
     router.isReady,
     router.query.elev,
     router.query.pref,
@@ -129,57 +150,6 @@ const MountainExplorer = ({ mountains }: Props) => {
     setSortType,
     syncKey,
   ])
-
-  useEffect(() => {
-    if (!router.isReady || hydratedKey !== syncKey) {
-      return
-    }
-
-    const nextQuery: Record<string, string> = {}
-    const trimmedQuery = searchQuery.trim()
-
-    if (trimmedQuery.length > 0) {
-      nextQuery.q = trimmedQuery
-    }
-    if (sortType !== 'no') {
-      nextQuery.sort = sortType
-    }
-    if (prefectureFilter !== 'all') {
-      nextQuery.pref = prefectureFilter
-    }
-    if (elevationFilter !== 'all') {
-      nextQuery.elev = elevationFilter
-    }
-
-    const current = {
-      q: firstQueryValue(router.query.q),
-      sort: firstQueryValue(router.query.sort) || 'no',
-      pref: firstQueryValue(router.query.pref) || 'all',
-      elev: firstQueryValue(router.query.elev) || 'all',
-    }
-    const next = {
-      q: nextQuery.q ?? '',
-      sort: nextQuery.sort ?? 'no',
-      pref: nextQuery.pref ?? 'all',
-      elev: nextQuery.elev ?? 'all',
-    }
-
-    if (JSON.stringify(current) === JSON.stringify(next)) {
-      return
-    }
-
-    void router.replace(
-      {
-        pathname: router.pathname,
-        query: nextQuery,
-      },
-      undefined,
-      {
-        shallow: true,
-        scroll: false,
-      },
-    )
-  }, [elevationFilter, hydratedKey, prefectureFilter, router, searchQuery, sortType, syncKey])
 
   const hasSearchQuery = searchQuery.trim().length > 0
   const hasActiveFilters =
@@ -212,11 +182,16 @@ const MountainExplorer = ({ mountains }: Props) => {
   }, [filteredMountains])
 
   const statsText = statistics
-    ? `${t.STATS_HIGHEST}: ${locale === 'en' ? statistics.highest.nameEn : statistics.highest.name} ${formatElevation(statistics.highest.elevation, locale)} / ${t.STATS_LOWEST}: ${locale === 'en' ? statistics.lowest.nameEn : statistics.lowest.name} ${formatElevation(statistics.lowest.elevation, locale)} / ${t.STATS_AVERAGE}: ${formatElevation(statistics.average, locale)}`
+    ? `${t.STATS_HIGHEST}: ${getLocalizedMountainName(statistics.highest, locale)} ${formatElevation(statistics.highest.elevation, locale)} / ${t.STATS_LOWEST}: ${getLocalizedMountainName(statistics.lowest, locale)} ${formatElevation(statistics.lowest.elevation, locale)} / ${t.STATS_AVERAGE}: ${formatElevation(statistics.average, locale)}`
     : null
 
   return (
     <>
+      <SearchGuide aria-labelledby="mountain-search-guide-title">
+        <SearchGuideTitle id="mountain-search-guide-title">{t.GUIDE_TITLE}</SearchGuideTitle>
+        <SearchGuideText>{t.GUIDE_DESCRIPTION}</SearchGuideText>
+        <MountainListNav currentListId={currentListId} />
+      </SearchGuide>
       <FilterControls className="main__content-controls">
         <FilterRowMobileStack>
           <FilterItemMobileSpacing $grow>
@@ -257,12 +232,17 @@ const MountainExplorer = ({ mountains }: Props) => {
           </FilterItemMobileSpacing>
         </FilterRowMobileStack>
       </FilterControls>
-      {shouldShowResult ? <ResultSummary>{resultText}</ResultSummary> : null}
+      {shouldShowResult ? (
+        <ResultSummary role="status" aria-live="polite">
+          {resultText}
+        </ResultSummary>
+      ) : null}
       {statsText ? (
         <StatsSummary className="main__content-statistics">{statsText}</StatsSummary>
       ) : null}
+      <MountainMap mountains={filteredMountains} />
       {filteredMountains.length > 0 ? (
-        <MountainCardList mountains={filteredMountains} />
+        <MountainCardList mountains={filteredMountains} showListLabel={false} />
       ) : (
         <EmptyText>{t.NO_SEARCH_RESULTS}</EmptyText>
       )}

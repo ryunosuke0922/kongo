@@ -14,15 +14,14 @@ type Props = {
 
 const SortSelect = ({ value, label, options, onChange }: Props) => {
   return (
-    <SortWrapper role="radiogroup" aria-label={label}>
+    <SortWrapper aria-label={label}>
       <SortLabel>{label}</SortLabel>
       <SortTags>
         {options.map((option) => (
           <SortTagButton
             key={option.value}
             type="button"
-            role="radio"
-            aria-checked={value === option.value}
+            aria-pressed={value === option.value}
             $active={value === option.value}
             onClick={() => onChange(option.value)}
           >

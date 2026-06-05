@@ -8,6 +8,7 @@ import NextDocument, {
 } from 'next/document'
 
 type Props = DocumentInitialProps & {
+  defaultLocale?: string
   locale?: string
 }
 
@@ -17,12 +18,20 @@ class Document extends NextDocument<Props> {
 
     return {
       ...initialProps,
+      defaultLocale: ctx.defaultLocale,
       locale: ctx.locale,
     }
   }
 
   render() {
-    const lang = this.props.locale === 'en' ? 'en' : 'ja'
+    const langMap: Record<string, string> = {
+      en: 'en',
+      ja: 'ja',
+      'zh-CN': 'zh-Hans',
+      'zh-TW': 'zh-Hant',
+    }
+    const defaultLocale = this.props.defaultLocale ?? 'ja'
+    const lang = langMap[this.props.locale ?? defaultLocale] ?? langMap[defaultLocale] ?? 'ja'
 
     return (
       <Html lang={lang}>

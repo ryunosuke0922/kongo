@@ -2,7 +2,7 @@
   "name": "kongo",
   "version": "1.0.0",
   "private": true,
-  "description": "日本百名山を日英対応で閲覧できる Next.js サイト",
+  "description": "日本百名山を日本語 / 英語 / 簡体字 / 繁体字で閲覧できる Next.js サイト",
   "keywords": [
     "nextjs",
     "react",
@@ -32,8 +32,9 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
     "typecheck": "tsc --noEmit",
-    "check": "yarn lint && yarn typecheck && yarn build",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "check": "yarn format:check && yarn typecheck && yarn lint && yarn build",
+    "format": "prettier --ignore-unknown --write .",
+    "format:check": "prettier --ignore-unknown --check ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

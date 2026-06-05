@@ -1,6 +1,23 @@
 import { BREAKPOINTS } from '@/constants/breakpoints'
+import {
+  sectionDescriptionText,
+  sectionPanel,
+  sectionTitleText,
+} from '@/components/molecules/sharedSurfaces/style'
 import { UI_COLORS, UI_SPACE } from '@/constants/ui'
 import styled from 'styled-components'
+
+export const SearchGuide = styled.section`
+  ${sectionPanel}
+`
+
+export const SearchGuideTitle = styled.h2`
+  ${sectionTitleText}
+`
+
+export const SearchGuideText = styled.p`
+  ${sectionDescriptionText}
+`
 
 export const FilterControls = styled.div`
   width: 100%;

@@ -26,8 +26,19 @@ export const HeaderInner = styled.div`
   @media screen and (min-width: ${BREAKPOINTS.desktop}px) {
     padding: 20px 40px;
   }
+  > a {
+    display: inline-flex;
+    align-items: center;
+    border-radius: ${UI_RADIUS.sm};
+
+    &:focus-visible {
+      outline: 2px solid ${UI_COLORS.focus};
+      outline-offset: ${UI_SPACE.xs};
+    }
+  }
   .header__logo {
     width: 8rem;
+    height: auto;
     display: block;
     @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
     }
@@ -61,7 +72,9 @@ export const HeaderButton = styled.div`
       display: inline-block;
       font-size: 2.6rem;
       color: ${UI_COLORS.textPrimary};
-      padding: 1.4rem 3.6rem;
+      min-width: 6.4rem;
+      padding: 1.4rem 2rem;
+      text-align: center;
       background-color: ${UI_COLORS.surfacePrimary};
       transition:
         color 0.2s ease,

@@ -1,5 +1,6 @@
 import { VerticalTextBoldLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
 import Layout from '@/components/layouts/localList'
+import Seo from '@/components/molecules/seo'
 import { REGION_LINKS } from '@/constants/regionLinks'
 import type { NextPage } from 'next'
 import Link from 'next/link'
@@ -9,7 +10,7 @@ const Local: NextPage = () => {
   const { t } = useLocale()
 
   return (
-    <Layout>
+    <Layout seo={<Seo pagePath="/local" />}>
       <nav aria-label="Local area mountain navigation">
         <VerticalTextBoldLink>
           <Link href={'/'}>{t.TITLE}</Link>

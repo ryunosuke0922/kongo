@@ -1,16 +1,17 @@
 import Card from '@/components/molecules/card'
-import type { MountainsData } from '@/types/mountains'
+import type { UnifiedMountainData } from '@/types/mountains'
 
 type Props = {
-  mountains: MountainsData[]
+  mountains: UnifiedMountainData[]
+  showListLabel?: boolean
 }
 
-const MountainCardList = ({ mountains }: Props) => {
+const MountainCardList = ({ mountains, showListLabel = true }: Props) => {
   return (
     <>
       {mountains.map((mountain) => (
-        <div key={mountain.no}>
-          <Card data={mountain}></Card>
+        <div key={mountain.slug}>
+          <Card data={mountain} showListLabel={showListLabel}></Card>
         </div>
       ))}
     </>
