@@ -28,7 +28,7 @@ const en: LocaleMessages = {
   SEARCH_PLACEHOLDER: 'Search by name',
   GUIDE_TITLE: 'Find mountains in Japan',
   GUIDE_DESCRIPTION:
-    'Search the 100 Famous Japanese Mountains by region, prefecture, elevation, and mountain name. Separate pages cover the 200 and 300 Famous Japanese Mountains and low mountains in Japan.',
+    'Search the 100 Famous Japanese Mountains by region, prefecture, elevation, and mountain name. Separate pages cover the 200 and 300 Famous Japanese Mountains, the highest mountains, and low mountains in Japan.',
   LIST_NAV_LABEL: 'Switch mountain list',
   FOOTER_LIST_NAV_LABEL: 'Mountain lists',
   MAP_TITLE: 'Explore on a map',

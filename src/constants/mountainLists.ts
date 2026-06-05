@@ -1,3 +1,4 @@
+import hyakukozanData from '@/data/hyakukozan.json'
 import hyakuteizanData from '@/data/hyakuteizan.json'
 import mountainsData from '@/data/mountains.json'
 import nihyakumeizanData from '@/data/nihyakumeizan.json'
@@ -47,6 +48,18 @@ export const MOUNTAIN_LISTS: MountainListMeta[] = [
     descriptionZhCN: '可更广泛查找日本名山的日本三百名山。',
     descriptionZhTW: '可更廣泛查找日本名山的日本三百名山。',
     path: '/lists/sambyakumeizan',
+  },
+  {
+    id: 'hyakukozan',
+    labelJa: '日本百高山',
+    labelEn: '100 Highest Mountains of Japan',
+    labelZhCN: '日本百高山',
+    labelZhTW: '日本百高山',
+    descriptionJa: '日本の標高上位100座を集めた日本百高山。',
+    descriptionEn: 'A list of the 100 highest mountains in Japan.',
+    descriptionZhCN: '汇集日本海拔前100座山岳的日本百高山。',
+    descriptionZhTW: '彙整日本標高前100座山岳的日本百高山。',
+    path: '/lists/hyakukozan',
   },
   {
     id: 'hyakuteizan',
@@ -156,7 +169,6 @@ const normalizeBadgeMountain = (
     prefecturesEn: toPrefecturesEn(mountain.prefectures),
     longitude: mountain.longitude,
     latitude: mountain.latitude,
-    yamapLandmarkId: mountain.yamapLandmarkId,
     yamapUrl: mountain.yamapUrl,
     remarks: mountain.remarks,
     slug: slugifyMountainName(mountain.nameEn, mountain.name),
@@ -165,6 +177,7 @@ const normalizeBadgeMountain = (
     listLabelsEn: [meta.labelEn],
     listLabelsZhCN: [meta.labelZhCN],
     listLabelsZhTW: [meta.labelZhTW],
+    ...(mountain.yamapLandmarkId ? { yamapLandmarkId: mountain.yamapLandmarkId } : {}),
   }
 }
 
@@ -199,6 +212,10 @@ const cloneMountain = (mountain: UnifiedMountainData): UnifiedMountainData => ({
 
 const hyakumeizanMountains = (mountainsData as MountainsData[]).map(normalizeHyakumeizanMountain)
 
+const hyakukozanMountains = (hyakukozanData as YamapBadgeMountainData[]).map((mountain) =>
+  normalizeBadgeMountain(mountain, 'hyakukozan'),
+)
+
 const nihyakumeizanMountains = (nihyakumeizanData as YamapBadgeMountainData[]).map((mountain) =>
   normalizeBadgeMountain(mountain, 'nihyakumeizan'),
 )
@@ -214,6 +231,9 @@ const hyakuteizanMountains = (hyakuteizanData as YamapBadgeMountainData[])
 const getRawMountainsByList = (listId: MountainListId): UnifiedMountainData[] => {
   if (listId === 'hyakumeizan') {
     return hyakumeizanMountains
+  }
+  if (listId === 'hyakukozan') {
+    return hyakukozanMountains
   }
   if (listId === 'nihyakumeizan') {
     return nihyakumeizanMountains
@@ -260,6 +280,9 @@ export const getAllMountains = (): UnifiedMountainData[] => {
     mergeMountain(map, mountain)
   })
   sambyakumeizanMountains.forEach((mountain) => {
+    mergeMountain(map, mountain)
+  })
+  hyakukozanMountains.forEach((mountain) => {
     mergeMountain(map, mountain)
   })
   hyakuteizanMountains.forEach((mountain) => {

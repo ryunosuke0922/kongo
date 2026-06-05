@@ -21,6 +21,9 @@ CI でも同じ順序で実行します。
 /local/chubu/
 /en/local/chubu/
 /lists/hyakumeizan/
+/lists/nihyakumeizan/
+/lists/sambyakumeizan/
+/lists/hyakukozan/
 /lists/hyakuteizan/
 /mountains/fuji/
 /guides/highest-mountains-in-japan/
@@ -35,7 +38,7 @@ CI でも同じ順序で実行します。
 - ページが白紙にならない。
 - トップ画像が表示され、切り替えが不自然に速くない。
 - 検索、都道府県フィルター、標高フィルター、並び替えが動く。
-- 二百名山 / 三百名山 / 百低山の別ページが表示される。
+- 二百名山 / 三百名山 / 百高山 / 百低山の別ページが表示される。
 - 地図上の点から詳細ページへ遷移できる。
 - 言語切り替えで意図したページに留まる。
 - デスクトップ / モバイルで明らかな表示崩れがない。

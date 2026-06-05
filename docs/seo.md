@@ -10,6 +10,7 @@ japanese mountains
 mountains in japan
 famous mountains in japan
 100 famous japanese mountains
+100 highest mountains in japan
 japanese alps mountains
 mountains near tokyo
 mount fuji

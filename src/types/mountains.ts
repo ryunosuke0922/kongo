@@ -16,7 +16,12 @@ export type MountainsData = {
   remarks: string
 }
 
-export type MountainListId = 'hyakumeizan' | 'nihyakumeizan' | 'sambyakumeizan' | 'hyakuteizan'
+export type MountainListId =
+  | 'hyakumeizan'
+  | 'nihyakumeizan'
+  | 'sambyakumeizan'
+  | 'hyakukozan'
+  | 'hyakuteizan'
 
 export type MountainListFilter = 'all' | MountainListId
 
@@ -44,7 +49,8 @@ export type UnifiedMountainData = MountainsData & {
 
 export type YamapBadgeMountainData = {
   no: number
-  yamapLandmarkId: number
+  yamapLandmarkId?: number
+  yamapMountainId?: number
   name: string
   kanaName: string
   elevation: number
@@ -56,6 +62,7 @@ export type YamapBadgeMountainData = {
   remarks: string
 }
 
+export type HyakukozanData = YamapBadgeMountainData
 export type HyakuteizanData = YamapBadgeMountainData
 export type NihyakumeizanData = YamapBadgeMountainData
 export type SambyakumeizanData = YamapBadgeMountainData

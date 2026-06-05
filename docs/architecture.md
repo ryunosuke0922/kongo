@@ -27,7 +27,7 @@ docs/
 - `index.tsx`: 日本百名山100座のトップページ
 - `local/index.tsx`: 地方別一覧
 - `local/[region]/index.tsx`: 地方ごとの山一覧
-- `lists/[listId].tsx`: 日本百名山 / 二百名山 / 三百名山 / 百低山のリスト別ページ
+- `lists/[listId].tsx`: 日本百名山 / 二百名山 / 三百名山 / 百高山 / 百低山のリスト別ページ
 - `mountains/[slug].tsx`: 山詳細ページ
 - `guides/[guideId].tsx`: 目的別ガイドページ
 - `404.tsx`: Not Found ページ
@@ -53,9 +53,10 @@ Pages Router の i18n 設定により、日本語 / 英語 / 簡体字 / 繁体�
 主なファイル:
 
 - `mountains.json`: 日本百名山の表示・検索・構造化データの元になる山一覧
-- `hyakuteizan.json`: 日本百低山データ
 - `nihyakumeizan.json`: 日本二百名山データ
 - `sambyakumeizan.json`: 日本三百名山データ
+- `hyakukozan.json`: 日本百高山データ
+- `hyakuteizan.json`: 日本百低山データ
 
 緯度 / 経度や外部サービス URL など、信頼性が SEO や構造化データに影響する値は慎重に更新します。
 

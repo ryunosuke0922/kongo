@@ -26,7 +26,8 @@ const zhTW: LocaleMessages = {
   LANGUAGE_SWITCH_TO_ZH_CN: '切換到簡體中文',
   SEARCH_PLACEHOLDER: '以山名搜尋',
   GUIDE_TITLE: '尋找日本名山',
-  GUIDE_DESCRIPTION: '此頁可搜尋日本百名山100座。日本二百名山、三百名山與百低山請查看各自頁面。',
+  GUIDE_DESCRIPTION:
+    '此頁可搜尋日本百名山100座。日本二百名山、三百名山、百高山與百低山請查看各自頁面。',
   LIST_NAV_LABEL: '切換名山列表',
   FOOTER_LIST_NAV_LABEL: '名山列表',
   MAP_TITLE: '用地圖尋找',
