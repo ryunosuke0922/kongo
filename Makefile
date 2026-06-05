@@ -1,4 +1,4 @@
-.PHONY: install dev format format-check typecheck lint build check
+.PHONY: install dev format format-check test typecheck lint build check
 
 install:
 	yarn install
@@ -12,6 +12,9 @@ format:
 format-check:
 	yarn format:check
 
+test:
+	yarn test
+
 typecheck:
 	yarn typecheck
 
@@ -21,4 +24,4 @@ lint:
 build:
 	yarn build
 
-check: format-check typecheck lint build
+check: format-check test typecheck lint build

@@ -100,7 +100,7 @@ Pull Request
   ↓
 GitHub Actions
   ↓
-format / typecheck / lint / build
+format / test / typecheck / lint / build
   ↓
 Vercel deploy
   ↓

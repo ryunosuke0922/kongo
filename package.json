@@ -31,8 +31,9 @@
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "yarn format:check && yarn typecheck && yarn lint && yarn build",
+    "check": "yarn format:check && yarn test && yarn typecheck && yarn lint && yarn build",
     "format": "prettier --ignore-unknown --write .",
     "format:check": "prettier --ignore-unknown --check ."
   },
@@ -57,7 +58,9 @@
     "eslint-config-prettier": "^10.0.0",
     "modern-css-reset": "^1.4.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
   },
   "resolutions": {
     "eslint/minimatch": "3.1.3",

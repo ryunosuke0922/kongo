@@ -82,11 +82,12 @@ yarn install
 yarn dev
 yarn format
 yarn format:check
+yarn test
 yarn lint
 yarn typecheck
 yarn build
 yarn start
-yarn check
+yarn run check
 ```
 
 Makefile shortcuts:
@@ -118,6 +119,7 @@ GitHub Actions runs on pull requests and pushes to `main` / `master`.
 CI checks:
 
 - `yarn format:check`
+- `yarn test`
 - `yarn typecheck`
 - `yarn lint`
 - `yarn build`

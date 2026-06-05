@@ -35,6 +35,7 @@ yarn dev -p 3001
 
 ```bash
 yarn format:check
+yarn test
 yarn typecheck
 yarn lint
 yarn build
@@ -43,6 +44,7 @@ yarn build
 Or:
 
 ```bash
+yarn run check
 make check
 ```
 

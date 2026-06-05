@@ -4,6 +4,7 @@
 
 ```bash
 yarn format:check
+yarn test
 yarn typecheck
 yarn lint
 yarn build

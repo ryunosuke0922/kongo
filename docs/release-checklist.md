@@ -4,6 +4,7 @@
 
 - [ ] 変更範囲が目的の内容に限定されている。
 - [ ] `yarn format:check` が通る。
+- [ ] `yarn test` が通る。
 - [ ] `yarn typecheck` が通る。
 - [ ] `yarn lint` が通る。
 - [ ] `yarn build` が通る。
