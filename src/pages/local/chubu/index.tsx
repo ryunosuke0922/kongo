@@ -27,9 +27,9 @@ const Home: NextPage<Props> = ({ mountains }) => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const allMountains = getMountainsByList('hyakumeizan')
   const ids = [
-    1, 17, 19, 25, 26, 27, 30, 31, 32, 33, 34, 35, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
-    55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 72, 73, 74, 75, 76, 77, 78, 79, 80,
-    81, 82, 83, 84, 85, 86, 87, 88, 89,
+    17, 19, 25, 26, 27, 30, 31, 32, 33, 34, 35, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+    56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,
+    82, 83, 84, 85, 86, 87, 88, 89,
   ]
   const mountains = allMountains.filter((e) => ids.includes(e.no))
 

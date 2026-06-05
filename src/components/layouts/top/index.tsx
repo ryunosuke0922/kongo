@@ -102,7 +102,10 @@ const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
   return (
     <Description>
       {descriptions.map((description, index) => (
-        <span key={`${description}-${index}`}>{description}</span>
+        <span key={`${description}-${index}`}>
+          {description}
+          {locale === 'ja' || index === descriptions.length - 1 ? null : ' '}
+        </span>
       ))}
     </Description>
   )
