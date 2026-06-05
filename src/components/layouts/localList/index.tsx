@@ -18,13 +18,18 @@ const LocalMain = styled.div`
   backface-visibility: hidden;
 `
 
-const LayoutLocalList = ({ children }: { children: ReactNode }) => {
+type Props = {
+  children: ReactNode
+  seo?: ReactNode
+}
+
+const LayoutLocalList = ({ children, seo }: Props) => {
   return (
     <Local className="noise">
-      <Seo />
+      {seo ?? <Seo />}
       <Header />
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{

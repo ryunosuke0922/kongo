@@ -1,4 +1,6 @@
-import { UI_COLORS } from '@/constants/ui'
+import { activePillControl, pillHoverMotion } from '@/components/molecules/sharedSurfaces/style'
+import { UI_COLORS, UI_RADIUS, UI_SPACE } from '@/constants/ui'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 export const FooterWrapper = styled.div`
@@ -35,6 +37,42 @@ export const FooterContent = styled.div`
   }
   @media screen and (min-width: 1920px) {
     width: 700px;
+  }
+`
+
+export const FooterListNav = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${UI_SPACE.sm};
+  width: 100%;
+  max-width: 128rem;
+  margin: 0 auto ${UI_SPACE.xl};
+
+  @media screen and (min-width: 1920px) {
+    max-width: 1280px;
+  }
+`
+
+export const FooterListLink = styled(Link)<{ $active: boolean }>`
+  ${activePillControl}
+  ${pillHoverMotion}
+  justify-content: center;
+  min-height: 4rem;
+  padding-top: 0;
+  padding-right: ${UI_SPACE.md};
+  padding-bottom: 0;
+  padding-left: ${UI_SPACE.md};
+  font-size: 1.6rem;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+
+  @media screen and (min-width: 1920px) {
+    min-height: 40px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 16px;
   }
 `
 export const FooterContentEn = styled.div`

@@ -1,19 +1,21 @@
 import { Heading3 } from '@/components/atoms/text/style'
 import MountainCardList from '@/components/molecules/mountainCardList'
 import Layout from '@/components/layouts/local'
-import type { MountainsData } from '@/types/mountains'
+import Seo from '@/components/molecules/seo'
+import { getMountainsByList } from '@/constants/mountainLists'
+import type { UnifiedMountainData } from '@/types/mountains'
 import type { GetStaticProps, NextPage } from 'next'
 import { useLocale } from '../../../i18n/index'
 
 type Props = {
-  mountains: MountainsData[]
+  mountains: UnifiedMountainData[]
 }
 
 const Home: NextPage<Props> = ({ mountains }) => {
   const { t } = useLocale()
 
   return (
-    <Layout>
+    <Layout seo={<Seo pagePath="/local/hokkaido" />}>
       <div className="main__content-title">
         <Heading3>{t.HOKKAIDO_REGION}</Heading3>
       </div>
@@ -23,7 +25,7 @@ const Home: NextPage<Props> = ({ mountains }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allMountains: MountainsData[] = (await import('@/data/mountains.json')).default
+  const allMountains = getMountainsByList('hyakumeizan')
   const mountains = allMountains.filter((e) => e.no >= 1 && e.no <= 9)
 
   return { props: { mountains } }

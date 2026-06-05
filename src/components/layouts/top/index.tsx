@@ -16,7 +16,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useLocale } from '@/i18n/index'
+import { useLocale, type SupportedLocale } from '@/i18n/index'
 import { UI_COLORS } from '@/constants/ui'
 
 const Top = styled.div`
@@ -92,27 +92,19 @@ type Props = {
 }
 
 type DescriptionProps = {
-  locale: 'en' | 'ja'
+  locale: SupportedLocale
   descriptions: string[]
 }
 
 const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
-  if (locale === 'en') {
-    return (
-      <HorizonDescription>
-        {descriptions.map((description, index) => (
-          <span key={`${description}-${index}`}>{description}</span>
-        ))}
-      </HorizonDescription>
-    )
-  }
+  const Description = locale === 'ja' ? VerticalDescription : HorizonDescription
 
   return (
-    <VerticalDescription>
+    <Description>
       {descriptions.map((description, index) => (
         <span key={`${description}-${index}`}>{description}</span>
       ))}
-    </VerticalDescription>
+    </Description>
   )
 }
 
@@ -132,7 +124,7 @@ const LayoutTop = ({ children }: Props) => {
       <Seo />
       <Header />
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{
@@ -144,13 +136,13 @@ const LayoutTop = ({ children }: Props) => {
             <Wrapper>
               <div className="main__mv-pc">
                 <div className="main__head">
-                  {locale === 'en' ? (
-                    <div className="main__head-title is-en">
-                      <HorizonTitle>{t.TITLE}</HorizonTitle>
-                    </div>
-                  ) : (
+                  {locale === 'ja' ? (
                     <div className="main__head-title is-jp">
                       <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
                     </div>
                   )}
 
@@ -173,13 +165,13 @@ const LayoutTop = ({ children }: Props) => {
 
               <div className="main__mv-sp">
                 <div className="main__head">
-                  {locale === 'en' ? (
-                    <div className="main__head-title is-en">
-                      <HorizonTitle>{t.TITLE}</HorizonTitle>
-                    </div>
-                  ) : (
+                  {locale === 'ja' ? (
                     <div className="main__head-title is-jp">
                       <VerticalTitle>{t.TITLE}</VerticalTitle>
+                    </div>
+                  ) : (
+                    <div className="main__head-title is-en">
+                      <HorizonTitle>{t.TITLE}</HorizonTitle>
                     </div>
                   )}
 

@@ -10,6 +10,7 @@ export const UI_COLORS = {
   borderSoft: 'rgba(50, 50, 50, 0.2)',
   borderSubtle: 'rgba(50, 50, 50, 0.05)',
   borderLight: 'rgba(255, 255, 255, 0.2)',
+  imageOverlay: 'rgba(0, 0, 0, 0.38)',
   shadowSoft: 'rgba(0, 0, 0, 0.1)',
   shadowStrong: 'rgba(0, 0, 0, 0.3)',
   shadowLight: 'rgba(255, 255, 255, 1)',

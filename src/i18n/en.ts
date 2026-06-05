@@ -1,13 +1,13 @@
 import type { LocaleMessages } from './ja'
 
 const en: LocaleMessages = {
-  TITLE: '100 Famous Japanese Mountains.',
+  TITLE: '100 Famous Japanese Mountains',
   DESCRIPTION:
-    '"Nihon Hyakumeizan" is a collection of mountain essays written by Kyuya Fukada. This site lists all 100 famous mountains.',
+    '"Nihon Hyakumeizan" is a collection of mountain essays written by Hisaya Fukada. This site lists all 100 famous mountains in Japan.',
   DESCRIPTION_1: '"Nihon Hyakumeizan"',
   DESCRIPTION_2: 'is a collection of',
   DESCRIPTION_3: 'mountain essays',
-  DESCRIPTION_4: 'written by Kyuya Fukada.',
+  DESCRIPTION_4: 'written by Hisaya Fukada.',
   DESCRIPTION_5: 'This site lists all',
   DESCRIPTION_6: '100 famous mountains.',
   HOKKAIDO_REGION: 'Hokkaido region',
@@ -19,8 +19,24 @@ const en: LocaleMessages = {
   SHIKOKU_REGION: 'Shikoku region',
   KYUSHU_OKINAWA_REGION: 'Kyushu/Okinawa region',
   INFO: 'List of 100 Famous Mountains',
-  INFO_NAME: 'Hisaya Fukada Selected 100 seats',
+  INFO_NAME: 'Selected by Hisaya Fukada',
+  LANGUAGE_SWITCHER_ARIA: 'Language switcher',
+  LANGUAGE_SWITCH_TO_EN: 'Switch language to English',
+  LANGUAGE_SWITCH_TO_JA: 'Switch language to Japanese',
+  LANGUAGE_SWITCH_TO_ZH_TW: 'Switch language to Traditional Chinese',
+  LANGUAGE_SWITCH_TO_ZH_CN: 'Switch language to Simplified Chinese',
   SEARCH_PLACEHOLDER: 'Search by name',
+  GUIDE_TITLE: 'Find mountains in Japan',
+  GUIDE_DESCRIPTION:
+    'Search the 100 Famous Japanese Mountains by region, prefecture, elevation, and mountain name. Separate pages cover the 200 and 300 Famous Japanese Mountains and low mountains in Japan.',
+  LIST_NAV_LABEL: 'Switch mountain list',
+  FOOTER_LIST_NAV_LABEL: 'Mountain lists',
+  MAP_TITLE: 'Explore on a map',
+  MAP_DESCRIPTION:
+    'Mountains in the current results are shown on an interactive map. Open a marker to view details.',
+  MAP_LEGEND_PREFIX: '',
+  MAP_LEGEND_SUFFIX: ' mountains shown',
+  MAP_ZOOM_CONTROLS: 'Map zoom controls',
   SORT_LABEL: 'Sort by',
   SORT_NO: 'Number',
   SORT_ELEVATION_DESC: 'Highest first',
@@ -40,6 +56,18 @@ const en: LocaleMessages = {
   STATS_HIGHEST: 'Highest',
   STATS_LOWEST: 'Lowest',
   STATS_AVERAGE: 'Average',
+  DETAIL_TITLE_SUFFIX: 'mountain guide',
+  DETAIL_LINK: 'Details',
+  DETAIL_LISTS: 'Included lists',
+  DETAIL_PREFECTURE: 'Prefecture',
+  DETAIL_ELEVATION: 'Elevation',
+  DETAIL_COORDINATES: 'Coordinates',
+  DETAIL_YAMAP: 'View on YAMAP',
+  DETAIL_INSTAGRAM: 'View on Instagram',
+  DETAIL_NEARBY: 'Nearby mountains',
+  GUIDE_PAGE_TITLE: 'Mountain guides by purpose',
+  PAGE_NOT_FOUND: 'Page not found',
+  BACK_TO_HOME: 'Back to home',
 }
 
 export default en

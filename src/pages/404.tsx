@@ -1,60 +1,80 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { useLocale } from '../i18n/index'
+import { UI_COLORS, UI_RADIUS, UI_SPACE } from '@/constants/ui'
+import { useLocale } from '@/i18n/index'
 
-const Err = styled.div`
-  background: #fafafa;
-  background: url(https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif) no-repeat center center
-    fixed;
+const ErrorPage = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 8rem ${UI_SPACE.xl};
+  background:
+    linear-gradient(${UI_COLORS.imageOverlay}, ${UI_COLORS.imageOverlay}),
+    url('/images/img03.webp') no-repeat center center;
   background-size: cover;
-  font-family: 'Roboto', sans-serif;
-  height: 100vh;
-  h1 {
-    font-size: 16em;
-    margin: 0.2em 0.5em;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 0px;
-  }
-  h2 {
-    font-size: 1.7em;
-    margin: 0.2em 0.5em;
-    color: rgba(255, 255, 255, 0.6);
-  }
+  color: ${UI_COLORS.textInverted};
 
   .error {
-    position: absolute;
-    top: 30%;
-    margin-top: -8em;
-    width: 100%;
+    width: min(100%, 72rem);
     text-align: center;
-    > a {
-      display: block;
-      font-size: 20px;
-      font-weight: bold;
-      text-decoration: underline;
-      margin: 16px;
-      color: rgba(255, 255, 255, 0.6);
-    }
   }
 
-  .material-icons {
-    font-size: 1.5em;
-    position: relative;
-    top: 10px;
+  h1 {
+    margin: 0 0 ${UI_SPACE.sm};
+    font-size: 12rem;
+    line-height: 1;
+  }
+
+  h2 {
+    margin: 0 0 ${UI_SPACE.xl};
+    font-size: 3rem;
+    line-height: 1.4;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 4.8rem;
+    padding: ${UI_SPACE.sm} ${UI_SPACE.xl};
+    border: 1px solid ${UI_COLORS.borderLight};
+    border-radius: ${UI_RADIUS.pill};
+    background: ${UI_COLORS.pageBackground};
+    color: ${UI_COLORS.textPrimary};
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 8rem ${UI_SPACE.lg};
+
+    h1 {
+      font-size: 8rem;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+    }
+
+    a {
+      font-size: 2.2rem;
+    }
   }
 `
+
 const Err404: NextPage = () => {
   const { t } = useLocale()
 
   return (
-    <Err>
+    <ErrorPage>
       <div className="error">
         <h1>404</h1>
-        <h2>Page not found</h2>
-        <Link href={'/'}>{t.TITLE}</Link>
+        <h2>{t.PAGE_NOT_FOUND}</h2>
+        <Link href={'/'}>{t.BACK_TO_HOME}</Link>
       </div>
-    </Err>
+    </ErrorPage>
   )
 }
 

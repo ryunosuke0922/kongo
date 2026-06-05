@@ -1,19 +1,20 @@
-import {
-  HorizonTextNormalLink,
-  VerticalTextBoldLink,
-  VerticalTextNormalLink,
-} from '@/components/atoms/text/style'
+import { HorizonTextNormalLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
 import {
   FooterContent,
   FooterContentEn,
   FooterInner,
+  FooterListLink,
+  FooterListNav,
   FooterWrapper,
 } from '@/components/features/footer/style'
+import { MOUNTAIN_LISTS } from '@/constants/mountainLists'
 import { REGION_LINKS } from '@/constants/regionLinks'
+import type { MountainListId } from '@/types/mountains'
 import { faGithubSquare, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useLocale } from '../../../i18n/index'
+import { getLocalizedListLabel } from '../../../i18n/mountains'
 
 const SOCIAL_LINKS = [
   {
@@ -33,42 +34,59 @@ const SOCIAL_LINKS = [
   },
 ] as const
 
-const Footer = () => {
+type Props = {
+  currentListId?: MountainListId
+}
+
+const Footer = ({ currentListId = 'hyakumeizan' }: Props) => {
   const { t, locale } = useLocale()
+  const showRegionNavigation = currentListId === 'hyakumeizan'
 
   return (
     <footer>
       <FooterWrapper>
         <FooterInner>
-          <nav aria-label="Footer mountain navigation">
-            {locale === 'en' ? (
-              <FooterContentEn>
-                <HorizonTextNormalLink>
-                  <Link href={'/'}>{t.TITLE}</Link>
-                  <i></i>
-                </HorizonTextNormalLink>
-                {REGION_LINKS.map((link) => (
-                  <HorizonTextNormalLink key={link.path}>
-                    <Link href={link.path}>{t[link.labelKey]}</Link>
-                    <i></i>
-                  </HorizonTextNormalLink>
-                ))}
-              </FooterContentEn>
-            ) : (
-              <FooterContent>
-                <VerticalTextBoldLink>
-                  <Link href={'/'}>{t.TITLE}</Link>
-                  <i></i>
-                </VerticalTextBoldLink>
-                {REGION_LINKS.map((link) => (
-                  <VerticalTextNormalLink key={link.path}>
-                    <Link href={link.path}>{t[link.labelKey]}</Link>
-                    <i></i>
-                  </VerticalTextNormalLink>
-                ))}
-              </FooterContent>
-            )}
-          </nav>
+          <FooterListNav aria-label={t.FOOTER_LIST_NAV_LABEL}>
+            {MOUNTAIN_LISTS.map((list) => {
+              const href = list.id === 'hyakumeizan' ? '/' : list.path
+              const label = getLocalizedListLabel(list, locale)
+              const active = currentListId === list.id
+
+              return (
+                <FooterListLink
+                  key={list.id}
+                  href={href}
+                  $active={active}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {label}
+                </FooterListLink>
+              )
+            })}
+          </FooterListNav>
+          {showRegionNavigation ? (
+            <nav aria-label="Footer mountain navigation">
+              {locale === 'en' ? (
+                <FooterContentEn>
+                  {REGION_LINKS.map((link) => (
+                    <HorizonTextNormalLink key={link.path}>
+                      <Link href={link.path}>{t[link.labelKey]}</Link>
+                      <i></i>
+                    </HorizonTextNormalLink>
+                  ))}
+                </FooterContentEn>
+              ) : (
+                <FooterContent>
+                  {REGION_LINKS.map((link) => (
+                    <VerticalTextNormalLink key={link.path}>
+                      <Link href={link.path}>{t[link.labelKey]}</Link>
+                      <i></i>
+                    </VerticalTextNormalLink>
+                  ))}
+                </FooterContent>
+              )}
+            </nav>
+          ) : null}
           <div className="footer__sns">
             {SOCIAL_LINKS.map((link) => (
               <a

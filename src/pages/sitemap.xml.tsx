@@ -1,15 +1,22 @@
 import { GetServerSidePropsContext } from 'next'
+import { getAllMountains, MOUNTAIN_LISTS } from '@/constants/mountainLists'
+import { SUPPORTED_LOCALES } from '@/i18n/index'
+import { toAbsoluteUrl, toLocalizedPath, withTrailingSlash } from '@/utils/seoPaths'
 
 type Post = {
   path: string
+  basePath: string
 }
 
-const withTrailingSlash = (path: string): string => {
-  if (path === '/') {
-    return '/'
-  }
+const SITEMAP_LASTMOD = '2026-06-05T00:00:00.000Z'
 
-  return path.endsWith('/') ? path : `${path}/`
+const escapeXml = (value: string): string => {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
 }
 
 async function getAllPosts(): Promise<Post[]> {
@@ -23,34 +30,55 @@ async function getAllPosts(): Promise<Post[]> {
     '/local/shikoku',
     '/local/kyushu-okinawa',
   ]
+  const guidePaths = [
+    '/guides/mountains-near-tokyo',
+    '/guides/japanese-alps-mountains',
+    '/guides/highest-mountains-in-japan',
+    '/guides/low-mountains-in-japan',
+  ]
+  const listPaths = MOUNTAIN_LISTS.map((list) => list.path)
+  const mountainPaths = getAllMountains().map((mountain) => `/mountains/${mountain.slug}`)
 
-  const jaPaths = ['/', '/local', ...regionPaths].map((path) => withTrailingSlash(path))
-  const enPaths = jaPaths.map((path) => {
-    if (path === '/') {
-      return '/en/'
+  const basePaths = ['/', '/local', ...regionPaths, ...guidePaths, ...listPaths, ...mountainPaths]
+
+  const localizedPosts = SUPPORTED_LOCALES.flatMap((locale) =>
+    basePaths.map((path) => ({
+      path: toLocalizedPath(path, locale),
+      basePath: withTrailingSlash(path),
+    })),
+  )
+
+  const seen = new Set<string>()
+
+  return localizedPosts.filter((post) => {
+    if (seen.has(post.path)) {
+      return false
     }
+    seen.add(post.path)
 
-    return withTrailingSlash(`/en${path}`)
+    return true
   })
-
-  const allPaths = Array.from(new Set([...jaPaths, ...enPaths]))
-
-  return allPaths.map((path) => ({ path }))
 }
 
 async function generateSitemapXml(): Promise<string> {
-  const appHost = 'https://www.famous-mountains-in-japan.com'
-  const lastmod = new Date().toISOString()
-
   let xml = `<?xml version="1.0" encoding="UTF-8"?>`
-  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`
 
   const posts = await getAllPosts()
   posts.forEach((post) => {
     xml += `
       <url>
-        <loc>${appHost}${post.path}</loc>
-        <lastmod>${lastmod}</lastmod>
+        <loc>${escapeXml(toAbsoluteUrl(post.path))}</loc>
+        ${SUPPORTED_LOCALES.map(
+          (locale) =>
+            `<xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(
+              toAbsoluteUrl(toLocalizedPath(post.basePath, locale)),
+            )}" />`,
+        ).join('')}
+        <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(
+          toAbsoluteUrl(toLocalizedPath(post.basePath, 'ja')),
+        )}" />
+        <lastmod>${SITEMAP_LASTMOD}</lastmod>
         <changefreq>weekly</changefreq>
       </url>
     `

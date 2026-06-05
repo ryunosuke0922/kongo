@@ -1,10 +1,11 @@
 import MountainExplorer from '@/components/features/mountainExplorer'
 import Layout from '@/components/layouts/top'
-import type { MountainsData } from '@/types/mountains'
+import { getMountainsByList } from '@/constants/mountainLists'
+import type { UnifiedMountainData } from '@/types/mountains'
 import type { GetStaticProps, NextPage } from 'next'
 
 type Props = {
-  mountains: MountainsData[]
+  mountains: UnifiedMountainData[]
 }
 
 const Home: NextPage<Props> = ({ mountains }) => {
@@ -16,7 +17,7 @@ const Home: NextPage<Props> = ({ mountains }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const mountains: MountainsData[] = (await import('@/data/mountains.json')).default
+  const mountains = getMountainsByList('hyakumeizan')
 
   return {
     props: {

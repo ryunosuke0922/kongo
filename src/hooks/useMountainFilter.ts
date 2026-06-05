@@ -1,5 +1,10 @@
 import type { SupportedLocale } from '@/i18n/index'
-import type { MountainsData } from '@/types/mountains'
+import {
+  getLocalizedMountainName,
+  getLocalizedPrefectureValues,
+  getLocalizedSearchCandidates,
+} from '@/i18n/mountains'
+import type { UnifiedMountainData } from '@/types/mountains'
 import { useEffect, useMemo, useState } from 'react'
 
 export type SortType = 'no' | 'elevation-asc' | 'elevation-desc' | 'kana'
@@ -9,14 +14,18 @@ const normalizeText = (value: string): string => {
   return value.trim().toLowerCase()
 }
 
-const compareByKana = (a: MountainsData, b: MountainsData, locale: SupportedLocale): number => {
-  const left = locale === 'en' ? a.nameEn : a.kanaName
-  const right = locale === 'en' ? b.nameEn : b.kanaName
+const compareByKana = (
+  a: UnifiedMountainData,
+  b: UnifiedMountainData,
+  locale: SupportedLocale,
+): number => {
+  const left = locale === 'ja' ? a.kanaName : getLocalizedMountainName(a, locale)
+  const right = locale === 'ja' ? b.kanaName : getLocalizedMountainName(b, locale)
 
   return left.localeCompare(right, locale)
 }
 
-export const useMountainFilter = (mountains: MountainsData[], locale: SupportedLocale) => {
+export const useMountainFilter = (mountains: UnifiedMountainData[], locale: SupportedLocale) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('')
   const [sortType, setSortType] = useState<SortType>('no')
@@ -39,17 +48,18 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
       query.length === 0
         ? mountains
         : mountains.filter((mountain) => {
-            const candidates = [mountain.name, mountain.nameEn, mountain.kanaName]
+            const candidates = getLocalizedSearchCandidates(mountain, locale)
 
             return candidates.some((candidate) => normalizeText(candidate).includes(query))
           })
+
     const filteredByPrefecture =
       prefectureFilter === 'all'
         ? filtered
         : filtered.filter((mountain) => {
-            const value = locale === 'en' ? mountain.prefecturesEn : mountain.prefectures
+            const values = getLocalizedPrefectureValues(mountain, locale)
 
-            return value === prefectureFilter
+            return values.includes(prefectureFilter)
           })
 
     const filteredByElevation =
@@ -73,8 +83,6 @@ export const useMountainFilter = (mountains: MountainsData[], locale: SupportedL
       sorted.sort((a, b) => b.elevation - a.elevation)
     } else if (sortType === 'kana') {
       sorted.sort((a, b) => compareByKana(a, b, locale))
-    } else {
-      sorted.sort((a, b) => a.no - b.no)
     }
 
     return sorted
