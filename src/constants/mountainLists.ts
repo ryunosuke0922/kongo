@@ -306,21 +306,10 @@ export const getAllMountains = (): UnifiedMountainData[] => {
   })
 }
 
-const toListScopedMountain = (
-  mountain: UnifiedMountainData,
-  listId: MountainListId,
-  no: number,
-): UnifiedMountainData => {
-  const meta = getMountainListMeta(listId)
-
+const toListScopedMountain = (mountain: UnifiedMountainData, no: number): UnifiedMountainData => {
   return {
     ...mountain,
     no,
-    listIds: [listId],
-    listLabelsJa: [meta.labelJa],
-    listLabelsEn: [meta.labelEn],
-    listLabelsZhCN: [meta.labelZhCN],
-    listLabelsZhTW: [meta.labelZhTW],
   }
 }
 
@@ -336,6 +325,6 @@ export const getMountainsByList = (listId: MountainListFilter): UnifiedMountainD
   return getRawMountainsByList(listId).map((mountain, index) => {
     const mergedMountain = mountainsByKey.get(getMergeKey(mountain)) ?? mountain
 
-    return toListScopedMountain(mergedMountain, listId, index + 1)
+    return toListScopedMountain(mergedMountain, index + 1)
   })
 }
