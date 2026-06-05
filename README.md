@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://www.famous-mountains-in-japan.com">
+  <a href="https://famous-mountains-in-japan.com">
     <img width="70%" src="./public/images/img04.jpg" alt="Famous mountains in Japan" />
   </a>
 </p>
 
 <h1 align="center">日本百名山の一覧</h1>
 
-<p align="center">website: https://www.famous-mountains-in-japan.com</p>
+<p align="center">website: https://famous-mountains-in-japan.com</p>
 
 ## 概要
 
@@ -17,7 +17,7 @@
 ## 本番環境
 
 ```txt
-https://www.famous-mountains-in-japan.com
+https://famous-mountains-in-japan.com
 ```
 
 ## 機能
