@@ -35,6 +35,23 @@ type MapBounds = {
   height: number
 }
 
+type MapMarker = {
+  type: 'marker'
+  mountain: UnifiedMountainData
+  x: number
+  y: number
+}
+
+type MapCluster = {
+  type: 'cluster'
+  key: string
+  mountains: UnifiedMountainData[]
+  x: number
+  y: number
+}
+
+type MapItem = MapMarker | MapCluster
+
 const JAPAN_BOUNDS = {
   minLatitude: 24,
   maxLatitude: 46,
@@ -52,6 +69,7 @@ const MIN_ZOOM_BOUNDS_WIDTH = 240
 const MAX_ZOOM_LEVEL = 4
 const ZOOM_STEP = 1.65
 const KEYBOARD_PAN_RATIO = 0.12
+const CLUSTER_GRID_SIZE_BY_ZOOM = [7, 5, 3, 0, 0] as const
 
 const MapSection = styled.section`
   ${sectionPanel}
@@ -160,6 +178,37 @@ const MapPoint = styled(Link).attrs<{ $x: number; $y: number }>(({ $x, $y }) => 
   &:focus-visible {
     width: 1.8rem;
     height: 1.8rem;
+    outline: 2px solid ${UI_COLORS.focus};
+    outline-offset: 2px;
+    z-index: 3;
+  }
+`
+
+const MapClusterButton = styled.button.attrs<{ $x: number; $y: number }>(({ $x, $y }) => ({
+  style: {
+    left: `${$x}%`,
+    top: `${$y}%`,
+  },
+}))<{ $x: number; $y: number }>`
+  position: absolute;
+  min-width: 2.8rem;
+  min-height: 2.8rem;
+  padding: 0 ${UI_SPACE.xs};
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: ${UI_RADIUS.pill};
+  color: ${UI_COLORS.textInverted};
+  background: ${UI_COLORS.textPrimary};
+  box-shadow: 0 0 0 0.3rem rgba(51, 51, 51, 0.18);
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover,
+  &:focus-visible {
+    min-width: 3.2rem;
+    min-height: 3.2rem;
     outline: 2px solid ${UI_COLORS.focus};
     outline-offset: 2px;
     z-index: 3;
@@ -332,6 +381,56 @@ const getTiles = (mapBounds: MapBounds) => {
   return tiles
 }
 
+const getMapItems = (
+  mountains: UnifiedMountainData[],
+  mapBounds: MapBounds,
+  zoomLevel: number,
+): MapItem[] => {
+  const gridSize = CLUSTER_GRID_SIZE_BY_ZOOM[zoomLevel] ?? 0
+  const markers = mountains.map((mountain) => {
+    const point = toMapPercent(mountain.latitude, mountain.longitude, mapBounds)
+
+    return {
+      type: 'marker' as const,
+      mountain,
+      x: point.x,
+      y: point.y,
+    }
+  })
+
+  if (gridSize === 0) {
+    return markers
+  }
+
+  const groups = new Map<string, MapMarker[]>()
+  markers.forEach((marker) => {
+    const key = `${Math.floor(marker.x / gridSize)}:${Math.floor(marker.y / gridSize)}`
+    const group = groups.get(key)
+
+    if (group) {
+      group.push(marker)
+
+      return
+    }
+
+    groups.set(key, [marker])
+  })
+
+  return Array.from(groups.entries()).map(([key, group]) => {
+    if (group.length === 1) {
+      return group[0]
+    }
+
+    return {
+      type: 'cluster',
+      key,
+      mountains: group.map((marker) => marker.mountain),
+      x: group.reduce((sum, marker) => sum + marker.x, 0) / group.length,
+      y: group.reduce((sum, marker) => sum + marker.y, 0) / group.length,
+    }
+  })
+}
+
 const MountainMap = ({ mountains }: Props) => {
   const { t, locale } = useLocale()
   const canvasRef = useRef<HTMLDivElement>(null)
@@ -348,6 +447,10 @@ const MountainMap = ({ mountains }: Props) => {
     [baseMapBounds, panOffset, zoomLevel],
   )
   const tiles = useMemo(() => (mapBounds ? getTiles(mapBounds) : []), [mapBounds])
+  const mapItems = useMemo(
+    () => (mapBounds ? getMapItems(visibleMountains, mapBounds, zoomLevel) : []),
+    [mapBounds, visibleMountains, zoomLevel],
+  )
 
   if (visibleMountains.length === 0 || !mapBounds) {
     return null
@@ -364,6 +467,26 @@ const MountainMap = ({ mountains }: Props) => {
   const resetZoom = () => {
     setZoomLevel(0)
     setPanOffset({ x: 0, y: 0 })
+  }
+  const zoomToPoint = (point: PixelPoint) => {
+    if (!baseMapBounds || !mapBounds) {
+      zoomIn()
+
+      return
+    }
+
+    const nextZoomLevel = Math.min(MAX_ZOOM_LEVEL, zoomLevel + 1)
+    const targetCenter = {
+      x: mapBounds.left + (point.x / 100) * mapBounds.width,
+      y: mapBounds.top + (point.y / 100) * mapBounds.height,
+    }
+    const nextPanOffset = {
+      x: targetCenter.x - (baseMapBounds.left + baseMapBounds.width / 2),
+      y: targetCenter.y - (baseMapBounds.top + baseMapBounds.height / 2),
+    }
+
+    setZoomLevel(nextZoomLevel)
+    setPanOffset(clampPanOffset(baseMapBounds, nextZoomLevel, nextPanOffset))
   }
   const endDrag = () => {
     dragStartRef.current = null
@@ -481,13 +604,28 @@ const MountainMap = ({ mountains }: Props) => {
         onPointerLeave={endDrag}
       >
         <MapControls role="group" aria-label={t.MAP_ZOOM_CONTROLS}>
-          <MapControlButton type="button" onClick={zoomIn} disabled={zoomLevel === MAX_ZOOM_LEVEL}>
+          <MapControlButton
+            type="button"
+            onClick={zoomIn}
+            disabled={zoomLevel === MAX_ZOOM_LEVEL}
+            aria-label={t.MAP_ZOOM_IN}
+          >
             +
           </MapControlButton>
-          <MapControlButton type="button" onClick={zoomOut} disabled={zoomLevel === 0}>
+          <MapControlButton
+            type="button"
+            onClick={zoomOut}
+            disabled={zoomLevel === 0}
+            aria-label={t.MAP_ZOOM_OUT}
+          >
             -
           </MapControlButton>
-          <MapControlButton type="button" onClick={resetZoom} disabled={zoomLevel === 0}>
+          <MapControlButton
+            type="button"
+            onClick={resetZoom}
+            disabled={zoomLevel === 0}
+            aria-label={t.MAP_ZOOM_RESET}
+          >
             1x
           </MapControlButton>
         </MapControls>
@@ -498,22 +636,41 @@ const MountainMap = ({ mountains }: Props) => {
             alt=""
             aria-hidden="true"
             draggable={false}
+            loading="lazy"
+            decoding="async"
             $left={tile.left}
             $top={tile.top}
             $width={tile.width}
             $height={tile.height}
           />
         ))}
-        {visibleMountains.map((mountain) => {
-          const point = toMapPercent(mountain.latitude, mountain.longitude, mapBounds)
-          const name = getLocalizedMountainName(mountain, locale)
+        {mapItems.map((item) => {
+          if (item.type === 'cluster') {
+            const label = `${t.MAP_CLUSTER_PREFIX}${item.mountains.length}${t.MAP_CLUSTER_SUFFIX}`
+
+            return (
+              <MapClusterButton
+                key={`cluster-${item.key}`}
+                type="button"
+                $x={item.x}
+                $y={item.y}
+                aria-label={label}
+                title={label}
+                onClick={() => zoomToPoint(item)}
+              >
+                {item.mountains.length}
+              </MapClusterButton>
+            )
+          }
+
+          const name = getLocalizedMountainName(item.mountain, locale)
 
           return (
             <MapPoint
-              key={`${mountain.slug}-${mountain.latitude}-${mountain.longitude}`}
-              href={toLocalizedPath(`/mountains/${mountain.slug}`, locale)}
-              $x={point.x}
-              $y={point.y}
+              key={`${item.mountain.slug}-${item.mountain.latitude}-${item.mountain.longitude}`}
+              href={toLocalizedPath(`/mountains/${item.mountain.slug}`, locale)}
+              $x={item.x}
+              $y={item.y}
               aria-label={name}
               title={name}
             />

@@ -8,6 +8,7 @@ import {
   pillHoverMotion,
   sectionPanel,
 } from '@/components/molecules/sharedSurfaces/style'
+import { DEFAULT_OG_IMAGE_PATH } from '@/constants/site'
 import { getAllMountains } from '@/constants/mountainLists'
 import { UI_COLORS, UI_SPACE } from '@/constants/ui'
 import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
@@ -136,6 +137,169 @@ const getLocalizedPagePath = (slug: string, locale: SupportedLocale): string => 
   return toLocalizedPath(`/mountains/${slug}`, locale)
 }
 
+const getNearbyMountainNames = (
+  nearbyMountains: UnifiedMountainData[],
+  locale: SupportedLocale,
+): string => {
+  return nearbyMountains
+    .map((item) => getLocalizedMountainName(item, locale))
+    .join(locale === 'en' ? ', ' : '、')
+}
+
+const getDetailFaqSchema = (
+  name: string,
+  prefectures: string,
+  elevation: string,
+  nearbyMountainNames: string,
+  locale: SupportedLocale,
+) => {
+  if (locale === 'en') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `Where is ${name}?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name} is in ${prefectures}, Japan.`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `How high is ${name}?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name} is ${elevation} high.`,
+          },
+        },
+        ...(nearbyMountainNames
+          ? [
+              {
+                '@type': 'Question',
+                name: `What mountains are near ${name}?`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `Nearby mountains include ${nearbyMountainNames}.`,
+                },
+              },
+            ]
+          : []),
+      ],
+    }
+  }
+
+  if (locale === 'zh-CN') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `${name}在哪里？`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name}位于日本${prefectures}。`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `${name}的海拔是多少？`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name}海拔${elevation}。`,
+          },
+        },
+        ...(nearbyMountainNames
+          ? [
+              {
+                '@type': 'Question',
+                name: `${name}附近有哪些山？`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `附近的山包括${nearbyMountainNames}。`,
+                },
+              },
+            ]
+          : []),
+      ],
+    }
+  }
+
+  if (locale === 'zh-TW') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `${name}在哪裡？`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name}位於日本${prefectures}。`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `${name}的標高是多少？`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${name}標高${elevation}。`,
+          },
+        },
+        ...(nearbyMountainNames
+          ? [
+              {
+                '@type': 'Question',
+                name: `${name}附近有哪些山？`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `附近的山包括${nearbyMountainNames}。`,
+                },
+              },
+            ]
+          : []),
+      ],
+    }
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `${name}はどこにありますか？`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${name}は${prefectures}にあります。`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `${name}の標高は何メートルですか？`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${name}の標高は${elevation}です。`,
+        },
+      },
+      ...(nearbyMountainNames
+        ? [
+            {
+              '@type': 'Question',
+              name: `${name}の近くにある山は？`,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: `近くの山には${nearbyMountainNames}があります。`,
+              },
+            },
+          ]
+        : []),
+    ],
+  }
+}
+
 const toRadians = (value: number): number => {
   return (value * Math.PI) / 180
 }
@@ -170,8 +334,10 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
   const pagePath = getLocalizedPagePath(mountain.slug, locale)
   const title = getDetailTitle(name, locale)
   const description = getDescription(name, prefectures, elevation, listLabels, locale)
+  const nearbyMountainNames = getNearbyMountainNames(nearbyMountains, locale)
   const yamapKeyword = encodeURIComponent(`${prefectures} ${name}`)
   const instagramTag = encodeURIComponent(name.replace(/\s+/g, ''))
+  const imageUrl = toAbsoluteUrl(DEFAULT_OG_IMAGE_PATH)
   const mountainSchema = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
@@ -179,6 +345,7 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
     alternateName: locale === 'en' ? mountain.name : mountain.nameEn,
     description,
     url: toAbsoluteUrl(pagePath),
+    image: imageUrl,
     ...(hasValidCoordinates(mountain)
       ? {
           geo: {
@@ -199,6 +366,16 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
       name: label,
     })),
   }
+  const imageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: imageUrl,
+    url: imageUrl,
+    name: `${name} | ${t.TITLE}`,
+    caption: description,
+    representativeOfPage: true,
+  }
+  const faqSchema = getDetailFaqSchema(name, prefectures, elevation, nearbyMountainNames, locale)
 
   return (
     <Layout
@@ -213,7 +390,7 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
             { name: t.TITLE, path: '/' },
             { name, path: `/mountains/${mountain.slug}` },
           ]}
-          schemas={[mountainSchema]}
+          schemas={[mountainSchema, imageSchema, faqSchema]}
         />
       }
     >

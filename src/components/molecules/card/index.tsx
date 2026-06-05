@@ -76,9 +76,7 @@ const EnhancedCard = ({ data, showListLabel = true }: Props) => {
         </TextWrapper>
         <div className="card__wrapper">
           {mountainSystem ? <TextMountain>{mountainSystem}</TextMountain> : null}
-          <TextMountain>
-            <i>{prefectures}</i>
-          </TextMountain>
+          <TextMountain>{prefectures}</TextMountain>
         </div>
         <div className="card__wrapper">
           <TextName>
