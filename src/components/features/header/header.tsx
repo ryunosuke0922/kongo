@@ -52,7 +52,7 @@ const Header = () => {
                 aria-current={locale === 'ja' ? 'page' : undefined}
                 className={locale === 'ja' ? 'is-current' : ''}
               >
-                jp
+                ja
               </Link>
               <Link
                 href={localeHref}

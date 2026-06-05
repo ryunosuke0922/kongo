@@ -20,7 +20,7 @@ export const MOUNTAIN_LISTS: MountainListMeta[] = [
     labelZhCN: '日本百名山',
     labelZhTW: '日本百名山',
     descriptionJa: '深田久弥が選定した日本百名山100座。',
-    descriptionEn: 'The 100 Famous Japanese Mountains selected by Hisaya Fukada.',
+    descriptionEn: 'The 100 Famous Japanese Mountains selected by Kyuya Fukada.',
     descriptionZhCN: '深田久弥评选的日本百名山100座。',
     descriptionZhTW: '深田久彌選定的日本百名山100座。',
     path: '/lists/hyakumeizan',

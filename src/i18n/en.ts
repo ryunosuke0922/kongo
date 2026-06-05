@@ -3,11 +3,11 @@ import type { LocaleMessages } from './ja'
 const en: LocaleMessages = {
   TITLE: '100 Famous Japanese Mountains',
   DESCRIPTION:
-    '"Nihon Hyakumeizan" is a collection of mountain essays written by Hisaya Fukada. This site lists all 100 famous mountains in Japan.',
+    '"Nihon Hyakumeizan" is a collection of mountain essays written by Kyuya Fukada. This site lists all 100 famous mountains in Japan.',
   DESCRIPTION_1: '"Nihon Hyakumeizan"',
   DESCRIPTION_2: 'is a collection of',
   DESCRIPTION_3: 'mountain essays',
-  DESCRIPTION_4: 'written by Hisaya Fukada.',
+  DESCRIPTION_4: 'written by Kyuya Fukada.',
   DESCRIPTION_5: 'This site lists all',
   DESCRIPTION_6: '100 famous mountains.',
   HOKKAIDO_REGION: 'Hokkaido region',
@@ -19,7 +19,7 @@ const en: LocaleMessages = {
   SHIKOKU_REGION: 'Shikoku region',
   KYUSHU_OKINAWA_REGION: 'Kyushu/Okinawa region',
   INFO: 'List of 100 Famous Mountains',
-  INFO_NAME: 'Selected by Hisaya Fukada',
+  INFO_NAME: 'Selected by Kyuya Fukada',
   LANGUAGE_SWITCHER_ARIA: 'Language switcher',
   LANGUAGE_SWITCH_TO_EN: 'Switch language to English',
   LANGUAGE_SWITCH_TO_JA: 'Switch language to Japanese',

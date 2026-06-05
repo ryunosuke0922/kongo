@@ -186,7 +186,7 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
           : '日本百名山一覧 | 都道府県・標高で探せる'
   const homeDescription =
     localeCode === 'en'
-      ? "A complete English list of Japan's 100 Famous Japanese Mountains selected by Hisaya Fukada. Search mountains in Japan by name, region, prefecture, and elevation."
+      ? "A complete English list of Japan's 100 Famous Japanese Mountains selected by Kyuya Fukada. Search mountains in Japan by name, region, prefecture, and elevation."
       : localeCode === 'zh-TW'
         ? '介紹日本百名山100座，可依山名、地區、都道府縣與標高搜尋。'
         : localeCode === 'zh-CN'
@@ -338,7 +338,7 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
                     name: 'What are the 100 Famous Japanese Mountains?',
                     acceptedAnswer: {
                       '@type': 'Answer',
-                      text: 'They are 100 notable mountains in Japan selected by Hisaya Fukada, known in Japanese as Nihon Hyakumeizan.',
+                      text: 'They are 100 notable mountains in Japan selected by Kyuya Fukada, known in Japanese as Nihon Hyakumeizan.',
                     },
                   },
                   {
