@@ -10,7 +10,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({ mountains }) => {
   return (
-    <Layout>
+    <Layout mountains={mountains}>
       <MountainExplorer mountains={mountains} />
     </Layout>
   )

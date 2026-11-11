@@ -19,14 +19,14 @@ mount fuji
 ## 実装済みの基本対応
 
 - locale ごとの title / meta description
-- canonical URL
+- 各言語自身のURLを指す canonical と og:url
 - 日本語 / 英語 / 簡体字 / 繁体字の `hreflang`
 - Open Graph / Twitter metadata
-- `WebSite`、`Organization`、`BreadcrumbList`、`ItemList`、`FAQPage` の JSON-LD
+- `WebSite`、`Organization`、`BreadcrumbList`、`ItemList`、`Mountain` の JSON-LD
 - 地方ページごとの SEO 文言
 - 動的な `sitemap.xml`
 - `robots.txt`
-- 山詳細ページ
+- 山詳細ページは山名・標高・所在地を本文に明示。確認済みの代表峰には山頂名と国土地理院への出典リンクを付ける。
 - 目的別ガイドページ
 - locale ごとの sitemap alternate link
 - 本番 origin と URL 生成の共通化
@@ -38,6 +38,12 @@ mount fuji
 - 地方ページでは、一覧が小さい場合に代表的な山名を本文に含める。
 - キーワードの詰め込みは避け、ページ本文として役に立つ内容にする。
 - 日本語 / 英語 / 簡体字 / 繁体字の文字列は既存の i18n ファイルで管理する。
+
+## AI検索向けの確認
+
+- 日本百高山の上位表は標高順・同標高は同順位。標高の検証元は[国土地理院の山岳標高一覧](https://www.gsi.go.jp/kihonjohochousa/kihonjohochousa41139.html)。
+- 重要な回答・一覧・参照リンクは初期HTMLで読める形にし、JSON-LDは同じ表示データから生成する。本文にないFAQや山ごとの写真を表すマークアップは追加しない。
+- [GoogleのAI検索ガイド](https://developers.google.com/search/docs/appearance/ai-features)に沿い、通常の検索と同じくインデックス可能な本文を整える。
 
 ## Search Console の確認
 

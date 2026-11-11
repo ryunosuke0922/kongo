@@ -173,7 +173,7 @@
     "no": 11,
     "name": "八甲田山",
     "kanaName": "はっこうださん（おおだけ）",
-    "elevation": 1585,
+    "elevation": 1584,
     "mountainSystem": "奥羽山脈",
     "prefectures": "青森県",
     "nameEn": "Hakkoda",
@@ -325,7 +325,7 @@
   {
     "no": 20,
     "name": "吾妻山",
-    "kanaName": "にしあづまやま",
+    "kanaName": "あづまやま（にしあづまやま）",
     "elevation": 2035,
     "mountainSystem": "奥羽山脈",
     "prefectures": "山形県・福島県",
@@ -916,7 +916,7 @@
   {
     "no": 55,
     "name": "穂高岳",
-    "kanaName": "おくほたかだけ",
+    "kanaName": "ほたかだけ（おくほたかだけ）",
     "elevation": 3190,
     "mountainSystem": "飛騨山脈",
     "prefectures": "長野県・岐阜県",
@@ -1630,7 +1630,7 @@
   {
     "no": 97,
     "name": "阿蘇山",
-    "kanaName": "たかだけ",
+    "kanaName": "あそさん（たかだけ）",
     "elevation": 1592,
     "mountainSystem": "阿蘇カルデラ",
     "prefectures": "熊本県",

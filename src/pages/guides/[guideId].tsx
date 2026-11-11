@@ -6,9 +6,9 @@ import Seo from '@/components/molecules/seo'
 import { PageLead } from '@/components/molecules/sharedSurfaces/style'
 import { getAllMountains } from '@/constants/mountainLists'
 import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
-import { getLocalizedMountainName, getLocalizedPrefectures } from '@/i18n/mountains'
+import Link from 'next/link'
 import type { UnifiedMountainData } from '@/types/mountains'
-import { toAbsoluteUrl, toLocalizedPath } from '@/utils/seoPaths'
+import { toLocalizedPath } from '@/utils/seoPaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type GuideId =
@@ -191,27 +191,6 @@ const GuidePage: NextPage<Props> = ({ guide, mountains }) => {
           : guide.descriptionJa
   const title = getGuideTitle(heading, mountains.length, locale)
   const description = getGuideDescription(lead, mountains.length, locale)
-  const guideSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: heading,
-    numberOfItems: mountains.length,
-    itemListElement: mountains.map((mountain, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      url: toAbsoluteUrl(toLocalizedPath(`/mountains/${mountain.slug}`, locale)),
-      item: {
-        '@type': 'TouristAttraction',
-        name: getLocalizedMountainName(mountain, locale),
-        alternateName: locale === 'en' ? mountain.name : mountain.nameEn,
-        address: {
-          '@type': 'PostalAddress',
-          addressCountry: 'JP',
-          addressRegion: getLocalizedPrefectures(mountain, locale),
-        },
-      },
-    })),
-  }
 
   return (
     <Layout
@@ -224,14 +203,23 @@ const GuidePage: NextPage<Props> = ({ guide, mountains }) => {
             { name: t.TITLE, path: '/' },
             { name: heading, path: `/guides/${guide.id}` },
           ]}
-          schemas={[guideSchema]}
+          mountains={mountains}
+          listName={heading}
         />
       }
     >
       <div className="main__content-title">
-        <Heading3>{heading}</Heading3>
+        <Heading3 as="h1">{heading}</Heading3>
       </div>
-      <PageLead>{lead}</PageLead>
+      <PageLead>
+        {lead}
+        {guide.id === 'highest-mountains-in-japan' && (
+          <>
+            {' '}
+            <Link href="/lists/hyakukozan">{t.HIGHEST_TITLE}</Link>
+          </>
+        )}
+      </PageLead>
       <MountainMap mountains={mountains} />
       <MountainCardList mountains={mountains} />
     </Layout>

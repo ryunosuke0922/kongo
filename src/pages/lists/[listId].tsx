@@ -1,4 +1,5 @@
 import { Heading3 } from '@/components/atoms/text/style'
+import ElevationRanking from '@/components/molecules/elevationRanking'
 import Layout from '@/components/layouts/local'
 import MountainCardList from '@/components/molecules/mountainCardList'
 import MountainListNav from '@/components/molecules/mountainListNav'
@@ -7,14 +8,10 @@ import Seo from '@/components/molecules/seo'
 import { PageLead } from '@/components/molecules/sharedSurfaces/style'
 import { getMountainListMeta, getMountainsByList, MOUNTAIN_LISTS } from '@/constants/mountainLists'
 import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
-import {
-  getLocalizedListDescription,
-  getLocalizedListLabel,
-  getLocalizedMountainName,
-  getLocalizedPrefectures,
-} from '@/i18n/mountains'
+import { getLocalizedListDescription, getLocalizedListLabel } from '@/i18n/mountains'
 import type { MountainListId, UnifiedMountainData } from '@/types/mountains'
-import { toAbsoluteUrl, toLocalizedPath } from '@/utils/seoPaths'
+import { formatElevation } from '@/i18n/summits'
+import { toLocalizedPath } from '@/utils/seoPaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type Props = {
@@ -54,51 +51,18 @@ const getListDescription = (
   return `${description}${count}座の山を山名、都道府県、標高、地図、近い山から探せます。`
 }
 
-const hasValidCoordinates = (mountain: UnifiedMountainData): boolean => {
-  return mountain.latitude !== 0 && mountain.longitude !== 0
-}
-
 const ListPage: NextPage<Props> = ({ listId, mountains }) => {
   const { t, locale } = useLocale()
   const meta = getMountainListMeta(listId)
   const label = getLocalizedListLabel(meta, locale)
-  const title = getListTitle(label, mountains.length, locale)
-  const description = getListDescription(
-    getLocalizedListDescription(meta, locale),
-    mountains.length,
-    locale,
-  )
-  const listSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: label,
-    numberOfItems: mountains.length,
-    itemListElement: mountains.map((mountain, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      url: toAbsoluteUrl(toLocalizedPath(`/mountains/${mountain.slug}`, locale)),
-      item: {
-        '@type': 'TouristAttraction',
-        name: getLocalizedMountainName(mountain, locale),
-        alternateName: locale === 'en' ? mountain.name : mountain.nameEn,
-        ...(hasValidCoordinates(mountain)
-          ? {
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: mountain.latitude,
-                longitude: mountain.longitude,
-                elevation: mountain.elevation,
-              },
-            }
-          : {}),
-        address: {
-          '@type': 'PostalAddress',
-          addressCountry: 'JP',
-          addressRegion: getLocalizedPrefectures(mountain, locale),
-        },
-      },
-    })),
-  }
+  const topPeaks = listId === 'hyakukozan' ? mountains.slice(0, 5) : null
+  const title = topPeaks ? t.HIGHEST_TITLE : getListTitle(label, mountains.length, locale)
+  const description = topPeaks
+    ? t.HIGHEST_INTRO.replace('{first}', formatElevation(topPeaks[0].elevation, locale)).replace(
+        '{second}',
+        formatElevation(topPeaks[1].elevation, locale),
+      )
+    : getListDescription(getLocalizedListDescription(meta, locale), mountains.length, locale)
 
   return (
     <Layout
@@ -113,14 +77,16 @@ const ListPage: NextPage<Props> = ({ listId, mountains }) => {
             { name: t.TITLE, path: '/' },
             { name: label, path: meta.path },
           ]}
-          schemas={[listSchema]}
+          mountains={mountains}
+          listName={label}
         />
       }
     >
       <div className="main__content-title">
-        <Heading3>{label}</Heading3>
+        <Heading3 as="h1">{topPeaks ? t.HIGHEST_TITLE : label}</Heading3>
       </div>
       <PageLead>{description}</PageLead>
+      {topPeaks && <ElevationRanking peaks={topPeaks} />}
       <MountainListNav currentListId={listId} />
       <MountainMap mountains={mountains} />
       <MountainCardList mountains={mountains} />
@@ -145,10 +111,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const listId = params?.listId as MountainListId
 
+  const mountains = getMountainsByList(listId)
+  if (listId === 'hyakukozan') mountains.sort((a, b) => b.elevation - a.elevation)
+
   return {
     props: {
       listId,
-      mountains: getMountainsByList(listId),
+      mountains,
     },
   }
 }

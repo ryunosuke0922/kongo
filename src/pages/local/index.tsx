@@ -11,10 +11,9 @@ const Local: NextPage = () => {
 
   return (
     <Layout seo={<Seo pagePath="/local" />}>
-      <nav aria-label="Local area mountain navigation">
-        <VerticalTextBoldLink>
-          <Link href={'/'}>{t.TITLE}</Link>
-          <i></i>
+      <nav aria-labelledby="region-heading">
+        <VerticalTextBoldLink as="h1" id="region-heading">
+          {t.REGION_INDEX_HEADING}
         </VerticalTextBoldLink>
         {REGIONS.map((link) => (
           <VerticalTextNormalLink key={link.path}>

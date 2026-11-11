@@ -20,6 +20,11 @@ export const pageLeadText = css`
 
 export const PageLead = styled.p`
   ${pageLeadText}
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 `
 
 export const sectionTitleText = css`

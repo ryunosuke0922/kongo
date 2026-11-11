@@ -3,12 +3,13 @@ import Layout from '@/components/layouts/local'
 import MountainCardList from '@/components/molecules/mountainCardList'
 import Seo from '@/components/molecules/seo'
 import {
+  PageLead,
   compactPillTag,
   pillControl,
   pillHoverMotion,
   sectionPanel,
 } from '@/components/molecules/sharedSurfaces/style'
-import { DEFAULT_OG_IMAGE_PATH } from '@/constants/site'
+import { formatElevation, getSummitName, GSI_ELEVATIONS_URL } from '@/i18n/summits'
 import { getAllMountains } from '@/constants/mountainLists'
 import { UI_COLORS, UI_SPACE } from '@/constants/ui'
 import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
@@ -93,211 +94,37 @@ const SectionTitle = styled.h2`
   line-height: 1.4;
 `
 
-const formatElevation = (value: number, locale: SupportedLocale): string => {
-  return `${new Intl.NumberFormat(locale === 'ja' ? 'ja-JP' : locale).format(value)}m`
-}
+const getDetailTitle = (name: string, elevation: string, locale: SupportedLocale): string => {
+  if (locale === 'en') return `${name}: Elevation (${elevation}) and Location`
+  if (locale === 'zh-CN') return `${name}｜海拔 ${elevation} 与位置`
+  if (locale === 'zh-TW') return `${name}｜標高 ${elevation} 與位置`
 
-const getDetailTitle = (name: string, locale: SupportedLocale): string => {
-  if (locale === 'en') {
-    return `${name}: Elevation, Location and Nearby Mountains`
-  }
-  if (locale === 'zh-CN') {
-    return `${name}｜海拔、位置、名山名单`
-  }
-  if (locale === 'zh-TW') {
-    return `${name}｜標高、位置、名山名單`
-  }
-
-  return `${name}の標高・場所・名山リスト`
+  return `${name}の標高は${elevation}｜場所と周辺の山`
 }
 
 const getDescription = (
   name: string,
   prefectures: string,
   elevation: string,
-  listLabels: string[],
+  summit: string | undefined,
   locale: SupportedLocale,
 ): string => {
-  const listText = listLabels.join(locale === 'en' ? ', ' : '、')
+  if (locale === 'en')
+    return summit
+      ? `${name} reaches ${elevation} above sea level at its highest point, ${summit}, in ${prefectures}, Japan.`
+      : `${name} rises to ${elevation} above sea level in ${prefectures}, Japan.`
+  if (locale === 'zh-CN')
+    return summit
+      ? `${name}位于日本${prefectures}，最高点为${summit}，海拔${elevation}。`
+      : `${name}位于日本${prefectures}，海拔${elevation}。`
+  if (locale === 'zh-TW')
+    return summit
+      ? `${name}位於日本${prefectures}，最高點為${summit}，標高${elevation}。`
+      : `${name}位於日本${prefectures}，標高${elevation}。`
 
-  if (locale === 'en') {
-    return `${name} is a ${elevation} mountain in ${prefectures}, Japan. See its famous mountain lists (${listText}), map coordinates, YAMAP link, Instagram tag, and nearby peaks.`
-  }
-  if (locale === 'zh-CN') {
-    return `${name}是位于日本${prefectures}的${elevation}山岳。可查看所属名单（${listText}）、坐标、YAMAP、Instagram 与附近的山。`
-  }
-  if (locale === 'zh-TW') {
-    return `${name}是位於日本${prefectures}的${elevation}山岳。可查看所屬名單（${listText}）、座標、YAMAP、Instagram 與附近的山。`
-  }
-
-  return `${name}は${prefectures}にある標高${elevation}の山です。${listText}、座標、YAMAP、Instagram、近い山を確認できます。`
-}
-
-const getLocalizedPagePath = (slug: string, locale: SupportedLocale): string => {
-  return toLocalizedPath(`/mountains/${slug}`, locale)
-}
-
-const getNearbyMountainNames = (
-  nearbyMountains: UnifiedMountainData[],
-  locale: SupportedLocale,
-): string => {
-  return nearbyMountains
-    .map((item) => getLocalizedMountainName(item, locale))
-    .join(locale === 'en' ? ', ' : '、')
-}
-
-const getDetailFaqSchema = (
-  name: string,
-  prefectures: string,
-  elevation: string,
-  nearbyMountainNames: string,
-  locale: SupportedLocale,
-) => {
-  if (locale === 'en') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `Where is ${name}?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name} is in ${prefectures}, Japan.`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: `How high is ${name}?`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name} is ${elevation} high.`,
-          },
-        },
-        ...(nearbyMountainNames
-          ? [
-              {
-                '@type': 'Question',
-                name: `What mountains are near ${name}?`,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: `Nearby mountains include ${nearbyMountainNames}.`,
-                },
-              },
-            ]
-          : []),
-      ],
-    }
-  }
-
-  if (locale === 'zh-CN') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `${name}在哪里？`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name}位于日本${prefectures}。`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: `${name}的海拔是多少？`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name}海拔${elevation}。`,
-          },
-        },
-        ...(nearbyMountainNames
-          ? [
-              {
-                '@type': 'Question',
-                name: `${name}附近有哪些山？`,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: `附近的山包括${nearbyMountainNames}。`,
-                },
-              },
-            ]
-          : []),
-      ],
-    }
-  }
-
-  if (locale === 'zh-TW') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: `${name}在哪裡？`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name}位於日本${prefectures}。`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: `${name}的標高是多少？`,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `${name}標高${elevation}。`,
-          },
-        },
-        ...(nearbyMountainNames
-          ? [
-              {
-                '@type': 'Question',
-                name: `${name}附近有哪些山？`,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: `附近的山包括${nearbyMountainNames}。`,
-                },
-              },
-            ]
-          : []),
-      ],
-    }
-  }
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `${name}はどこにありますか？`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `${name}は${prefectures}にあります。`,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: `${name}の標高は何メートルですか？`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `${name}の標高は${elevation}です。`,
-        },
-      },
-      ...(nearbyMountainNames
-        ? [
-            {
-              '@type': 'Question',
-              name: `${name}の近くにある山は？`,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: `近くの山には${nearbyMountainNames}があります。`,
-              },
-            },
-          ]
-        : []),
-    ],
-  }
+  return summit
+    ? `${name}の最高地点は${summit}（標高${elevation}）です。${prefectures}にあります。`
+    : `${name}の標高は${elevation}です。${prefectures}にあります。`
 }
 
 const toRadians = (value: number): number => {
@@ -331,21 +158,21 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
   const prefectures = getLocalizedPrefectures(mountain, locale)
   const listLabels = getLocalizedMountainListLabels(mountain, locale)
   const elevation = formatElevation(mountain.elevation, locale)
-  const pagePath = getLocalizedPagePath(mountain.slug, locale)
-  const title = getDetailTitle(name, locale)
-  const description = getDescription(name, prefectures, elevation, listLabels, locale)
-  const nearbyMountainNames = getNearbyMountainNames(nearbyMountains, locale)
+  const pagePath = toLocalizedPath(`/mountains/${mountain.slug}`, locale)
+  const summit = getSummitName(mountain.slug, locale)
+  const title = getDetailTitle(name, elevation, locale)
+  const description = getDescription(name, prefectures, elevation, summit, locale)
   const yamapKeyword = encodeURIComponent(`${prefectures} ${name}`)
   const instagramTag = encodeURIComponent(name.replace(/\s+/g, ''))
-  const imageUrl = toAbsoluteUrl(DEFAULT_OG_IMAGE_PATH)
   const mountainSchema = {
     '@context': 'https://schema.org',
-    '@type': 'TouristAttraction',
+    '@type': 'Mountain',
+    '@id': toAbsoluteUrl(`/mountains/${mountain.slug}/#mountain`),
+    mainEntityOfPage: toAbsoluteUrl(pagePath),
     name,
     alternateName: locale === 'en' ? mountain.name : mountain.nameEn,
     description,
     url: toAbsoluteUrl(pagePath),
-    image: imageUrl,
     ...(hasValidCoordinates(mountain)
       ? {
           geo: {
@@ -361,21 +188,7 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
       addressCountry: 'JP',
       addressRegion: prefectures,
     },
-    isPartOf: listLabels.map((label) => ({
-      '@type': 'CreativeWork',
-      name: label,
-    })),
   }
-  const imageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ImageObject',
-    contentUrl: imageUrl,
-    url: imageUrl,
-    name: `${name} | ${t.TITLE}`,
-    caption: description,
-    representativeOfPage: true,
-  }
-  const faqSchema = getDetailFaqSchema(name, prefectures, elevation, nearbyMountainNames, locale)
 
   return (
     <Layout
@@ -390,16 +203,17 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
             { name: t.TITLE, path: '/' },
             { name, path: `/mountains/${mountain.slug}` },
           ]}
-          schemas={[mountainSchema, imageSchema, faqSchema]}
+          schemas={[mountainSchema]}
         />
       }
     >
       <div className="main__content-title">
-        <Heading3>
+        <Heading3 as="h1">
           {name}
           <span>{subName}</span>
         </Heading3>
       </div>
+      <PageLead>{description}</PageLead>
       <DetailPanel>
         <DetailTagList aria-label={t.DETAIL_LISTS}>
           {listLabels.map((label) => (
@@ -416,6 +230,11 @@ const MountainDetailPage: NextPage<Props> = ({ mountain, nearbyMountains }) => {
             {mountain.latitude.toFixed(5)}, {mountain.longitude.toFixed(5)}
           </dd>
         </DetailList>
+        {summit && (
+          <PageLead>
+            <a href={GSI_ELEVATIONS_URL}>{t.ELEVATION_SOURCE}</a>
+          </PageLead>
+        )}
         <LinkRow>
           <a
             href={

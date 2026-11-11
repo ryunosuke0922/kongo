@@ -20,6 +20,14 @@ const en: LocaleMessages = {
   SEO_LOCAL_TITLE: 'Japan Mountains by Region: 100 Famous Japanese Mountains',
   SEO_LOCAL_DESCRIPTION:
     'Browse the 100 Famous Japanese Mountains by region, from Hokkaido and Tohoku to the Japanese Alps, Kansai, Shikoku, Kyushu, and Okinawa.',
+  REGION_INDEX_HEADING: 'Famous mountains by region',
+  HIGHEST_TITLE: '100 Tallest Mountains in Japan, Ranked by Elevation',
+  HIGHEST_INTRO:
+    'Mount Fuji is the tallest mountain in Japan at {first}, followed by Mount Kita at {second}. Mount Aino and Okuhotakadake share third place.',
+  HIGHEST_TABLE: 'The five highest peaks in Japan',
+  RANK_LABEL: 'Rank',
+  MOUNTAIN_NAME: 'Mountain',
+  ELEVATION_SOURCE: 'Elevation source: Geospatial Information Authority of Japan (in Japanese)',
   HOKKAIDO_REGION: 'Hokkaido region',
   TOHOKU_REGION: 'Tohoku region',
   KANTO_REGION: 'Kanto region',

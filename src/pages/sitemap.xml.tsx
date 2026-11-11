@@ -9,8 +9,6 @@ type Post = {
   basePath: string
 }
 
-const SITEMAP_LASTMOD = '2026-06-05T00:00:00.000Z'
-
 const escapeXml = (value: string): string => {
   return value
     .replace(/&/g, '&amp;')
@@ -70,8 +68,6 @@ async function generateSitemapXml(): Promise<string> {
         <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(
           toAbsoluteUrl(toLocalizedPath(post.basePath, 'ja')),
         )}" />
-        <lastmod>${SITEMAP_LASTMOD}</lastmod>
-        <changefreq>weekly</changefreq>
       </url>
     `
   })

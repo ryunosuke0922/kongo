@@ -17,9 +17,9 @@ const RegionPage: NextPage<Props> = ({ region, mountains }) => {
   const { t } = useLocale()
 
   return (
-    <Layout seo={<Seo pagePath={region.path} />}>
+    <Layout seo={<Seo pagePath={region.path} mountains={mountains} />}>
       <div className="main__content-title">
-        <Heading3>{t[region.labelKey]}</Heading3>
+        <Heading3 as="h1">{t[region.labelKey]}</Heading3>
       </div>
       <MountainCardList mountains={mountains} />
     </Layout>

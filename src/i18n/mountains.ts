@@ -413,12 +413,19 @@ export const getLocalizedPrefectureOrder = (locale: SupportedLocale): string[] =
   return PREFECTURE_ORDER_JA.map((prefecture) => convertJapaneseText(prefecture, locale))
 }
 
+const englishMountainNames: Record<string, string | undefined> = {
+  asosan: 'Mount Aso',
+  fuji: 'Mount Fuji',
+  kitadake: 'Mount Kita',
+  ainodake: 'Mount Aino',
+}
+
 export const getLocalizedMountainName = (
   mountain: UnifiedMountainData,
   locale: SupportedLocale,
 ): string => {
   if (locale === 'en') {
-    return mountain.nameEn
+    return englishMountainNames[mountain.slug] ?? mountain.nameEn
   }
 
   return convertJapaneseText(mountain.name, locale)

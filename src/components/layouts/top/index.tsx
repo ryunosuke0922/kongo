@@ -7,6 +7,7 @@ import {
 } from '@/components/atoms/text/style'
 import ParallaxItem from '@/components/molecules/parallax'
 import Seo from '@/components/molecules/seo'
+import type { UnifiedMountainData } from '@/types/mountains'
 import Slideshow from '@/components/molecules/slideshow'
 import Footer from '@/components/features/footer/footer'
 import Header from '@/components/features/header/header'
@@ -33,6 +34,7 @@ const WrapperMain = styled.div`
 
 type Props = {
   children: ReactNode
+  mountains: UnifiedMountainData[]
 }
 
 type DescriptionProps = {
@@ -55,7 +57,7 @@ const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
   )
 }
 
-const LayoutTop = ({ children }: Props) => {
+const LayoutTop = ({ children, mountains }: Props) => {
   const { t, locale } = useLocale()
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
@@ -121,7 +123,7 @@ const LayoutTop = ({ children }: Props) => {
 
   return (
     <Top>
-      <Seo />
+      <Seo mountains={mountains} />
       <Header />
       <motion.div
         initial={false}

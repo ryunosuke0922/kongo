@@ -1,8 +1,8 @@
-import mountainsData from '@/data/mountains.json'
 import { REGIONS } from '@/constants/regions'
 import { DEFAULT_OG_IMAGE_PATH, GOOGLE_SITE_VERIFICATION, SITE_URL } from '@/constants/site'
 import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
-import type { MountainsData } from '@/types/mountains'
+import { getLocalizedMountainName } from '@/i18n/mountains'
+import type { UnifiedMountainData } from '@/types/mountains'
 import { toAbsoluteUrl, toBaseLocalePath, toLocalizedPath } from '@/utils/seoPaths'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -12,6 +12,8 @@ type Props = {
   pageDescription?: string
   pagePath?: string
   breadcrumbs?: SeoBreadcrumb[]
+  mountains?: UnifiedMountainData[]
+  listName?: string
   schemas?: Record<string, unknown>[]
 }
 
@@ -27,41 +29,8 @@ const OGP_LOCALE_CODES: Record<SupportedLocale, string> = {
   'zh-TW': 'zh_TW',
 }
 
-const uniqueByNo = (mountains: MountainsData[]): MountainsData[] => {
-  const seen = new Set<number>()
-
-  return mountains.filter((mountain) => {
-    if (seen.has(mountain.no)) {
-      return false
-    }
-    seen.add(mountain.no)
-
-    return true
-  })
-}
-
-const ALL_HYAKUMEIZAN_MOUNTAINS = uniqueByNo(mountainsData as MountainsData[])
-
 const hasSiteName = (title: string, siteName: string): boolean => {
   return title.toLowerCase().includes(siteName.toLowerCase())
-}
-
-const toGeoCoordinates = (mountain: MountainsData) => {
-  const hasValidLatitude =
-    mountain.latitude !== 0 && mountain.latitude >= -90 && mountain.latitude <= 90
-  const hasValidLongitude =
-    mountain.longitude !== 0 && mountain.longitude >= -180 && mountain.longitude <= 180
-
-  if (!hasValidLatitude || !hasValidLongitude) {
-    return undefined
-  }
-
-  return {
-    '@type': 'GeoCoordinates',
-    latitude: mountain.latitude,
-    longitude: mountain.longitude,
-    elevation: mountain.elevation,
-  }
 }
 
 const getRegionTitle = (
@@ -101,7 +70,15 @@ const getRegionDescription = (
   return japaneseDescription || `${regionLabel}に含まれる日本百名山を一覧で確認できます。`
 }
 
-const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }: Props) => {
+const Seo = ({
+  pageTitle,
+  pageDescription,
+  pagePath,
+  breadcrumbs,
+  mountains,
+  listName,
+  schemas = [],
+}: Props) => {
   const router = useRouter()
   const { t, locale: localeCode } = useLocale()
   const pathname = router.pathname || '/'
@@ -132,8 +109,6 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
       : `${titleBase} | ${t.TITLE}`
   const description = pageDescription || defaultDescription
 
-  const canonicalPath = pagePath || toLocalizedPath(pathname, localeCode)
-  const canonicalUrl = toAbsoluteUrl(canonicalPath)
   const jaUrl = toAbsoluteUrl(toLocalizedPath(alternatePathname, 'ja'))
   const enUrl = toAbsoluteUrl(toLocalizedPath(alternatePathname, 'en'))
   const zhCnUrl = toAbsoluteUrl(toLocalizedPath(alternatePathname, 'zh-CN'))
@@ -144,6 +119,8 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
     'zh-CN': zhCnUrl,
     'zh-TW': zhTwUrl,
   }
+
+  const canonicalUrl = alternateLocaleUrls[localeCode]
 
   const breadcrumbItems = breadcrumbs
     ? breadcrumbs.map((breadcrumb) => ({
@@ -201,97 +178,25 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
     })),
   }
 
-  let targetMountains: MountainsData[] = []
-  if (pathname === '/') {
-    targetMountains = ALL_HYAKUMEIZAN_MOUNTAINS
-  } else if (region) {
-    const regionSet = new Set(region.mountainNumbers)
-    targetMountains = ALL_HYAKUMEIZAN_MOUNTAINS.filter((mountain) => regionSet.has(mountain.no))
+  const itemListSchema = mountains && {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listName || regionLabel || t.INFO,
+    numberOfItems: mountains.length,
+    itemListElement: mountains.map((mountain, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: getLocalizedMountainName(mountain, localeCode),
+      url: toAbsoluteUrl(toLocalizedPath(`/mountains/${mountain.slug}`, localeCode)),
+    })),
   }
-
-  const itemListSchema =
-    targetMountains.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'ItemList',
-          name: regionLabel || t.INFO,
-          numberOfItems: targetMountains.length,
-          itemListElement: targetMountains.map((mountain, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-              '@type': 'TouristAttraction',
-              identifier: `nihon-hyakumeizan-${mountain.no}`,
-              name: localeCode === 'en' ? mountain.nameEn : mountain.name,
-              alternateName: localeCode === 'en' ? mountain.name : mountain.nameEn,
-              description:
-                localeCode === 'en'
-                  ? `${mountain.nameEn} is one of the 100 Famous Japanese Mountains in ${mountain.prefecturesEn}.`
-                  : `${mountain.name}は${mountain.prefectures}にある日本百名山の一座です。`,
-              geo: toGeoCoordinates(mountain),
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'JP',
-                addressRegion: localeCode === 'en' ? mountain.prefecturesEn : mountain.prefectures,
-              },
-            },
-          })),
-        }
-      : null
-
-  const faqSchema =
-    pathname === '/' || pathname === '/local'
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity:
-            localeCode === 'en'
-              ? [
-                  {
-                    '@type': 'Question',
-                    name: 'What are the 100 Famous Japanese Mountains?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'They are 100 notable mountains in Japan selected by Kyuya Fukada, known in Japanese as Nihon Hyakumeizan.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'How can I find mountains in Japan on this site?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'You can search by mountain name and filter the list by region, prefecture, and elevation.',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'Which famous mountains in Japan are included?',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: 'The list includes well-known Japanese mountains such as Mount Fuji, Tateyama, Hakusan, Yarigatake, Hotaka, Daisetsu, Aso, and many other regional peaks.',
-                    },
-                  },
-                ]
-              : [
-                  {
-                    '@type': 'Question',
-                    name: '日本百名山とは何ですか？',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: '深田久弥が選定した100座の山をまとめた山岳リストです。',
-                    },
-                  },
-                  {
-                    '@type': 'Question',
-                    name: 'このサイトではどのように山を探せますか？',
-                    acceptedAnswer: {
-                      '@type': 'Answer',
-                      text: '山名検索や地方別・標高別の絞り込みで目的の山を探せます。',
-                    },
-                  },
-                ],
-        }
-      : null
+  const pageSchemas = [
+    organizationSchema,
+    websiteSchema,
+    ...(breadcrumbItems.length > 1 ? [breadcrumbSchema] : []),
+    ...(itemListSchema ? [itemListSchema] : []),
+    ...schemas,
+  ]
 
   return (
     <Head>
@@ -330,35 +235,11 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
       ))}
       <link rel="alternate" hrefLang="x-default" href={jaUrl} />
       <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      ></script>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      ></script>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      ></script>
-      {itemListSchema ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-        ></script>
-      ) : null}
-      {faqSchema ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        ></script>
-      ) : null}
-      {schemas.map((schema, index) => (
+      {pageSchemas.map((schema, index) => (
         <script
           key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
         ></script>
       ))}
     </Head>
