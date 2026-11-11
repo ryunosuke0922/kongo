@@ -1,5 +1,4 @@
 import { MOUNTAIN_LISTS } from '@/constants/mountainLists'
-import { activePillControl, pillHoverMotion } from '@/components/molecules/sharedSurfaces/style'
 import { UI_COLORS, UI_SPACE } from '@/constants/ui'
 import { useLocale } from '@/i18n/index'
 import { getLocalizedListLabel } from '@/i18n/mountains'
@@ -19,14 +18,15 @@ const ListNav = styled.nav`
 const ListNavLabel = styled.p`
   margin: 0 0 ${UI_SPACE.sm};
   color: ${UI_COLORS.textSecondary};
-  font-size: 1.6rem;
+  font-size: small;
   line-height: 1.5;
 `
 
 const ListNavItems = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: ${UI_SPACE.sm};
+  gap: 0 1em;
+  font-size: medium;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -36,9 +36,25 @@ const ListNavItem = styled.li`
   margin: 0;
 `
 
-const ListNavLink = styled(Link)<{ $active: boolean }>`
-  ${activePillControl}
-  ${pillHoverMotion}
+const ListNavLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.5em;
+  color: ${UI_COLORS.textSecondary};
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  overflow-wrap: anywhere;
+
+  &:hover,
+  &[aria-current='page'] {
+    color: ${UI_COLORS.textPrimary};
+    text-decoration-thickness: 2px;
+  }
+
+  &[aria-current='page'] {
+    font-weight: 600;
+  }
 `
 
 const MountainListNav = ({ currentListId = 'hyakumeizan' }: Props) => {
@@ -56,7 +72,7 @@ const MountainListNav = ({ currentListId = 'hyakumeizan' }: Props) => {
 
           return (
             <ListNavItem key={list.id}>
-              <ListNavLink href={href} $active={active} aria-current={active ? 'page' : undefined}>
+              <ListNavLink href={href} aria-current={active ? 'page' : undefined}>
                 {text}
               </ListNavLink>
             </ListNavItem>

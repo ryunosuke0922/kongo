@@ -13,16 +13,17 @@ import FilterSelect from '@/components/molecules/filterSelect'
 import MountainCardList from '@/components/molecules/mountainCardList'
 import MountainListNav from '@/components/molecules/mountainListNav'
 import MountainMap from '@/components/molecules/mountainMap'
-import SearchBar from '@/components/molecules/searchBar'
-import SortSelect from '@/components/molecules/sortSelect'
+import { Icon } from '@astryxdesign/core/Icon'
+import { TextInput } from '@astryxdesign/core/TextInput'
+import { Theme } from '@astryxdesign/core/theme'
+import { InternationalizationProvider } from '@astryxdesign/core/i18n'
+import { neutralTheme } from '@astryxdesign/theme-neutral/built'
 import type { MountainListId, UnifiedMountainData } from '@/types/mountains'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useRef } from 'react'
 import {
   EmptyText,
   FilterControls,
-  FilterItemMobileSpacing,
-  FilterRowMobileStack,
   ResultSummary,
   SearchGuide,
   SearchGuideText,
@@ -155,10 +156,7 @@ const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) =
   const hasActiveFilters =
     sortType !== 'no' || prefectureFilter !== 'all' || elevationFilter !== 'all'
   const shouldShowResult = hasSearchQuery || hasActiveFilters
-  const resultText =
-    locale === 'en'
-      ? `${t.SEARCH_RESULT_LABEL}: ${resultCount} ${t.SEARCH_RESULT}`
-      : `${t.SEARCH_RESULT_LABEL}: ${resultCount}${t.SEARCH_RESULT}`
+  const resultText = t.SEARCH_RESULT_COUNT.replace('{count}', resultCount.toLocaleString(locale))
 
   const statistics = useMemo(() => {
     if (filteredMountains.length === 0) {
@@ -181,65 +179,82 @@ const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) =
     }
   }, [filteredMountains])
 
-  const statsText = statistics
-    ? `${t.STATS_HIGHEST}: ${getLocalizedMountainName(statistics.highest, locale)} ${formatElevation(statistics.highest.elevation, locale)} / ${t.STATS_LOWEST}: ${getLocalizedMountainName(statistics.lowest, locale)} ${formatElevation(statistics.lowest.elevation, locale)} / ${t.STATS_AVERAGE}: ${formatElevation(statistics.average, locale)}`
-    : null
-
   return (
     <>
       <SearchGuide aria-labelledby="mountain-search-guide-title">
         <SearchGuideTitle id="mountain-search-guide-title">{t.GUIDE_TITLE}</SearchGuideTitle>
         <SearchGuideText>{t.GUIDE_DESCRIPTION}</SearchGuideText>
         <MountainListNav currentListId={currentListId} />
+        <Theme theme={neutralTheme} mode="light">
+          <InternationalizationProvider
+            locale={locale}
+            overrides={{
+              [locale]: {
+                '@astryx.textInput.clearLabel': t.SEARCH_CLEAR_ARIA,
+                '@astryx.inputClearButton.tooltip': t.SEARCH_CLEAR_ARIA,
+              },
+            }}
+          >
+            <FilterControls
+              className="main__content-controls"
+              role="search"
+              aria-label={t.GUIDE_TITLE}
+            >
+              <TextInput
+                label={t.SEARCH_PLACEHOLDER}
+                type="search"
+                enterKeyHint="search"
+                startIcon={<Icon icon="search" />}
+                value={searchQuery}
+                onChange={setSearchQuery}
+                hasClear
+                controlClassName="mountain-search-input"
+              />
+              <FilterSelect
+                value={prefectureFilter}
+                label={t.PREFECTURE_LABEL}
+                options={prefectureOptions}
+                onChange={setPrefectureFilter}
+              />
+              <FilterSelect
+                value={elevationFilter}
+                label={t.ELEVATION_LABEL}
+                options={elevationOptions}
+                onChange={(value) => setElevationFilter(value as ElevationFilterType)}
+              />
+              <FilterSelect
+                value={sortType}
+                label={t.SORT_LABEL}
+                options={sortOptions}
+                onChange={(value) => setSortType(value as SortType)}
+              />
+            </FilterControls>
+          </InternationalizationProvider>
+        </Theme>
+        {shouldShowResult ? <ResultSummary role="status">{resultText}</ResultSummary> : null}
+        {statistics ? (
+          <StatsSummary className="main__content-statistics">
+            <div>
+              <dt>{t.STATS_HIGHEST}</dt>
+              <dd>
+                {formatElevation(statistics.highest.elevation, locale)}
+                <span>{getLocalizedMountainName(statistics.highest, locale)}</span>
+              </dd>
+            </div>
+            <div>
+              <dt>{t.STATS_LOWEST}</dt>
+              <dd>
+                {formatElevation(statistics.lowest.elevation, locale)}
+                <span>{getLocalizedMountainName(statistics.lowest, locale)}</span>
+              </dd>
+            </div>
+            <div>
+              <dt>{t.STATS_AVERAGE}</dt>
+              <dd>{formatElevation(statistics.average, locale)}</dd>
+            </div>
+          </StatsSummary>
+        ) : null}
       </SearchGuide>
-      <FilterControls className="main__content-controls">
-        <FilterRowMobileStack>
-          <FilterItemMobileSpacing $grow>
-            <SearchBar
-              value={searchQuery}
-              placeholder={t.SEARCH_PLACEHOLDER}
-              ariaLabel={t.SEARCH_PLACEHOLDER}
-              clearAriaLabel={t.SEARCH_CLEAR_ARIA}
-              onChange={setSearchQuery}
-              onClear={() => setSearchQuery('')}
-            />
-          </FilterItemMobileSpacing>
-          <FilterItemMobileSpacing>
-            <FilterSelect
-              value={prefectureFilter}
-              label={t.PREFECTURE_LABEL}
-              options={prefectureOptions}
-              onChange={setPrefectureFilter}
-            />
-          </FilterItemMobileSpacing>
-        </FilterRowMobileStack>
-        <FilterRowMobileStack>
-          <FilterItemMobileSpacing $grow>
-            <SortSelect
-              value={sortType}
-              label={t.SORT_LABEL}
-              options={sortOptions}
-              onChange={(value) => setSortType(value as SortType)}
-            />
-          </FilterItemMobileSpacing>
-          <FilterItemMobileSpacing $grow>
-            <SortSelect
-              value={elevationFilter}
-              label={t.ELEVATION_LABEL}
-              options={elevationOptions}
-              onChange={(value) => setElevationFilter(value as ElevationFilterType)}
-            />
-          </FilterItemMobileSpacing>
-        </FilterRowMobileStack>
-      </FilterControls>
-      {shouldShowResult ? (
-        <ResultSummary role="status" aria-live="polite">
-          {resultText}
-        </ResultSummary>
-      ) : null}
-      {statsText ? (
-        <StatsSummary className="main__content-statistics">{statsText}</StatsSummary>
-      ) : null}
       <MountainMap mountains={filteredMountains} />
       {filteredMountains.length > 0 ? (
         <MountainCardList mountains={filteredMountains} showListLabel={false} />

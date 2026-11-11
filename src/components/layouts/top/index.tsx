@@ -13,11 +13,11 @@ import Header from '@/components/features/header/header'
 import Sidebar from '@/components/features/sidebar'
 import { MainContent, Wrapper, WrapperContent } from '@/components/layouts/top/style'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { ReactNode } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useLocale, type SupportedLocale } from '@/i18n/index'
 import { UI_COLORS } from '@/constants/ui'
+import { BREAKPOINTS } from '@/constants/breakpoints'
 
 const Top = styled.div`
   background: ${UI_COLORS.pageBackground};
@@ -30,62 +30,6 @@ const WrapperMain = styled.div`
   border-bottom: 1px solid ${UI_COLORS.borderSubtle};
   backface-visibility: hidden;
 `
-
-const backColumnImages = [
-  {
-    webp: '/images/img01.webp',
-    jpg: '/images/img01.jpg',
-    alt: 'Landscape of a famous Japanese mountain 01',
-  },
-  {
-    webp: '/images/img02.webp',
-    jpg: '/images/img02.jpg',
-    alt: 'Landscape of a famous Japanese mountain 02',
-  },
-  {
-    webp: '/images/img03.webp',
-    jpg: '/images/img03.jpg',
-    alt: 'Landscape of a famous Japanese mountain 03',
-  },
-  {
-    webp: '/images/img04.webp',
-    jpg: '/images/img04.jpg',
-    alt: 'Landscape of a famous Japanese mountain 04',
-  },
-  {
-    webp: '/images/img05.webp',
-    jpg: '/images/img05.jpg',
-    alt: 'Landscape of a famous Japanese mountain 05',
-  },
-]
-
-const frontColumnImages = [
-  {
-    webp: '/images/img06.webp',
-    jpg: '/images/img06.jpg',
-    alt: 'Landscape of a famous Japanese mountain 06',
-  },
-  {
-    webp: '/images/img07.webp',
-    jpg: '/images/img07.jpg',
-    alt: 'Landscape of a famous Japanese mountain 07',
-  },
-  {
-    webp: '/images/img08.webp',
-    jpg: '/images/img08.jpg',
-    alt: 'Landscape of a famous Japanese mountain 08',
-  },
-  {
-    webp: '/images/img09.webp',
-    jpg: '/images/img09.jpg',
-    alt: 'Landscape of a famous Japanese mountain 09',
-  },
-  {
-    webp: '/images/img10.webp',
-    jpg: '/images/img10.jpg',
-    alt: 'Landscape of a famous Japanese mountain 10',
-  },
-]
 
 type Props = {
   children: ReactNode
@@ -113,6 +57,59 @@ const DescriptionText = ({ locale, descriptions }: DescriptionProps) => {
 
 const LayoutTop = ({ children }: Props) => {
   const { t, locale } = useLocale()
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const viewport = window.matchMedia(`(max-width: ${BREAKPOINTS.mobile}px)`)
+    const updateViewport = () => setIsMobile(viewport.matches)
+    updateViewport()
+    viewport.addEventListener('change', updateViewport)
+
+    return () => viewport.removeEventListener('change', updateViewport)
+  }, [])
+
+  const pond = { src: '/images/mountain-pond.webp', alt: t.HERO_POND_ALT }
+  const ridge = { src: '/images/ridge-panorama.webp', alt: t.HERO_RIDGE_ALT }
+  const clouds = { src: '/images/hikers-above-clouds.webp', alt: t.HERO_CLOUDS_ALT }
+  const stream = { src: '/images/misty-stream.webp', alt: t.HERO_STREAM_ALT }
+
+  const backColumnImages = isMobile
+    ? [pond, ridge]
+    : [
+        pond,
+        {
+          src: '/images/img02.webp',
+          alt: 'Landscape of a famous Japanese mountain 02',
+        },
+        {
+          src: '/images/img03.webp',
+          alt: 'Landscape of a famous Japanese mountain 03',
+        },
+        {
+          src: '/images/img04.webp',
+          alt: 'Landscape of a famous Japanese mountain 04',
+        },
+        {
+          src: '/images/img05.webp',
+          alt: 'Landscape of a famous Japanese mountain 05',
+        },
+      ]
+
+  const frontColumnImages = isMobile
+    ? [clouds, stream]
+    : [
+        clouds,
+        stream,
+        {
+          src: '/images/img08.webp',
+          alt: 'Landscape of a famous Japanese mountain 08',
+        },
+        ridge,
+        {
+          src: '/images/img10.webp',
+          alt: 'Landscape of a famous Japanese mountain 10',
+        },
+      ]
+
   const descriptions = [
     t.DESCRIPTION_1,
     t.DESCRIPTION_2,
@@ -123,7 +120,7 @@ const LayoutTop = ({ children }: Props) => {
   ]
 
   return (
-    <Top className="noise">
+    <Top>
       <Seo />
       <Header />
       <motion.div
@@ -135,75 +132,34 @@ const LayoutTop = ({ children }: Props) => {
         }}
       >
         <main className="main container">
-          <>
-            <Wrapper>
-              <div className="main__mv-pc">
-                <div className="main__head">
-                  {locale === 'ja' ? (
-                    <div className="main__head-title is-jp">
-                      <VerticalTitle>{t.TITLE}</VerticalTitle>
-                    </div>
-                  ) : (
-                    <div className="main__head-title is-en">
-                      <HorizonTitle>{t.TITLE}</HorizonTitle>
-                    </div>
-                  )}
-
-                  <div className="main__head-description">
-                    <ParallaxItem factor={0.1}>
-                      <DescriptionText locale={locale} descriptions={descriptions} />
-                    </ParallaxItem>
+          <Wrapper>
+            <div className="main__mv">
+              <div className="main__head">
+                {locale === 'ja' ? (
+                  <div className="main__head-title is-jp">
+                    <VerticalTitle>{t.TITLE}</VerticalTitle>
                   </div>
-                </div>
+                ) : (
+                  <div className="main__head-title is-en">
+                    <HorizonTitle>{t.TITLE}</HorizonTitle>
+                  </div>
+                )}
 
-                <div className="main__images">
-                  <ParallaxItem factor={0.2}>
-                    <Slideshow images={backColumnImages} />
-                  </ParallaxItem>
-                  <ParallaxItem factor={0.1}>
-                    <Slideshow images={frontColumnImages} />
+                <div className="main__head-description">
+                  <ParallaxItem factor={isMobile ? 0 : 0.1}>
+                    <DescriptionText locale={locale} descriptions={descriptions} />
                   </ParallaxItem>
                 </div>
               </div>
 
-              <div className="main__mv-sp">
-                <div className="main__head">
-                  {locale === 'ja' ? (
-                    <div className="main__head-title is-jp">
-                      <VerticalTitle>{t.TITLE}</VerticalTitle>
-                    </div>
-                  ) : (
-                    <div className="main__head-title is-en">
-                      <HorizonTitle>{t.TITLE}</HorizonTitle>
-                    </div>
-                  )}
-
-                  <div className="main__head-description">
-                    <div>
-                      <DescriptionText locale={locale} descriptions={descriptions} />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="main__images">
-                  <Image
-                    src="/images/img06.jpg"
-                    alt="Landscape of a famous Japanese mountain 06"
-                    width={1280}
-                    height={768}
-                    className="main__image-sp-back"
-                  />
-                  <Image
-                    src="/images/img01.jpg"
-                    alt="Landscape of a famous Japanese mountain 01"
-                    width={1280}
-                    height={768}
-                    className="main__image-sp-front"
-                  />
-                </div>
-              </div>
-            </Wrapper>
-          </>
+              <Slideshow
+                key={isMobile ? 'mobile' : 'desktop'}
+                backImages={backColumnImages}
+                frontImages={frontColumnImages}
+                isMobile={isMobile}
+              />
+            </div>
+          </Wrapper>
 
           <WrapperMain>
             <WrapperContent>

@@ -1,12 +1,11 @@
 import mountainsData from '@/data/mountains.json'
-import { REGION_SEO_CONTENT } from '@/constants/seoContent'
+import { REGIONS } from '@/constants/regions'
 import { DEFAULT_OG_IMAGE_PATH, GOOGLE_SITE_VERIFICATION, SITE_URL } from '@/constants/site'
-import { SUPPORTED_LOCALES, type SupportedLocale } from '@/i18n/index'
+import { SUPPORTED_LOCALES, useLocale, type SupportedLocale } from '@/i18n/index'
 import type { MountainsData } from '@/types/mountains'
 import { toAbsoluteUrl, toBaseLocalePath, toLocalizedPath } from '@/utils/seoPaths'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useLocale } from '../../../i18n/index'
 
 type Props = {
   pageTitle?: string
@@ -19,32 +18,6 @@ type Props = {
 type SeoBreadcrumb = {
   name: string
   path: string
-}
-
-const REGION_MOUNTAIN_IDS: Record<string, number[]> = {
-  '/local/hokkaido': [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  '/local/tohoku': [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28],
-  '/local/kanto': [
-    26, 29, 30, 36, 37, 38, 39, 40, 41, 42, 43, 44, 64, 65, 66, 67, 68, 69, 70, 71, 72, 77, 78, 79,
-    80, 81,
-  ],
-  '/local/chubu': [
-    17, 19, 25, 26, 27, 30, 31, 32, 33, 34, 35, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
-    56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,
-    82, 83, 84, 85, 86, 87, 88, 89,
-  ],
-  '/local/kansai': [89, 90, 91],
-  '/local/chugoku': [92],
-  '/local/shikoku': [93, 94],
-  '/local/kyushu-okinawa': [95, 96, 97, 98, 99, 100],
-}
-
-const toLocaleCode = (locale?: string): SupportedLocale => {
-  if (locale === 'en' || locale === 'zh-CN' || locale === 'zh-TW') {
-    return locale
-  }
-
-  return 'ja'
 }
 
 const OGP_LOCALE_CODES: Record<SupportedLocale, string> = {
@@ -91,34 +64,6 @@ const toGeoCoordinates = (mountain: MountainsData) => {
   }
 }
 
-const getLocalTitle = (locale: SupportedLocale): string => {
-  if (locale === 'en') {
-    return 'Japan Mountains by Region: 100 Famous Japanese Mountains'
-  }
-  if (locale === 'zh-CN') {
-    return '按地区查找日本百名山'
-  }
-  if (locale === 'zh-TW') {
-    return '依地區查找日本百名山'
-  }
-
-  return '地方別 日本百名山一覧'
-}
-
-const getLocalDescription = (locale: SupportedLocale): string => {
-  if (locale === 'en') {
-    return 'Browse the 100 Famous Japanese Mountains by region, from Hokkaido and Tohoku to the Japanese Alps, Kansai, Shikoku, Kyushu, and Okinawa.'
-  }
-  if (locale === 'zh-CN') {
-    return '按北海道、东北、关东、中部、关西、四国、九州・冲绳等地区查找日本百名山。'
-  }
-  if (locale === 'zh-TW') {
-    return '依北海道、東北、關東、中部、關西、四國、九州・沖繩等地區查找日本百名山。'
-  }
-
-  return '日本百名山を地方別に一覧で確認できます。'
-}
-
 const getRegionTitle = (
   locale: SupportedLocale,
   regionLabel: string,
@@ -158,55 +103,25 @@ const getRegionDescription = (
 
 const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }: Props) => {
   const router = useRouter()
-  const { t, locale } = useLocale()
-  const localeCode = toLocaleCode(locale)
+  const { t, locale: localeCode } = useLocale()
   const pathname = router.pathname || '/'
   const alternatePathname = pagePath ? toBaseLocalePath(pagePath) : pathname
 
-  const regionLabelMap: Record<string, string> = {
-    '/local/hokkaido': t.HOKKAIDO_REGION,
-    '/local/tohoku': t.TOHOKU_REGION,
-    '/local/kanto': t.KANTO_REGION,
-    '/local/chubu': t.CHUBU_REGION,
-    '/local/kansai': t.KANSAI_REGION,
-    '/local/chugoku': t.CHUGOKU_REGION,
-    '/local/shikoku': t.SHIKOKU_REGION,
-    '/local/kyushu-okinawa': t.KYUSHU_OKINAWA_REGION,
-  }
-  const regionLabel = regionLabelMap[pathname]
-  const regionSeoContent = REGION_SEO_CONTENT[pathname]
+  const region = REGIONS.find(({ path }) => path === (pagePath ?? pathname))
+  const regionLabel = region ? t[region.labelKey] : ''
 
-  const homeTitle =
-    localeCode === 'en'
-      ? '100 Famous Japanese Mountains: Japan Mountains List by Region'
-      : localeCode === 'zh-TW'
-        ? '日本百名山一覽 | 依地區與標高尋找日本名山'
-        : localeCode === 'zh-CN'
-          ? '日本百名山一览 | 按地区与海拔寻找日本名山'
-          : '日本百名山一覧 | 都道府県・標高で探せる'
-  const homeDescription =
-    localeCode === 'en'
-      ? "A complete English list of Japan's 100 Famous Japanese Mountains selected by Kyuya Fukada. Search mountains in Japan by name, region, prefecture, and elevation."
-      : localeCode === 'zh-TW'
-        ? '介紹日本百名山100座，可依山名、地區、都道府縣與標高搜尋。'
-        : localeCode === 'zh-CN'
-          ? '介绍日本百名山100座，可按山名、地区、都道府县和海拔搜索。'
-          : '深田久弥が選定した日本百名山を一覧で紹介。山名検索、都道府県絞り込み、標高順ソートで目的の山をすぐに探せます。'
-  const localTitle = getLocalTitle(localeCode)
-  const localDescription = getLocalDescription(localeCode)
-
-  let defaultTitle = homeTitle
-  let defaultDescription = homeDescription
+  let defaultTitle = t.SEO_HOME_TITLE
+  let defaultDescription = t.SEO_HOME_DESCRIPTION
   if (pathname === '/local') {
-    defaultTitle = localTitle
-    defaultDescription = localDescription
-  } else if (regionLabel) {
-    defaultTitle = getRegionTitle(localeCode, regionLabel, regionSeoContent?.englishTitle)
+    defaultTitle = t.SEO_LOCAL_TITLE
+    defaultDescription = t.SEO_LOCAL_DESCRIPTION
+  } else if (region) {
+    defaultTitle = getRegionTitle(localeCode, regionLabel, region.englishTitle)
     defaultDescription = getRegionDescription(
       localeCode,
       regionLabel,
-      regionSeoContent?.japaneseDescription,
-      regionSeoContent?.englishDescription,
+      region.japaneseDescription,
+      region.englishDescription,
     )
   }
 
@@ -238,14 +153,14 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
     : [{ name: t.TITLE, item: toAbsoluteUrl(toLocalizedPath('/', localeCode)) }]
   if (!breadcrumbs && pathname.startsWith('/local')) {
     breadcrumbItems.push({
-      name: localTitle,
+      name: t.SEO_LOCAL_TITLE,
       item: toAbsoluteUrl(toLocalizedPath('/local', localeCode)),
     })
   }
-  if (!breadcrumbs && regionLabel) {
+  if (!breadcrumbs && region) {
     breadcrumbItems.push({
       name: regionLabel,
-      item: toAbsoluteUrl(toLocalizedPath(pathname, localeCode)),
+      item: toAbsoluteUrl(toLocalizedPath(region.path, localeCode)),
     })
   }
 
@@ -286,12 +201,11 @@ const Seo = ({ pageTitle, pageDescription, pagePath, breadcrumbs, schemas = [] }
     })),
   }
 
-  const regionIds = REGION_MOUNTAIN_IDS[pathname]
   let targetMountains: MountainsData[] = []
   if (pathname === '/') {
     targetMountains = ALL_HYAKUMEIZAN_MOUNTAINS
-  } else if (regionIds) {
-    const regionSet = new Set(regionIds)
+  } else if (region) {
+    const regionSet = new Set(region.mountainNumbers)
     targetMountains = ALL_HYAKUMEIZAN_MOUNTAINS.filter((mountain) => regionSet.has(mountain.no))
   }
 

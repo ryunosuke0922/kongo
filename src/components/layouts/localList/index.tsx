@@ -25,7 +25,7 @@ type Props = {
 
 const LayoutLocalList = ({ children, seo }: Props) => {
   return (
-    <Local className="noise">
+    <Local>
       {seo ?? <Seo />}
       <Header />
       <motion.div

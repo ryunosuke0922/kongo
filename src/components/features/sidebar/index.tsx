@@ -1,5 +1,5 @@
 import { MOUNTAIN_LISTS } from '@/constants/mountainLists'
-import { REGION_LINKS } from '@/constants/regionLinks'
+import { REGIONS } from '@/constants/regions'
 import type { MountainListId } from '@/types/mountains'
 import Link from 'next/link'
 import { useLocale } from '../../../i18n/index'
@@ -48,7 +48,7 @@ const Sidebar = ({ currentListId = 'hyakumeizan', variant = 'regions' }: Props) 
           <Link href={'/'}>{t.TITLE}</Link>
           <i></i>
         </Heading3>
-        {REGION_LINKS.map((link) => (
+        {REGIONS.map((link) => (
           <Text key={link.path}>
             <Link href={link.path}>{t[link.labelKey]}</Link>
             <i></i>

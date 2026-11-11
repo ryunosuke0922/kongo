@@ -11,6 +11,12 @@ const ParallaxItem = ({ children, factor }: Props) => {
   const targetFactor = factor ?? 0.15
 
   useEffect(() => {
+    if (targetFactor === 0) {
+      domRef.current?.style.removeProperty('transform')
+
+      return
+    }
+
     const applyTransform = () => {
       rafIdRef.current = null
 

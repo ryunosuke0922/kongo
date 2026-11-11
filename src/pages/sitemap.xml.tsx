@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from 'next'
 import { getAllMountains, MOUNTAIN_LISTS } from '@/constants/mountainLists'
+import { REGIONS } from '@/constants/regions'
 import { SUPPORTED_LOCALES } from '@/i18n/index'
 import { toAbsoluteUrl, toLocalizedPath, withTrailingSlash } from '@/utils/seoPaths'
 
@@ -20,16 +21,7 @@ const escapeXml = (value: string): string => {
 }
 
 async function getAllPosts(): Promise<Post[]> {
-  const regionPaths = [
-    '/local/hokkaido',
-    '/local/tohoku',
-    '/local/kanto',
-    '/local/chubu',
-    '/local/kansai',
-    '/local/chugoku',
-    '/local/shikoku',
-    '/local/kyushu-okinawa',
-  ]
+  const regionPaths = REGIONS.map((region) => region.path)
   const guidePaths = [
     '/guides/mountains-near-tokyo',
     '/guides/japanese-alps-mountains',

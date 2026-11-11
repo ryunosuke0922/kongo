@@ -1,7 +1,7 @@
 import { VerticalTextBoldLink, VerticalTextNormalLink } from '@/components/atoms/text/style'
 import Layout from '@/components/layouts/localList'
 import Seo from '@/components/molecules/seo'
-import { REGION_LINKS } from '@/constants/regionLinks'
+import { REGIONS } from '@/constants/regions'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useLocale } from '../../i18n/index'
@@ -16,7 +16,7 @@ const Local: NextPage = () => {
           <Link href={'/'}>{t.TITLE}</Link>
           <i></i>
         </VerticalTextBoldLink>
-        {REGION_LINKS.map((link) => (
+        {REGIONS.map((link) => (
           <VerticalTextNormalLink key={link.path}>
             <Link href={link.path}>{t[link.labelKey]}</Link>
             <i></i>

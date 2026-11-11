@@ -8,7 +8,7 @@ import {
   FooterWrapper,
 } from '@/components/features/footer/style'
 import { MOUNTAIN_LISTS } from '@/constants/mountainLists'
-import { REGION_LINKS } from '@/constants/regionLinks'
+import { REGIONS } from '@/constants/regions'
 import type { MountainListId } from '@/types/mountains'
 import { faGithubSquare, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -68,7 +68,7 @@ const Footer = ({ currentListId = 'hyakumeizan' }: Props) => {
             <nav aria-label="Footer mountain navigation">
               {locale === 'en' ? (
                 <FooterContentEn>
-                  {REGION_LINKS.map((link) => (
+                  {REGIONS.map((link) => (
                     <HorizonTextNormalLink key={link.path}>
                       <Link href={link.path}>{t[link.labelKey]}</Link>
                       <i></i>
@@ -77,7 +77,7 @@ const Footer = ({ currentListId = 'hyakumeizan' }: Props) => {
                 </FooterContentEn>
               ) : (
                 <FooterContent>
-                  {REGION_LINKS.map((link) => (
+                  {REGIONS.map((link) => (
                     <VerticalTextNormalLink key={link.path}>
                       <Link href={link.path}>{t[link.labelKey]}</Link>
                       <i></i>

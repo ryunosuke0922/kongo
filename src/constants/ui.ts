@@ -34,12 +34,3 @@ export const UI_RADIUS = {
   lg: '2rem',
   pill: '999px',
 } as const
-
-export const UI_CONTROL = {
-  labelFontSize: '1.6rem',
-  labelFontSizeMobile: '2rem',
-  fieldFontSize: '1.8rem',
-  fieldFontSizeMobile: '2.2rem',
-  fieldHeight: '5rem',
-  fieldHeightMobile: '6rem',
-} as const

@@ -36,7 +36,7 @@ const LayoutLocal = ({
   sidebarVariant = 'regions',
 }: Props) => {
   return (
-    <Local className="noise">
+    <Local>
       {seo ?? <Seo />}
       <Header />
       <motion.div

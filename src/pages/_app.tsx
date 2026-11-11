@@ -1,6 +1,8 @@
 import usePageTracking from '@/hooks/useTracking'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
+import '@astryxdesign/core/astryx.css'
+import '@astryxdesign/theme-neutral/theme.css'
 import 'modern-css-reset/dist/reset.min.css'
 import '../styles/globals.css'
 

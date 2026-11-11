@@ -1,126 +1,73 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import ParallaxItem from '@/components/molecules/parallax'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 type SlideshowImage = {
-  webp: string
-  jpg: string
-  alt?: string
-  width?: number
-  height?: number
+  src: string
+  alt: string
 }
 
 type Props = {
-  images: SlideshowImage[]
-  intervalMs?: number
-  duration?: number
+  backImages: SlideshowImage[]
+  frontImages: SlideshowImage[]
+  isMobile: boolean
 }
 
-const SlideFrame = styled.div`
-  position: relative;
-  display: block;
-  overflow: hidden;
-  aspect-ratio: 1280 / 768;
+const MIN_CHANGE_DELAY_MS = 4000
+const MAX_CHANGE_DELAY_MS = 6000
+const FADE_SECONDS = 2.4
 
-  .main__images > div:first-child & {
-    width: 88rem;
-    max-height: 54rem;
-    position: absolute;
-    top: 35rem;
-    left: 10rem;
-    z-index: 1;
-  }
-
-  .main__images > div:last-child & {
-    width: 80rem;
-    max-height: 49rem;
-    position: absolute;
-    top: -3rem;
-    left: 43.2rem;
-    z-index: 2;
-  }
-
-  @media screen and (min-width: 1920px) {
-    .main__images > div:first-child & {
-      width: 880px;
-      max-height: 490px;
-      top: 350px;
-      left: 100px;
-    }
-
-    .main__images > div:last-child & {
-      width: 800px;
-      max-height: 430px;
-      top: -30px;
-      left: 432px;
-    }
-  }
-
-  &&& img {
-    width: 100%;
-    height: 100%;
-    max-height: none;
-    position: absolute;
-    inset: 0;
-    z-index: auto;
-    object-fit: cover;
-  }
-`
-
-const SlideLayer = styled(motion.div)`
-  position: absolute;
-  inset: 0;
-`
-
-const Slideshow = ({ images, intervalMs = 8000, duration = 2.4 }: Props) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    if (images.length <= 1) {
-      return
-    }
-
-    const intervalId = window.setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length)
-    }, intervalMs)
-
-    return () => {
-      window.clearInterval(intervalId)
-    }
-  }, [images.length, intervalMs])
-
-  if (images.length === 0) {
-    return null
-  }
-
-  const currentImage = images[currentIndex]
-  const imageWidth = currentImage.width ?? 1280
-  const imageHeight = currentImage.height ?? 768
-
-  const imageSrc = currentImage.webp || currentImage.jpg
+const SlideFrame = ({ image, first }: { image: SlideshowImage; first: boolean }) => {
+  const reduceMotion = useReducedMotion()
 
   return (
-    <SlideFrame>
+    <div className="main__slide">
       <AnimatePresence initial={false}>
-        <SlideLayer
-          key={`${currentImage.jpg}-${currentIndex}`}
-          initial={{ opacity: 0, scale: 1.01 }}
+        <motion.div
+          className="main__slide-layer"
+          key={image.src}
+          initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.01 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1 }}
-          transition={{ duration, ease: [0.45, 0, 0.2, 1] }}
+          transition={{ duration: reduceMotion ? 0 : FADE_SECONDS, ease: [0.45, 0, 0.2, 1] }}
         >
           <Image
-            src={imageSrc}
-            alt={currentImage.alt ?? 'Famous mountain landscape'}
-            width={imageWidth}
-            height={imageHeight}
-            priority={currentIndex === 0}
-            sizes="(max-width: 768px) 480px, (max-width: 1920px) 880px, 880px"
+            src={image.src}
+            alt={image.alt}
+            width={1280}
+            height={768}
+            priority={first}
+            sizes="(max-width: 768px) 63vw, (max-width: 1920px) 46vw, 880px"
           />
-        </SlideLayer>
+        </motion.div>
       </AnimatePresence>
-    </SlideFrame>
+    </div>
+  )
+}
+
+const Slideshow = ({ backImages, frontImages, isMobile }: Props) => {
+  const [step, setStep] = useState(0)
+
+  useEffect(() => {
+    const delay = MIN_CHANGE_DELAY_MS + Math.random() * (MAX_CHANGE_DELAY_MS - MIN_CHANGE_DELAY_MS)
+    const timer = window.setTimeout(() => setStep(step + 1), delay)
+
+    return () => window.clearTimeout(timer)
+  }, [step])
+
+  const frontIndex = Math.ceil(step / 2) % frontImages.length
+  const backIndex = Math.floor(step / 2) % backImages.length
+
+  return (
+    <div className="main__images">
+      <ParallaxItem factor={isMobile ? 0 : 0.2}>
+        <SlideFrame image={backImages[backIndex]} first={backIndex === 0} />
+      </ParallaxItem>
+      <ParallaxItem factor={isMobile ? 0 : 0.1}>
+        <SlideFrame image={frontImages[frontIndex]} first={frontIndex === 0} />
+      </ParallaxItem>
+    </div>
   )
 }
 

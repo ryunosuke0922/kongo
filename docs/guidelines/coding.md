@@ -26,3 +26,8 @@
 
 - WHAT を説明するコメントは避ける。
 - WHY が必要な制約、fallback、回避策にだけ短く書く。
+
+## 山の検索画面
+
+- 検索条件には [Astryx](https://github.com/meta/astryx) の Neutral テーマを使う。入力欄と選択欄のラベルは各言語の辞書から渡す。
+- 画面を見直すときは、このリポジトリで `$unslop` を呼び出せる。同梱の [unslop](https://github.com/heydamir/unslop) は Damir Sokolovsky による [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) のスキル。
