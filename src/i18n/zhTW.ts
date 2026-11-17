@@ -1,6 +1,19 @@
 import type { LocaleMessages } from './ja'
 
 const zhTW: LocaleMessages = {
+  REGION_HEADING: '{region}的日本百名山',
+  REGION_INTRO: '{region}收錄日本百名山{count}座。可比較都道府縣、山脈及標高，並依縣篩選。',
+  REGION_COMPARISON: '所列山岳比較',
+  TOHOKU_RANGES:
+    '八甲田山和藏王山均屬於奧羽山脈。下表也列出北上山地的早池峰山，方便比較山脈與山岳。',
+  DETAIL_POINT: '標高及座標對應地點',
+  DETAIL_LATITUDE: '緯度',
+  DETAIL_LONGITUDE: '經度',
+  DETAIL_MAP: '在地圖中開啟此座標',
+  DETAIL_RELATED: '相關山岳及山峰',
+  DETAIL_SOURCES: '出處及參考資料',
+  DETAIL_SYSTEM: '山脈・山地',
+  DETAIL_NO_LIST: '無目前收錄名單',
   TITLE: '日本百名山',
   DESCRIPTION: '介紹日本百名山與日本各地名山，可依山名、地區、都道府縣與標高搜尋。',
   DESCRIPTION_1: '日本百名山',

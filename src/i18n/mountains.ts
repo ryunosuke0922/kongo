@@ -1,7 +1,10 @@
+import { getMountainFact } from './mountainFacts'
 import type { SupportedLocale } from '@/i18n/index'
 import type { MountainListMeta, UnifiedMountainData } from '@/types/mountains'
 
 const zhCNMap: Record<string, string> = {
+  長: '长',
+  馬: '马',
   亜: '亚',
   悪: '恶',
   圧: '压',
@@ -424,6 +427,8 @@ export const getLocalizedMountainName = (
   mountain: UnifiedMountainData,
   locale: SupportedLocale,
 ): string => {
+  const fact = getMountainFact(mountain.slug)
+  if (fact) return fact.name[locale]
   if (locale === 'en') {
     return englishMountainNames[mountain.slug] ?? mountain.nameEn
   }
@@ -435,15 +440,21 @@ export const getLocalizedMountainSubName = (
   mountain: UnifiedMountainData,
   locale: SupportedLocale,
 ): string => {
+  const fact = getMountainFact(mountain.slug)
   if (locale === 'en') {
-    return mountain.name
+    return fact?.name.ja ?? mountain.name
   }
   if (locale === 'zh-CN' || locale === 'zh-TW') {
-    return mountain.nameEn
+    return fact?.name.en ?? mountain.nameEn
   }
 
-  return mountain.kanaName
+  return fact?.reading ?? mountain.kanaName
 }
+
+export const getLocalizedMountainTag = (
+  mountain: UnifiedMountainData,
+  locale: SupportedLocale,
+): string => getLocalizedMountainName(mountain, locale).split(/[（(]/, 1)[0].replace(/\s+/g, '')
 
 export const getLocalizedPrefectures = (
   mountain: UnifiedMountainData,
@@ -518,6 +529,11 @@ export const getLocalizedMountainSystem = (
   mountain: UnifiedMountainData,
   locale: SupportedLocale,
 ): string => {
+  if (locale === 'en') {
+    if (mountain.mountainSystem === '奥羽山脈') return 'Ou Mountains'
+    if (mountain.mountainSystem === '北上山地') return 'Kitakami Mountains'
+  }
+
   return convertJapaneseText(mountain.mountainSystem, locale)
 }
 
@@ -532,6 +548,8 @@ export const getLocalizedSearchCandidates = (
     mountain.prefectures,
     mountain.prefecturesEn,
     getLocalizedMountainName(mountain, locale),
+    getLocalizedMountainSubName(mountain, 'ja'),
+    ...Object.values(getMountainFact(mountain.slug)?.name ?? {}),
     getLocalizedPrefectures(mountain, locale),
     ...mountain.listLabelsJa,
     ...mountain.listLabelsEn,

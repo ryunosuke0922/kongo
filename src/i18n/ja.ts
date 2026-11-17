@@ -1,4 +1,18 @@
 const ja = {
+  REGION_HEADING: '{region}の日本百名山',
+  REGION_INTRO:
+    '{region}の日本百名山{count}座。都道府県・山脈・標高を確認し、県を選んで山を絞り込めます。',
+  REGION_COMPARISON: '掲載する山の比較',
+  TOHOKU_RANGES:
+    '八甲田山と蔵王山はいずれも奥羽山脈に属します。北上山地の早池峰山と合わせて、山脈と山の対応を確認できます。',
+  DETAIL_POINT: '標高・座標の対象',
+  DETAIL_LATITUDE: '緯度',
+  DETAIL_LONGITUDE: '経度',
+  DETAIL_MAP: 'この座標を地図で開く',
+  DETAIL_RELATED: '関連する山・峰',
+  DETAIL_SOURCES: '出典・参考資料',
+  DETAIL_SYSTEM: '山脈・山地',
+  DETAIL_NO_LIST: '掲載リストなし',
   TITLE: '日本百名山',
   DESCRIPTION:
     '『日本百名山』は、深田久弥が執筆した山岳随筆集です。こちらの著書を参考に日本百名山を一覧にまとめました。',

@@ -13,6 +13,8 @@ import type { MountainListId, UnifiedMountainData } from '@/types/mountains'
 import { formatElevation } from '@/i18n/summits'
 import { toLocalizedPath } from '@/utils/seoPaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Link from 'next/link'
+import { getListScope } from '@/i18n/listScopes'
 
 type Props = {
   listId: MountainListId
@@ -55,14 +57,18 @@ const ListPage: NextPage<Props> = ({ listId, mountains }) => {
   const { t, locale } = useLocale()
   const meta = getMountainListMeta(listId)
   const label = getLocalizedListLabel(meta, locale)
+  const scope = getListScope(listId, locale)
   const topPeaks = listId === 'hyakukozan' ? mountains.slice(0, 5) : null
-  const title = topPeaks ? t.HIGHEST_TITLE : getListTitle(label, mountains.length, locale)
+  const title = topPeaks
+    ? t.HIGHEST_TITLE
+    : (scope?.title ?? getListTitle(label, mountains.length, locale))
   const description = topPeaks
     ? t.HIGHEST_INTRO.replace('{first}', formatElevation(topPeaks[0].elevation, locale)).replace(
         '{second}',
         formatElevation(topPeaks[1].elevation, locale),
       )
-    : getListDescription(getLocalizedListDescription(meta, locale), mountains.length, locale)
+    : (scope?.note ??
+      getListDescription(getLocalizedListDescription(meta, locale), mountains.length, locale))
 
   return (
     <Layout
@@ -78,14 +84,24 @@ const ListPage: NextPage<Props> = ({ listId, mountains }) => {
             { name: label, path: meta.path },
           ]}
           mountains={mountains}
-          listName={label}
+          listName={scope?.title ?? label}
         />
       }
     >
       <div className="main__content-title">
-        <Heading3 as="h1">{topPeaks ? t.HIGHEST_TITLE : label}</Heading3>
+        <Heading3 as="h1">{topPeaks ? t.HIGHEST_TITLE : (scope?.title ?? label)}</Heading3>
       </div>
       <PageLead>{description}</PageLead>
+      {scope && (
+        <PageLead>
+          <a href={scope.sourceUrl}>{scope.sourceLabel}</a>
+        </PageLead>
+      )}
+      {listId === 'sambyakumeizan' && (
+        <PageLead>
+          <Link href={toLocalizedPath('/lists/hyakukozan', locale)}>{t.HIGHEST_TITLE}</Link>
+        </PageLead>
+      )}
       {topPeaks && <ElevationRanking peaks={topPeaks} />}
       <MountainListNav currentListId={listId} />
       <MountainMap mountains={mountains} />

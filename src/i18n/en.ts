@@ -1,6 +1,20 @@
 import type { LocaleMessages } from './ja'
 
 const en: LocaleMessages = {
+  REGION_HEADING: '100 Famous Japanese Mountains in {region}',
+  REGION_INTRO:
+    'Browse {count} peaks from the 100 Famous Japanese Mountains in {region}. Compare prefectures, ranges and elevations, or filter by prefecture.',
+  REGION_COMPARISON: 'Compare the listed mountains',
+  TOHOKU_RANGES:
+    'Hakkoda and Zao are both in the Ou Mountains. Compare them with Hayachine in the Kitakami Mountains below.',
+  DETAIL_POINT: 'Elevation and coordinate point',
+  DETAIL_LATITUDE: 'Latitude',
+  DETAIL_LONGITUDE: 'Longitude',
+  DETAIL_MAP: 'Open these coordinates on the map',
+  DETAIL_RELATED: 'Related mountains and summits',
+  DETAIL_SOURCES: 'Sources and further information',
+  DETAIL_SYSTEM: 'Mountain range',
+  DETAIL_NO_LIST: 'No current list membership',
   TITLE: '100 Famous Japanese Mountains',
   DESCRIPTION:
     'Nihon Hyakumeizan, selected by Kyuya Fukada, is the classic list of 100 Famous Japanese Mountains. This site helps you find each mountain by region, prefecture, elevation, and name.',

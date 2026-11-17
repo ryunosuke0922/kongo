@@ -7,6 +7,7 @@ import {
   getLocalizedMountainListLabels,
   getLocalizedMountainName,
   getLocalizedMountainSubName,
+  getLocalizedMountainTag,
   getLocalizedMountainSystem,
   getLocalizedPrefectures,
 } from '../../../i18n/mountains'
@@ -36,7 +37,7 @@ const EnhancedCard = ({ data, showListLabel = true }: Props) => {
   const listLabels = getLocalizedMountainListLabels(data, locale)
   const detailHref = toLocalizedPath(`/mountains/${data.slug}`, locale)
   const yamapKeyword = encodeURIComponent(`${prefectures} ${name}`)
-  const instagramTag = encodeURIComponent(name.replace(/\s+/g, ''))
+  const instagramTag = encodeURIComponent(getLocalizedMountainTag(data, locale))
 
   const openDetail = async () => {
     await router.push(detailHref)

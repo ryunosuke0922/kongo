@@ -1,6 +1,8 @@
 import type { SupportedLocale } from '@/i18n/index'
 import {
   getLocalizedMountainName,
+  getLocalizedMountainSubName,
+  getLocalizedPrefectureOrder,
   getLocalizedPrefectureValues,
   getLocalizedSearchCandidates,
 } from '@/i18n/mountains'
@@ -25,8 +27,10 @@ const compareByKana = (
   b: UnifiedMountainData,
   locale: SupportedLocale,
 ): number => {
-  const left = locale === 'ja' ? a.kanaName : getLocalizedMountainName(a, locale)
-  const right = locale === 'ja' ? b.kanaName : getLocalizedMountainName(b, locale)
+  const left =
+    locale === 'ja' ? getLocalizedMountainSubName(a, locale) : getLocalizedMountainName(a, locale)
+  const right =
+    locale === 'ja' ? getLocalizedMountainSubName(b, locale) : getLocalizedMountainName(b, locale)
 
   return left.localeCompare(right, locale)
 }
@@ -74,4 +78,15 @@ export const filterMountains = (
     case 'no':
       return filtered
   }
+}
+
+export const getAvailablePrefectures = (
+  mountains: readonly UnifiedMountainData[],
+  locale: SupportedLocale,
+): string[] => {
+  const available = new Set(
+    mountains.flatMap((mountain) => getLocalizedPrefectureValues(mountain, locale)),
+  )
+
+  return getLocalizedPrefectureOrder(locale).filter((value) => available.has(value))
 }
