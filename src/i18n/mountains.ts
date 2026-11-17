@@ -417,9 +417,6 @@ export const getLocalizedPrefectureOrder = (locale: SupportedLocale): string[] =
 }
 
 const englishMountainNames: Record<string, string | undefined> = {
-  asosan: 'Mount Aso',
-  fuji: 'Mount Fuji',
-  kitadake: 'Mount Kita',
   ainodake: 'Mount Aino',
 }
 
