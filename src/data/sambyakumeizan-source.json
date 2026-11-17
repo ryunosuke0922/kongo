@@ -1,0 +1,502 @@
+[
+  {
+    "landmarkId": 388,
+    "sourceNumber": 100,
+    "sourceName": "箱根山（神山）"
+  },
+  {
+    "landmarkId": 431,
+    "sourceNumber": 99,
+    "sourceName": "金時山"
+  },
+  {
+    "landmarkId": 653,
+    "sourceNumber": 197,
+    "sourceName": "奥三界岳"
+  },
+  {
+    "landmarkId": 672,
+    "sourceNumber": 191,
+    "sourceName": "越百山"
+  },
+  {
+    "landmarkId": 786,
+    "sourceNumber": 213,
+    "sourceName": "茶臼岳"
+  },
+  {
+    "landmarkId": 881,
+    "sourceNumber": 210,
+    "sourceName": "奥茶臼山"
+  },
+  {
+    "landmarkId": 1038,
+    "sourceNumber": 148,
+    "sourceName": "黒岳"
+  },
+  {
+    "landmarkId": 1145,
+    "sourceNumber": 201,
+    "sourceName": "アサヨ峰"
+  },
+  {
+    "landmarkId": 1326,
+    "sourceNumber": 138,
+    "sourceName": "入笠山"
+  },
+  {
+    "landmarkId": 1358,
+    "sourceNumber": 140,
+    "sourceName": "国師ヶ岳"
+  },
+  {
+    "landmarkId": 1526,
+    "sourceNumber": 97,
+    "sourceName": "大山"
+  },
+  {
+    "landmarkId": 1841,
+    "sourceNumber": 186,
+    "sourceName": "鉢盛山"
+  },
+  {
+    "landmarkId": 1972,
+    "sourceNumber": 173,
+    "sourceName": "三俣蓮華岳"
+  },
+  {
+    "landmarkId": 2062,
+    "sourceNumber": 169,
+    "sourceName": "野口五郎岳"
+  },
+  {
+    "landmarkId": 2131,
+    "sourceNumber": 159,
+    "sourceName": "爺ヶ岳"
+  },
+  {
+    "landmarkId": 2209,
+    "sourceNumber": 90,
+    "sourceName": "諏訪山"
+  },
+  {
+    "landmarkId": 2234,
+    "sourceNumber": 132,
+    "sourceName": "鉢伏山"
+  },
+  {
+    "landmarkId": 2715,
+    "sourceNumber": 117,
+    "sourceName": "横手山"
+  },
+  {
+    "landmarkId": 2967,
+    "sourceNumber": 262,
+    "sourceName": "扇ノ山"
+  },
+  {
+    "landmarkId": 3086,
+    "sourceNumber": 156,
+    "sourceName": "唐松岳"
+  },
+  {
+    "landmarkId": 3184,
+    "sourceNumber": 118,
+    "sourceName": "笠ヶ岳"
+  },
+  {
+    "landmarkId": 3328,
+    "sourceNumber": 121,
+    "sourceName": "斑尾山"
+  },
+  {
+    "landmarkId": 3487,
+    "sourceNumber": 74,
+    "sourceName": "太郎山"
+  },
+  {
+    "landmarkId": 3558,
+    "sourceNumber": 71,
+    "sourceName": "高原山(釈迦が岳)"
+  },
+  {
+    "landmarkId": 3599,
+    "sourceNumber": 78,
+    "sourceName": "景鶴山"
+  },
+  {
+    "landmarkId": 3662,
+    "sourceNumber": 70,
+    "sourceName": "男鹿岳"
+  },
+  {
+    "landmarkId": 3804,
+    "sourceNumber": 26,
+    "sourceName": "大千軒岳"
+  },
+  {
+    "landmarkId": 3975,
+    "sourceNumber": 24,
+    "sourceName": "狩場山"
+  },
+  {
+    "landmarkId": 4122,
+    "sourceNumber": 16,
+    "sourceName": "神威岳"
+  },
+  {
+    "landmarkId": 4215,
+    "sourceNumber": 23,
+    "sourceName": "ニセコアンヌプリ"
+  },
+  {
+    "landmarkId": 4388,
+    "sourceNumber": 20,
+    "sourceName": "余市岳"
+  },
+  {
+    "landmarkId": 4734,
+    "sourceNumber": 11,
+    "sourceName": "オプタテシケ山"
+  },
+  {
+    "landmarkId": 4901,
+    "sourceNumber": 6,
+    "sourceName": "ニセイカウシュッペ山"
+  },
+  {
+    "landmarkId": 5565,
+    "sourceNumber": 61,
+    "sourceName": "七ヶ岳"
+  },
+  {
+    "landmarkId": 5656,
+    "sourceNumber": 60,
+    "sourceName": "二岐山"
+  },
+  {
+    "landmarkId": 6080,
+    "sourceNumber": 51,
+    "sourceName": "祝瓶山"
+  },
+  {
+    "landmarkId": 6174,
+    "sourceNumber": 48,
+    "sourceName": "摩耶山"
+  },
+  {
+    "landmarkId": 7036,
+    "sourceNumber": 32,
+    "sourceName": "五葉山"
+  },
+  {
+    "landmarkId": 7368,
+    "sourceNumber": 39,
+    "sourceName": "太平山"
+  },
+  {
+    "landmarkId": 7402,
+    "sourceNumber": 35,
+    "sourceName": "乳頭山(烏帽子岳)"
+  },
+  {
+    "landmarkId": 9229,
+    "sourceNumber": 238,
+    "sourceName": "経ヶ岳"
+  },
+  {
+    "landmarkId": 9241,
+    "sourceNumber": 236,
+    "sourceName": "野伏ヶ岳"
+  },
+  {
+    "landmarkId": 9320,
+    "sourceNumber": 226,
+    "sourceName": "猿ヶ馬場山"
+  },
+  {
+    "landmarkId": 9343,
+    "sourceNumber": 232,
+    "sourceName": "大笠山"
+  },
+  {
+    "landmarkId": 9349,
+    "sourceNumber": 234,
+    "sourceName": "三方岩岳"
+  },
+  {
+    "landmarkId": 9386,
+    "sourceNumber": 231,
+    "sourceName": "大門山"
+  },
+  {
+    "landmarkId": 9434,
+    "sourceNumber": 230,
+    "sourceName": "医王山"
+  },
+  {
+    "landmarkId": 9459,
+    "sourceNumber": 223,
+    "sourceName": "白木峰"
+  },
+  {
+    "landmarkId": 9505,
+    "sourceNumber": 166,
+    "sourceName": "鍬崎山"
+  },
+  {
+    "landmarkId": 9551,
+    "sourceNumber": 161,
+    "sourceName": "蓮華岳"
+  },
+  {
+    "landmarkId": 9790,
+    "sourceNumber": 153,
+    "sourceName": "朝日岳"
+  },
+  {
+    "landmarkId": 9857,
+    "sourceNumber": 130,
+    "sourceName": "青海黒姫山"
+  },
+  {
+    "landmarkId": 10032,
+    "sourceNumber": 81,
+    "sourceName": "朝日岳"
+  },
+  {
+    "landmarkId": 10057,
+    "sourceNumber": 128,
+    "sourceName": "焼山"
+  },
+  {
+    "landmarkId": 10265,
+    "sourceNumber": 106,
+    "sourceName": "米山"
+  },
+  {
+    "landmarkId": 10513,
+    "sourceNumber": 105,
+    "sourceName": "浅草岳"
+  },
+  {
+    "landmarkId": 10545,
+    "sourceNumber": 103,
+    "sourceName": "粟ヶ岳"
+  },
+  {
+    "landmarkId": 10974,
+    "sourceNumber": 101,
+    "sourceName": "金北山"
+  },
+  {
+    "landmarkId": 11483,
+    "sourceNumber": 245,
+    "sourceName": "倶留尊山"
+  },
+  {
+    "landmarkId": 11913,
+    "sourceNumber": 222,
+    "sourceName": "熊伏山"
+  },
+  {
+    "landmarkId": 12076,
+    "sourceNumber": 221,
+    "sourceName": "高塚山"
+  },
+  {
+    "landmarkId": 12114,
+    "sourceNumber": 220,
+    "sourceName": "黒法師岳"
+  },
+  {
+    "landmarkId": 12168,
+    "sourceNumber": 219,
+    "sourceName": "山伏"
+  },
+  {
+    "landmarkId": 12433,
+    "sourceNumber": 241,
+    "sourceName": "冠山"
+  },
+  {
+    "landmarkId": 12467,
+    "sourceNumber": 229,
+    "sourceName": "鷲ヶ岳"
+  },
+  {
+    "landmarkId": 12698,
+    "sourceNumber": 228,
+    "sourceName": "川上岳"
+  },
+  {
+    "landmarkId": 13332,
+    "sourceNumber": 254,
+    "sourceName": "護摩壇山"
+  },
+  {
+    "landmarkId": 13722,
+    "sourceNumber": 255,
+    "sourceName": "大和葛城山"
+  },
+  {
+    "landmarkId": 13740,
+    "sourceNumber": 249,
+    "sourceName": "竜門岳"
+  },
+  {
+    "landmarkId": 14220,
+    "sourceNumber": 261,
+    "sourceName": "六甲山"
+  },
+  {
+    "landmarkId": 14498,
+    "sourceNumber": 260,
+    "sourceName": "愛宕山"
+  },
+  {
+    "landmarkId": 14522,
+    "sourceNumber": 259,
+    "sourceName": "比叡山"
+  },
+  {
+    "landmarkId": 14709,
+    "sourceNumber": 258,
+    "sourceName": "蓬莱山"
+  },
+  {
+    "landmarkId": 15004,
+    "sourceNumber": 247,
+    "sourceName": "高見山"
+  },
+  {
+    "landmarkId": 15011,
+    "sourceNumber": 246,
+    "sourceName": "三峰山"
+  },
+  {
+    "landmarkId": 15334,
+    "sourceNumber": 243,
+    "sourceName": "藤原岳"
+  },
+  {
+    "landmarkId": 17722,
+    "sourceNumber": 264,
+    "sourceName": "那岐山"
+  },
+  {
+    "landmarkId": 18253,
+    "sourceNumber": 278,
+    "sourceName": "篠山"
+  },
+  {
+    "landmarkId": 18340,
+    "sourceNumber": 277,
+    "sourceName": "三本杭"
+  },
+  {
+    "landmarkId": 19000,
+    "sourceNumber": 275,
+    "sourceName": "瓶ヶ森"
+  },
+  {
+    "landmarkId": 19026,
+    "sourceNumber": 274,
+    "sourceName": "伊予富士"
+  },
+  {
+    "landmarkId": 20434,
+    "sourceNumber": 298,
+    "sourceName": "高隈山"
+  },
+  {
+    "landmarkId": 21570,
+    "sourceNumber": 292,
+    "sourceName": "国見岳"
+  },
+  {
+    "landmarkId": 22684,
+    "sourceNumber": 288,
+    "sourceName": "傾岳"
+  },
+  {
+    "landmarkId": 22801,
+    "sourceNumber": 283,
+    "sourceName": "湧蓋山"
+  },
+  {
+    "landmarkId": 22823,
+    "sourceNumber": 284,
+    "sourceName": "大船山"
+  },
+  {
+    "landmarkId": 22945,
+    "sourceNumber": 281,
+    "sourceName": "鶴見岳"
+  },
+  {
+    "landmarkId": 23255,
+    "sourceNumber": 280,
+    "sourceName": "脊振山"
+  },
+  {
+    "landmarkId": 24197,
+    "sourceNumber": 290,
+    "sourceName": "多良岳"
+  },
+  {
+    "landmarkId": 24891,
+    "sourceNumber": 268,
+    "sourceName": "吾妻山"
+  },
+  {
+    "landmarkId": 24903,
+    "sourceNumber": 267,
+    "sourceName": "道後山"
+  },
+  {
+    "landmarkId": 25131,
+    "sourceNumber": 67,
+    "sourceName": "八溝山"
+  },
+  {
+    "landmarkId": 25651,
+    "sourceNumber": 59,
+    "sourceName": "大滝根山"
+  },
+  {
+    "landmarkId": 25825,
+    "sourceNumber": 55,
+    "sourceName": "一切経山"
+  },
+  {
+    "landmarkId": 26308,
+    "sourceNumber": 44,
+    "sourceName": "泉ヶ岳"
+  },
+  {
+    "landmarkId": 26654,
+    "sourceNumber": 225,
+    "sourceName": "人形山"
+  },
+  {
+    "landmarkId": 26688,
+    "sourceNumber": 62,
+    "sourceName": "荒海山"
+  },
+  {
+    "landmarkId": 26824,
+    "sourceNumber": 193,
+    "sourceName": "南木曽岳"
+  },
+  {
+    "landmarkId": 63561,
+    "sourceNumber": 77,
+    "sourceName": "袈裟丸山"
+  },
+  {
+    "landmarkId": 80982,
+    "sourceNumber": 96,
+    "sourceName": "三頭山"
+  }
+]

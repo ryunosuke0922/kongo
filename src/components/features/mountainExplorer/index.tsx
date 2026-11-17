@@ -1,14 +1,11 @@
+import { getAvailablePrefectures } from '@/utils/mountainFilter'
 import {
   useMountainFilter,
   type ElevationFilterType,
   type SortType,
 } from '@/hooks/useMountainFilter'
 import { useLocale, type SupportedLocale } from '@/i18n/index'
-import {
-  getLocalizedMountainName,
-  getLocalizedPrefectureOrder,
-  getLocalizedPrefectureValues,
-} from '@/i18n/mountains'
+import { getLocalizedMountainName } from '@/i18n/mountains'
 import FilterSelect from '@/components/molecules/filterSelect'
 import MountainCardList from '@/components/molecules/mountainCardList'
 import MountainListNav from '@/components/molecules/mountainListNav'
@@ -94,10 +91,7 @@ const MountainExplorer = ({ mountains, currentListId = 'hyakumeizan' }: Props) =
   ]
 
   const prefectureOptions = useMemo(() => {
-    const availableValues = new Set(
-      mountains.flatMap((mountain) => getLocalizedPrefectureValues(mountain, locale)),
-    )
-    const values = getLocalizedPrefectureOrder(locale).filter((value) => availableValues.has(value))
+    const values = getAvailablePrefectures(mountains, locale)
 
     return [
       { value: 'all', label: t.PREFECTURE_ALL },

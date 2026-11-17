@@ -1,5 +1,6 @@
 import hyakukozanData from '@/data/hyakukozan.json'
 import hyakuteizanData from '@/data/hyakuteizan.json'
+import hyakuteizanSelection from '@/data/hyakuteizan-selection.json'
 import mountainsData from '@/data/mountains.json'
 import nihyakumeizanData from '@/data/nihyakumeizan.json'
 import sambyakumeizanData from '@/data/sambyakumeizan.json'
@@ -43,10 +44,10 @@ export const MOUNTAIN_LISTS: MountainListMeta[] = [
     labelEn: '300 Famous Japanese Mountains',
     labelZhCN: '日本三百名山',
     labelZhTW: '日本三百名山',
-    descriptionJa: 'さらに広く日本の名山を探せる日本三百名山。',
-    descriptionEn: 'A broader collection of 300 famous mountains across Japan.',
-    descriptionZhCN: '可更广泛查找日本名山的日本三百名山。',
-    descriptionZhTW: '可更廣泛查找日本名山的日本三百名山。',
+    descriptionJa: '日本山岳会の日本三百名山から本サイト収録の100座。',
+    descriptionEn: 'Explore 100 entries from the Japanese Alpine Club’s 300 Famous Mountains.',
+    descriptionZhCN: '日本山岳会日本三百名山中本站收录的100座。',
+    descriptionZhTW: '日本山岳會日本三百名山中本站收錄的100座。',
     path: '/lists/sambyakumeizan',
   },
   {
@@ -67,16 +68,22 @@ export const MOUNTAIN_LISTS: MountainListMeta[] = [
     labelEn: '100 Low Mountains of Japan',
     labelZhCN: '日本百低山',
     labelZhTW: '日本百低山',
-    descriptionJa: '低山ハイクや旅行中の山歩きに向いた日本百低山。',
-    descriptionEn: 'A list of lower mountains in Japan suited for hiking and travel.',
-    descriptionZhCN: '适合低山健行与旅行途中登山的日本百低山。',
-    descriptionZhTW: '適合低山健行與旅行途中登山的日本百低山。',
+    descriptionJa: '小林泰彦著『日本百低山』（山と溪谷社）収録の100座。',
+    descriptionEn: 'The 100 mountains in Nihon Hyakuteizan by Yasuhiko Kobayashi (Yama-kei).',
+    descriptionZhCN: '小林泰彦著《日本百低山》（山与溪谷社）收录的100座。',
+    descriptionZhTW: '小林泰彥著《日本百低山》（山與溪谷社）收錄的100座。',
     path: '/lists/hyakuteizan',
   },
 ]
 
 export const ALL_MOUNTAIN_LIST_FILTER = 'all' satisfies MountainListFilter
-const HYAKUTEIZAN_DISPLAY_LIMIT = 100
+export const selectHyakuteizan = (mountains: YamapBadgeMountainData[]) =>
+  hyakuteizanSelection.map(({ landmarkId }) => {
+    const mountain = mountains.find((item) => item.yamapLandmarkId === landmarkId)
+    if (!mountain) throw new Error(`Missing selected low mountain: ${landmarkId}`)
+
+    return mountain
+  })
 
 export const getMountainListMeta = (id: MountainListId): MountainListMeta => {
   const meta = MOUNTAIN_LISTS.find((list) => list.id === id)
@@ -224,9 +231,9 @@ const sambyakumeizanMountains = (sambyakumeizanData as YamapBadgeMountainData[])
   normalizeBadgeMountain(mountain, 'sambyakumeizan'),
 )
 
-const hyakuteizanMountains = (hyakuteizanData as YamapBadgeMountainData[])
-  .slice(0, HYAKUTEIZAN_DISPLAY_LIMIT)
-  .map((mountain) => normalizeBadgeMountain(mountain, 'hyakuteizan'))
+const hyakuteizanMountains = selectHyakuteizan(hyakuteizanData as YamapBadgeMountainData[]).map(
+  (mountain) => normalizeBadgeMountain(mountain, 'hyakuteizan'),
+)
 
 const getRawMountainsByList = (listId: MountainListId): UnifiedMountainData[] => {
   if (listId === 'hyakumeizan') {
@@ -288,6 +295,19 @@ export const getAllMountains = (): UnifiedMountainData[] => {
   hyakuteizanMountains.forEach((mountain) => {
     mergeMountain(map, mountain)
   })
+
+  const formerLowMountain = hyakuteizanData.find((mountain) => mountain.yamapLandmarkId === 6163)
+  if (formerLowMountain) {
+    const archived = normalizeBadgeMountain(formerLowMountain, 'hyakuteizan')
+    mergeMountain(map, {
+      ...archived,
+      listIds: [],
+      listLabelsJa: [],
+      listLabelsEn: [],
+      listLabelsZhCN: [],
+      listLabelsZhTW: [],
+    })
+  }
 
   const usedSlugs = new Map<string, number>()
 

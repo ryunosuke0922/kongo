@@ -101,3 +101,4 @@ export const REGIONS = Object.entries(regions).map(([slug, region]) => ({
   slug,
   path: `/local/${slug}`,
 }))
+export const TOHOKU_COMPARISON_SLUGS = ['hakkoda', 'zao', 'hayachinesan']
